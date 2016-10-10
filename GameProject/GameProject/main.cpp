@@ -6,7 +6,7 @@
 
 int main() {
 
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game", sf::Style::Fullscreen);
+	sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Game", sf::Style::Fullscreen);
 	window.setMouseCursorVisible(false);
 
 	sf::CircleShape shape;
