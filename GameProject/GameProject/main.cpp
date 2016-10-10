@@ -1,10 +1,17 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <vector>
+#include <string>
+
 int main() {
 
-	sf::RenderWindow window(sf::VideoMode(640, 480), "SFML Application");
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game", sf::Style::Fullscreen);
+	window.setMouseCursorVisible(false);
+
 	sf::CircleShape shape;
 	shape.setRadius(40.f);
-	shape.setPosition(100.f, 100.f);
+	shape.setPosition(600, 600);
 	shape.setFillColor(sf::Color::Cyan);
 
 	while (window.isOpen()) {
