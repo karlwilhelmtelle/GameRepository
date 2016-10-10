@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 ﻿  GameProject.vcxproj -> C:\Users\KarlWilhelm\Documents\GitHub\GameRepository\GameProject\Debug\GameProject.exe
   GameProject.vcxproj -> C:\Users\KarlWilhelm\Documents\GitHub\GameRepository\GameProject\Debug\GameProject.pdb (Partial PDB)
+=======
+﻿  main.cpp
+  GameProject.vcxproj -> C:\Users\KarlWilhelm\Documents\GitHub\Informatik_Spiel\GameProject\Debug\GameProject.exe
+  GameProject.vcxproj -> C:\Users\KarlWilhelm\Documents\GitHub\Informatik_Spiel\GameProject\Debug\GameProject.pdb (Partial PDB)
+>>>>>>> parent of c789012... Test Upload von unwichtigen Dateien
