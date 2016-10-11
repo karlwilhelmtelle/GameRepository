@@ -4,18 +4,15 @@
 #include <vector>
 #include <string>
 #include "Window.h"
-#include "Viewport.h"
+#include "MainItem.h"
 
 class Game
 {
 	public:
 		Game();
 		~Game();
-		void start();
 	private:
-		Viewport viewport;
-		sf::RenderWindow window;
-		sf::CircleShape shape;
+		Window window;
 		int level;
 };
 

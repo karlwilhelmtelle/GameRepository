@@ -2,17 +2,8 @@
 
 Game::Game()
 {
-	Window window;
-	window.setMouseCursorVisible(false);
-	Viewport viewport;
 	level = 1;
 	
-
-	sf::CircleShape shape;
-	shape.setRadius(40);
-	shape.setPosition(600, 600);
-	shape.setFillColor(sf::Color::Cyan);
-
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -25,9 +16,8 @@ Game::Game()
 			}
 		}
 
-		window.clear();
-		window.draw(shape);
-		window.display();
+		window.render();
+		window.update();
 	}
 }
 
@@ -38,16 +28,9 @@ Game::~Game()
 }
 
 
-void Game::start()
-{
-	
-}
-
-
 int main() 
 {
 	Game game;
-	game.start();
 
 	return 0;
 }
