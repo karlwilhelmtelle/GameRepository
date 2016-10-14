@@ -1,8 +1,8 @@
 #include "MainItem.h"
 
 MainItem::MainItem(int resolution_x, int resolution_y) : 
-	radius(40),
-	x(resolution_x / 2 - radius),
+	radius(40.f),
+	x(resolution_x / 2 - (int)radius),
 	y(resolution_y / 2 - radius)
 {
 }

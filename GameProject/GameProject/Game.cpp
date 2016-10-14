@@ -15,7 +15,10 @@ Game::Game()
 				window.close();
 			}
 		}
-
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			window.close();
+		}
 		window.render();
 		window.update();
 	}

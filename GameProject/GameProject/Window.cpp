@@ -25,7 +25,14 @@ void Window::render()
 
 void Window::update() // depending on events
 {
-	item.move(0);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		item.move(-1);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		item.move(+1);
+	}
 
 	if (true) // if no collision then update the main item
 	{
