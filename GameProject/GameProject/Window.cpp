@@ -26,18 +26,24 @@ void Window::render()
 
 void Window::update() // depending on events
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	float y = item.getPosition().y;
+
+	// go up
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
+		y > 0)	// top of screen
 	{
 		item.move(-1);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+
+	// go down
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
+		// bottom of screen
+		y < resolution.height - 2* item.getRadius())
 	{
 		item.move(+1);
 	}
-
-	float y = item.getPosition().y;
-	float radius = item.getRadius();
-	if (y > 0 && y < resolution.height - radius) // if no collision then update the main item
+	
+	if (true) // if no collision then update the main item
 	{
 		item.update();
 	}
