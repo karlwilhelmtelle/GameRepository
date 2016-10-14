@@ -5,7 +5,6 @@ MainItem::MainItem(int resolution_x, int resolution_y) :
 	x(resolution_x / 2 - (int)radius),
 	y(resolution_y / 2 - radius)
 {
-	update();
 }
 
 
