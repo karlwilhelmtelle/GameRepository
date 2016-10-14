@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-class Objekt : public sf::RectangleShape
+
+class Object : public sf::RectangleShape
 {
 public:
-	Objekt();
+	Object(sf::VideoMode resolution);
 
-	~Objekt();
+	~Object();
 
 	void move(float dx);
 

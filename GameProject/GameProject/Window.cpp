@@ -4,7 +4,9 @@ Window::Window() :
 	resolution(sf::VideoMode::getDesktopMode()),
 	sf::RenderWindow(resolution, 
 		"Game", sf::Style::Fullscreen),
-	item(resolution)
+	item(resolution),
+	rect(resolution),
+	camera_speed(0.3f)
 {
 	setMouseCursorVisible(false);
 }
@@ -43,9 +45,11 @@ void Window::update() // depending on events
 		item.move(+1);
 	}
 	
+	rect.move(camera_speed * -1);
+	rect.update();
+
 	if (true) // if no collision then update the main item
 	{
 		item.update();
 	}
-
 }

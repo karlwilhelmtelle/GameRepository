@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "MainItem.h"
-#include "Objekt.h"
+#include "Object.h"
 
 class Window : public sf::RenderWindow
 {
@@ -35,5 +35,5 @@ class Window : public sf::RenderWindow
 		float camera_speed;
 
 		/* rectangle on screen */
-		Objekt rect;
+		Object rect;
 };
