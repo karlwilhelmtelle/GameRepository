@@ -8,6 +8,7 @@ Objekt::Objekt() :
 	size(sf::Vector2f(20, 20)),
 	sf::RectangleShape(size)
 {
+	setSize(size);
 	update();
 	setFillColor(sf::Color::Red);
 }
@@ -27,5 +28,5 @@ void Objekt::move(float dx)
 
 void Objekt::update()
 {
-	setPosition(size);
+	setPosition(position);
 }

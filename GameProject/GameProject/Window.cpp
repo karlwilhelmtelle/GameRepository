@@ -38,7 +38,7 @@ void Window::update() // depending on events
 	// go down
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
 		// bottom of screen
-		y < resolution.height - 2* item.getRadius())
+		y < resolution.height - 2*item.getRadius())
 	{
 		item.move(+1);
 	}
@@ -47,5 +47,4 @@ void Window::update() // depending on events
 	{
 		item.update();
 	}
-
 }
