@@ -5,7 +5,7 @@ class MainItem : public sf::CircleShape
 {
 	public:
 		/*	sets radius and coordinates of MainItem */
-		MainItem(int resolution_x, int resolution_y);
+		MainItem(sf::VideoMode resolution);
 
 		/*	changing y-coordinate of MainItem */
 		void move(float dy);
@@ -16,9 +16,5 @@ class MainItem : public sf::CircleShape
 		/*  radius of MainItem */
 		float radius;
 
-		/*  x-coordinate of MainItem */
-		int x;
-
-		/*  y-coordinate of MainItem */
-		float y;
+		sf::Vector2f position;
 };

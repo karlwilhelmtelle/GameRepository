@@ -1,22 +1,23 @@
 #include "MainItem.h"
 
-MainItem::MainItem(int resolution_x, int resolution_y) : 
+MainItem::MainItem(sf::VideoMode resolution) : 
 	radius(40.f),
-	x(resolution_x / 2 - (int)radius),
-	y(resolution_y / 2 - radius)
+	position(sf::Vector2f(
+		resolution.width / 2 - radius,
+		resolution.height / 2 - radius))
 {
 }
 
 
 void MainItem::move(float dy)
 {
-	y = y + dy;
+	position.y += dy;
 }
 
 
 void MainItem::update()
 {
 	setRadius(radius);
-	setPosition(x, y);
+	setPosition(position);
 	setFillColor(sf::Color::Cyan);
 }

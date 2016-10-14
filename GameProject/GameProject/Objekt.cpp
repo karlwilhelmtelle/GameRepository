@@ -4,10 +4,11 @@
 
 
 Objekt::Objekt() :
-	x(600),
-	y(600),
-	sf::RectangleShape(sf::Vector2f(x, y))
+	position(sf::Vector2f(600, 600)),
+	size(sf::Vector2f(20, 20)),
+	sf::RectangleShape(size)
 {
+	update();
 	setFillColor(sf::Color::Red);
 }
 
@@ -20,5 +21,11 @@ Objekt::~Objekt()
 
 void Objekt::move(float dx)
 {
-	setPosition(x + dx, y);
+	position.x += dx;
+}
+
+
+void Objekt::update()
+{
+	setPosition(size);
 }

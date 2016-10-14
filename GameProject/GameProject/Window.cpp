@@ -4,7 +4,7 @@ Window::Window() :
 	resolution(sf::VideoMode::getDesktopMode()),
 	sf::RenderWindow(resolution, 
 		"Game", sf::Style::Fullscreen),
-	item(resolution.width, resolution.height)
+	item(resolution)
 {
 	setMouseCursorVisible(false);
 }

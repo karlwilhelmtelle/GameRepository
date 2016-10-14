@@ -8,8 +8,10 @@ public:
 	~Objekt();
 
 	void move(float dx);
+
+	void update();
 private:
-	float x;
-	float y;
+	sf::Vector2f position;
+	sf::Vector2f size;
 };
 
