@@ -34,7 +34,9 @@ void Window::update() // depending on events
 		item.move(+1);
 	}
 
-	if (true) // if no collision then update the main item
+	float y = item.getPosition().y;
+	float radius = item.getRadius();
+	if (y > radius && y < resolution.height - radius) // if no collision then update the main item
 	{
 		item.update();
 	}
