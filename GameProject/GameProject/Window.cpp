@@ -19,6 +19,7 @@ void Window::render()
 {
 	clear(sf::Color::Black);
 	draw(item);
+	draw(rect);
 	display();
 }
 
@@ -36,8 +37,9 @@ void Window::update() // depending on events
 
 	float y = item.getPosition().y;
 	float radius = item.getRadius();
-	if (y > radius && y < resolution.height - radius) // if no collision then update the main item
+	if (y > 0 && y < resolution.height - radius) // if no collision then update the main item
 	{
 		item.update();
 	}
+
 }

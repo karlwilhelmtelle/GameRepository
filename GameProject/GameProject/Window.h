@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "MainItem.h"
+#include "Objekt.h"
 
 class Window : public sf::RenderWindow
 {
@@ -32,4 +33,7 @@ class Window : public sf::RenderWindow
 
 		/* current speed of the background, moving left */
 		float camera_speed;
+
+		/* rectangle on screen */
+		Objekt rect;
 };
