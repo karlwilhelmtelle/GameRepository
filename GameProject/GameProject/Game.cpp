@@ -3,6 +3,7 @@
 Game::Game()
 {
 	level = 1;
+	bool gameover = false;
 	
 	while (window.isOpen())
 	{
@@ -21,8 +22,14 @@ Game::Game()
 			window.close();
 		}
 
-		window.render();
-		window.update();
+		if (!gameover)
+		{
+			window.render();
+			if (window.update()) // if collision -> gameover
+			{
+				gameover = true;
+			}
+		}
 	}
 }
 

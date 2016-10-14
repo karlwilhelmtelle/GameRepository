@@ -5,7 +5,7 @@ Window::Window() :
 	sf::RenderWindow(resolution, 
 		"Game", sf::Style::Fullscreen),
 	item(resolution),
-	rect(resolution),
+	circle(resolution),
 	camera_speed(0.3f)
 {
 	setMouseCursorVisible(false);
@@ -14,6 +14,7 @@ Window::Window() :
 
 Window::~Window()
 {
+
 }
 
 
@@ -21,18 +22,19 @@ void Window::render()
 {
 	clear(sf::Color::Black);
 	draw(item);
-	draw(rect);
+	draw(circle);
 	display();
 }
 
 
-void Window::update() // depending on events
+bool Window::update() // depending on events
 {
-	float y = item.getPosition().y;
+	sf::Vector2f item_position = item.getPosition();
+	float item_radius = item.getRadius();
 
 	// go up
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
-		y > 0)	// top of screen
+		item_position.y > 0)	// top of screen
 	{
 		item.move(-1);
 	}
@@ -40,16 +42,24 @@ void Window::update() // depending on events
 	// go down
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
 		// bottom of screen
-		y < resolution.height - 2*item.getRadius())
+		item_position.y < resolution.height - 2*item_radius)
 	{
 		item.move(+1);
 	}
-	
-	rect.move(camera_speed * -1);
-	rect.update();
 
-	if (true) // if no collision then update the main item
+	circle.move(camera_speed * -1);
+
+	// check collision
+	// if circle is on the right
+	if (!item.collision(circle.getPosition(), circle.getRadius()))
 	{
 		item.update();
+		circle.update();
 	}
+	else
+	{
+		return true;
+		//collision
+	}
+	return false;
 }

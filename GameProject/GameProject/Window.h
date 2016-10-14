@@ -22,8 +22,9 @@ class Window : public sf::RenderWindow
 
 		/*	move Window.item depending on events
 			if no collision: Window.item.update()
+			if collision
 		*/
-		void update();
+		bool update();
 	private:
 		/*	resolution of the display */
 		sf::VideoMode resolution;
@@ -35,5 +36,5 @@ class Window : public sf::RenderWindow
 		float camera_speed;
 
 		/* rectangle on screen */
-		Object rect;
+		Object circle;
 };

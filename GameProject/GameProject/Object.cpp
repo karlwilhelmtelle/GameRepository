@@ -3,12 +3,12 @@
 
 Object::Object(sf::VideoMode resolution) :
 	position(sf::Vector2f(resolution.width + 100, resolution.height/2)),
-	size(sf::Vector2f(60, 60)),
-	sf::RectangleShape()
+	radius(60),
+	sf::CircleShape()
 {
-	setSize(size);
-	update();
+	setRadius(radius);
 	setFillColor(sf::Color::Red);
+	update();
 }
 
 

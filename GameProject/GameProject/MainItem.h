@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Object.h"
 
 class MainItem : public sf::CircleShape
 {
@@ -12,6 +13,8 @@ class MainItem : public sf::CircleShape
 		
 		/*  sets radius, position and color */
 		void update();
+
+		bool collision(sf::Vector2f obj_position, float obj_radius);
 	private:
 		/*  radius of MainItem */
 		float radius;

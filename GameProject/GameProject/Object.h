@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class Object : public sf::RectangleShape
+class Object : public sf::CircleShape
 {
 public:
 	Object(sf::VideoMode resolution);
@@ -13,6 +13,6 @@ public:
 	void update();
 private:
 	sf::Vector2f position;
-	sf::Vector2f size;
+	float radius;
 };
 
