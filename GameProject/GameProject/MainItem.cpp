@@ -14,7 +14,7 @@ MainItem::MainItem(sf::VideoMode resolution) :
 
 void MainItem::move(float dy)
 {
-	position.y += dy;
+	position.y += 0.2*dy;
 }
 
 

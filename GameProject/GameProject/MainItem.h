@@ -18,6 +18,6 @@ class MainItem : public sf::CircleShape
 	private:
 		/*  radius of MainItem */
 		float radius;
-
+		
 		sf::Vector2f position;
 };

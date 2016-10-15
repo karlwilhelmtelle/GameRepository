@@ -2,7 +2,7 @@
 
 
 Object::Object(sf::VideoMode resolution) :
-	position(sf::Vector2f(resolution.width + 100, resolution.height/2)),
+	position(sf::Vector2f((float)resolution.width + 100, (float)resolution.height/2)),
 	radius(60),
 	sf::CircleShape()
 {
