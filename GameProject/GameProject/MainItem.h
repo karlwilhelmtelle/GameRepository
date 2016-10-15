@@ -5,19 +5,18 @@
 class MainItem : public sf::CircleShape
 {
 	public:
-		/*	sets radius and coordinates of MainItem */
+		/*	sets radius and coordinates */
 		MainItem(sf::VideoMode resolution);
 
-		/*	changing y-coordinate of MainItem */
+		/*	changes y-coordinate */
 		void move(float dy);
 		
-		/*  sets radius, position and color */
+		/*  sets radius, position, fillColor */
 		void update();
-
-		bool collision(sf::Vector2f obj_position, float obj_radius);
 	private:
-		/*  radius of MainItem */
+		/*  radius */
 		float radius;
 		
+		/*  x and y coordinates */
 		sf::Vector2f position;
 };

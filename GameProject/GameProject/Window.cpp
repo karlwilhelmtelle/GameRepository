@@ -1,20 +1,14 @@
 #include "Window.h"
 
 Window::Window() :
-	resolution(sf::VideoMode::getDesktopMode()),
-	sf::RenderWindow(resolution, 
+	sf::RenderWindow(resolution,
 		"Game", sf::Style::Fullscreen),
+	resolution(sf::VideoMode::getDesktopMode()),
 	item(resolution),
-	circle(resolution),
 	camera_speed(0.3f)
 {
 	setMouseCursorVisible(false);
-}
-
-
-Window::~Window()
-{
-
+	map.load("", resolution);
 }
 
 
@@ -22,12 +16,17 @@ void Window::render()
 {
 	clear(sf::Color::Black);
 	draw(item);
-	draw(circle);
+	
+	for (auto e = map.v.begin(); e != map.v.end(); ++e)
+	{
+		draw(*e);
+	}
+
 	display();
 }
 
 
-bool Window::update() // depending on events
+void Window::update(bool* collision)
 {
 	sf::Vector2f item_position = item.getPosition();
 	float item_radius = item.getRadius();
@@ -47,19 +46,6 @@ bool Window::update() // depending on events
 		item.move(+1);
 	}
 
-	circle.move(camera_speed * -1);
-
-	// check collision
-	// if circle is on the right
-	if (!item.collision(circle.getPosition(), circle.getRadius()))
-	{
-		item.update();
-		circle.update();
-	}
-	else
-	{
-		return true;
-		//collision
-	}
-	return false;
+	map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
+	item.update();
 }
