@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include "MainItem.h"
-#include "Object.h"
+#include "ObjectContainer.h"
 
 class Window : public sf::RenderWindow
 {
@@ -24,7 +25,7 @@ class Window : public sf::RenderWindow
 			if no collision: Window.item.update()
 			if collision
 		*/
-		bool update();
+		void update(bool* collision);
 	private:
 		/*	resolution of the display */
 		sf::VideoMode resolution;
@@ -32,9 +33,9 @@ class Window : public sf::RenderWindow
 		/*	main item, in the middle of the screen */
 		MainItem item;
 
-		/* current speed of the background, moving left */
+		/*  current speed of the background, moving left */
 		float camera_speed;
 
-		/* rectangle on screen */
-		Object circle;
+		/*  vector of objects */
+		ObjectContainer map;
 };

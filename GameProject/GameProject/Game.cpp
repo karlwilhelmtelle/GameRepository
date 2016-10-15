@@ -25,10 +25,7 @@ Game::Game()
 		if (!gameover)
 		{
 			window.render();
-			if (window.update()) // if collision -> gameover
-			{
-				gameover = true;
-			}
+			window.update(&gameover);
 		}
 	}
 }

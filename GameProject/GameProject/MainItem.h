@@ -13,11 +13,10 @@ class MainItem : public sf::CircleShape
 		
 		/*  sets radius, position and color */
 		void update();
-
-		bool collision(sf::Vector2f obj_position, float obj_radius);
 	private:
 		/*  radius of MainItem */
 		float radius;
 		
+		/*  x and y coordinates of MainItem */
 		sf::Vector2f position;
 };
