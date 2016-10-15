@@ -6,7 +6,8 @@ void ObjectContainer::load(std::string filename, sf::VideoMode resolution)
 }
 
 
-void ObjectContainer::update(sf::Vector2f item_position, float item_radius, float camera_speed, bool* collision)
+void ObjectContainer::update(sf::Vector2f item_position, 
+	float item_radius, float camera_speed, bool* collision)
 {
 	for (auto object = v.begin(); object != v.end();)
 	{

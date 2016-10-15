@@ -12,12 +12,6 @@ Window::Window() :
 }
 
 
-Window::~Window()
-{
-
-}
-
-
 void Window::render()
 {
 	clear(sf::Color::Black);
@@ -32,7 +26,7 @@ void Window::render()
 }
 
 
-void Window::update(bool* collision) // depending on events
+void Window::update(bool* collision)
 {
 	sf::Vector2f item_position = item.getPosition();
 	float item_radius = item.getRadius();

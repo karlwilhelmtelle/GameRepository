@@ -12,12 +12,6 @@ Object::Object(sf::VideoMode resolution, sf::Vector2f position, float radius) :
 }
 
 
-Object::~Object()
-{
-	
-}
-
-
 void Object::move(float dx)
 {
 	position.x += dx;

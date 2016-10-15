@@ -31,12 +31,6 @@ Game::Game()
 }
 
 
-Game::~Game()
-{
-
-}
-
-
 int main() 
 {
 	Game game;
