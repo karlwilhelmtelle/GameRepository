@@ -3,6 +3,7 @@
 #include <vector>
 #include "MainItem.h"
 #include "ObjectContainer.h"
+#include "MainMenu.h"
 
 class Window : public sf::RenderWindow
 {
@@ -27,6 +28,8 @@ class Window : public sf::RenderWindow
 		/*	resolution of the display */
 		sf::VideoMode resolution;
 
+		MainMenu menu;
+
 		/*	main item in the middle of the screen */
 		MainItem item;
 
@@ -35,4 +38,6 @@ class Window : public sf::RenderWindow
 
 		/*  vector of objects */
 		ObjectContainer map;
+
+		bool show_menu;
 };

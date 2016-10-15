@@ -4,8 +4,10 @@ Window::Window() :
 	sf::RenderWindow(resolution,
 		"Game", sf::Style::Fullscreen),
 	resolution(sf::VideoMode::getDesktopMode()),
+	menu(resolution),
 	item(resolution),
-	camera_speed(0.3f)
+	camera_speed(0.3f),
+	show_menu(true)
 {
 	setMouseCursorVisible(false);
 	map.load("", resolution);
@@ -15,11 +17,19 @@ Window::Window() :
 void Window::render()
 {
 	clear(sf::Color::Black);
-	draw(item);
-	
-	for (auto e = map.v.begin(); e != map.v.end(); ++e)
+
+	if (show_menu)
 	{
-		draw(*e);
+		menu.draw(*this);
+	}
+	else
+	{
+		draw(item);
+
+		for (auto e = map.v.begin(); e != map.v.end(); ++e)
+		{
+			draw(*e);
+		}
 	}
 
 	display();

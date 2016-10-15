@@ -6,7 +6,7 @@
 class MainMenu
 {
 public:
-	MainMenu(float width, float heigth);
+	MainMenu(sf::VideoMode resolution);
 	~MainMenu();
 
 	void draw(sf::RenderWindow &window);

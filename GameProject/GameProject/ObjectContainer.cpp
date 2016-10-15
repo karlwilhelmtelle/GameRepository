@@ -14,6 +14,7 @@ void ObjectContainer::update(sf::Vector2f item_position,
 		if (!object->notDrawable())
 		{
 			// if collision: return
+			// check if x-coordinates are close
 			if (object->collision(item_position, item_radius))
 			{
 				*collision = true;
