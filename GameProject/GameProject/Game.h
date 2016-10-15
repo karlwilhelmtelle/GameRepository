@@ -9,11 +9,11 @@
 class Game
 {
 	public:
-		/*	starting the game */
+		/*	starts the game */
 		Game();
 
-		/*	saving information when game is closed */
-		~Game();
+		/*	saves information when game is closed */
+		//~Game();
 	private:
 		/*	window of the game */
 		Window window;
