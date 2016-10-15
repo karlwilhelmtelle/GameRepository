@@ -20,6 +20,34 @@ void Window::render()
 
 	if (show_menu)
 	{
+		sf::Event event;
+
+		while (pollEvent(event))
+		{
+			switch (event.type)
+			{
+				case sf::Event::Closed:
+					close();
+					break;
+
+				case sf::Event::KeyPressed:
+					switch (event.key.code)
+					{
+						case sf::Keyboard::Up:
+							menu.MoveUp();
+							break;
+
+						case sf::Keyboard::Down:
+							menu.MoveDown();
+							break;
+					}
+					break;
+
+				default:
+					break;
+			}
+		}
+
 		menu.draw(*this);
 	}
 	else

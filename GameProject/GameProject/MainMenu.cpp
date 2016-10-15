@@ -4,7 +4,7 @@
 
 MainMenu::MainMenu(sf::VideoMode resolution)
 {
-	if (!fontMainMenu.loadFromFile("arial.ttf"))
+	if (!fontMainMenu.loadFromFile("OpenSans-Bold.ttf"))
 	{
 		//Fehler beheben
 	}
