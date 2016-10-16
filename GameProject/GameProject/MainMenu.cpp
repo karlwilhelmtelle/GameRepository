@@ -35,6 +35,7 @@ MainMenu::~MainMenu()
 
 }
 
+
 void MainMenu::draw(sf::RenderWindow &window)
 {
 	for (int i = 0; i < MAX_QUANTITY; i++)
@@ -43,19 +44,18 @@ void MainMenu::draw(sf::RenderWindow &window)
 	}
 }
 
-void MainMenu::MoveUp()
+
+void MainMenu::keyEvent(sf::Keyboard::Key key)
 {
-	if (selectedIndex - 1 >= 0)
+	// move up
+	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
 	{
 		textMainMenu[selectedIndex].setFillColor(sf::Color::White);
 		selectedIndex--;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
 	}
-}
-
-void MainMenu::MoveDown()
-{
-	if (selectedIndex + 1 < MAX_QUANTITY)
+	// move down
+	else if (key == sf::Keyboard::Down && selectedIndex + 1 < MAX_QUANTITY)
 	{
 		textMainMenu[selectedIndex].setFillColor(sf::Color::White);
 		selectedIndex++;

@@ -10,9 +10,8 @@ public:
 	~MainMenu();
 
 	void draw(sf::RenderWindow &window);
-	void MoveUp();
-	void MoveDown();
 
+	void keyEvent(sf::Keyboard::Key key);
 private:
 		/* oben = 0, mitte = 1, unten = 2 */
 		int selectedIndex;

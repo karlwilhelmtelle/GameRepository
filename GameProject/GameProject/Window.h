@@ -12,7 +12,7 @@ class Window : public sf::RenderWindow
 						sf::VideoMode resolution,
 						MainItem item
 		*/
-		Window();
+		Window(sf::VideoMode resolution);
 
 		/*	clears window using a black background
 			draws Window.item
@@ -24,6 +24,12 @@ class Window : public sf::RenderWindow
 			updates map
 		*/
 		void update(bool* collision);
+
+		void keyAction(sf::Keyboard::Key key);
+
+		void showMenu();
+
+		void hideMenu();
 	private:
 		/*	resolution of the display */
 		sf::VideoMode resolution;

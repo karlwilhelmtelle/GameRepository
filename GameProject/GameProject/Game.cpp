@@ -1,32 +1,50 @@
 #include "Game.h"
 
-Game::Game()
+Game::Game() :
+	window(sf::VideoMode::getDesktopMode())
 {
 	level = 1;
 	bool gameover = false;
 	
+	window.hideMenu();
+
 	while (window.isOpen())
 	{
 		sf::Event event;
 
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			switch (event.type)
 			{
-				window.close();
+				case sf::Event::Closed:
+					window.close();
+					break;
+
+				case sf::Event::KeyPressed:
+					switch (event.key.code)
+					{
+						case sf::Keyboard::Escape:
+							window.close();
+							break;
+
+						default:
+							window.keyAction(event.key.code);
+							break;
+					}
+					break;
+
+				default:
+					break;
 			}
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		if (gameover)
 		{
-			window.close();
+			window.showMenu();
 		}
 
-		if (!gameover)
-		{
-			window.render();
-			window.update(&gameover);
-		}
+		window.render();
+		window.update(&gameover);
 	}
 }
 

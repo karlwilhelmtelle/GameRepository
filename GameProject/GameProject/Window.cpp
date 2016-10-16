@@ -1,9 +1,9 @@
 #include "Window.h"
 
-Window::Window() :
+Window::Window(sf::VideoMode resolution) :
 	sf::RenderWindow(resolution,
 		"Game", sf::Style::Fullscreen),
-	resolution(sf::VideoMode::getDesktopMode()),
+	resolution(resolution),
 	menu(resolution),
 	item(resolution),
 	camera_speed(0.3f),
@@ -20,34 +20,6 @@ void Window::render()
 
 	if (show_menu)
 	{
-		sf::Event event;
-
-		while (pollEvent(event))
-		{
-			switch (event.type)
-			{
-				case sf::Event::Closed:
-					close();
-					break;
-
-				case sf::Event::KeyPressed:
-					switch (event.key.code)
-					{
-						case sf::Keyboard::Up:
-							menu.MoveUp();
-							break;
-
-						case sf::Keyboard::Down:
-							menu.MoveDown();
-							break;
-					}
-					break;
-
-				default:
-					break;
-			}
-		}
-
 		menu.draw(*this);
 	}
 	else
@@ -69,21 +41,31 @@ void Window::update(bool* collision)
 	sf::Vector2f item_position = item.getPosition();
 	float item_radius = item.getRadius();
 
-	// go up
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
-		item_position.y > 0)	// top of screen
-	{
-		item.move(-1);
-	}
-
-	// go down
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
-		// bottom of screen
-		item_position.y < resolution.height - 2*item_radius)
-	{
-		item.move(+1);
-	}
-
 	map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
 	item.update();
+}
+
+
+void Window::keyAction(sf::Keyboard::Key key)
+{
+	if (show_menu)
+	{
+		menu.keyEvent(key);
+	}
+	else
+	{
+		item.keyEvent(key);
+	}
+}
+
+
+void Window::showMenu()
+{
+	show_menu = true;
+}
+
+
+void Window::hideMenu()
+{
+	show_menu = false;
 }

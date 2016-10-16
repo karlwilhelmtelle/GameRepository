@@ -13,7 +13,11 @@ class MainItem : public sf::CircleShape
 		
 		/*  sets radius, position, fillColor */
 		void update();
+
+		void keyEvent(sf::Keyboard::Key key);
 	private:
+		sf::VideoMode resolution;
+
 		/*  radius */
 		float radius;
 		
