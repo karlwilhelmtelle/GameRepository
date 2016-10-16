@@ -2,7 +2,8 @@
 
 
 
-MainMenu::MainMenu(sf::VideoMode resolution)
+MainMenu::MainMenu(sf::VideoMode resolution) :
+	selectedIndex(0)
 {
 	if (!fontMainMenu.loadFromFile("OpenSans-Bold.ttf"))
 	{
@@ -57,7 +58,7 @@ void MainMenu::MoveDown()
 	if (selectedIndex + 1 < MAX_QUANTITY)
 	{
 		textMainMenu[selectedIndex].setFillColor(sf::Color::White);
-		selectedIndex ++;
+		selectedIndex++;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
 	}
 }
