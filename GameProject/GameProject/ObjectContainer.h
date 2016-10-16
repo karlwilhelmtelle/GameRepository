@@ -13,5 +13,6 @@ struct ObjectContainer
 		checks for collision
 		moves and updates all objects
 	*/
-	void update(sf::Vector2f item_position, float item_radius, float camera_speed, bool* collision);
+	void update(sf::Vector2f item_position, 
+		float item_radius, float camera_speed, bool* collision);
 };
