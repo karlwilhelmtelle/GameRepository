@@ -1,5 +1,8 @@
 #include "Window.h"
 
+enum class GameStates { MAIN_MENU, PLAY, OPTIONS, EXIT };
+//enum = Aufzählung; wird wie ein Array behandelt
+
 Window::Window() :
 	sf::RenderWindow(resolution,
 		"Game", sf::Style::Fullscreen),
@@ -16,6 +19,10 @@ Window::Window() :
 
 void Window::render()
 {
+	// Gamestate wird auf 0, d.h. auf MAIN_MENU gesetzt
+	//dadurch ist der Start nach dem Öffnen immer das Menü
+	GameStates gamestates = GameStates::MAIN_MENU;
+
 	clear(sf::Color::Black);
 
 	if (show_menu)
@@ -43,6 +50,31 @@ void Window::render()
 					}
 					break;
 
+				default:
+					break;
+			}
+//wenn z.B. Play im Menü gelb hinterlegt ist
+//und Tab gedrückt wird, soll das Spiel starten
+			switch (GameStates())
+			{
+					case GameStates::PLAY:
+					{
+//Tab, da ich Enter für die Fehlermeldung manchmal brauche
+					sf::Keyboard::Tab;
+					bool menu_show(false);
+					break;
+				}
+				case GameStates::OPTIONS:
+				{
+					//open options
+					break;
+				}
+				case GameStates::EXIT:
+				{
+					//sf::Keyboard::Return;
+					//Fenster wird geschlossen
+					break;
+				}
 				default:
 					break;
 			}
