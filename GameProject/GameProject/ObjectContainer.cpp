@@ -1,15 +1,15 @@
 #include "ObjectContainer.h"
 #include <string>
-#include "Window.h"
 
-void ObjectContainer::load(std::string filename, sf::VideoMode resolution)
+void ObjectContainer::load(std::string filename, sf::VideoMode res)
 {
-	v.push_back(Object(resolution, sf::Vector2f(20, 600), 60.f));
+	resolution = res;
+	v.push_back(Object(resolution, sf::Vector2f(20 + 1000, 600), 60.f));
 }
 
 
 void ObjectContainer::update(sf::Vector2f item_position, float item_radius, 
-	float camera_speed, bool *collision, Window &window)
+	float camera_speed, bool *collision)
 {
 	for (auto object = v.begin(); object != v.end();)
 	{
@@ -22,16 +22,13 @@ void ObjectContainer::update(sf::Vector2f item_position, float item_radius,
 				return;
 			}
 
-			object->move(camera_speed * -1);
-			object->update();
+			object->move(-1 * camera_speed);
 
 			++object; // go to next object
 		}
 		else // object is not drawable: delete it
 		{
-			object = v.erase(object);
+			object->refresh();
 		}
 	}
-
-	window.render();
 }

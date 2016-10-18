@@ -1,5 +1,4 @@
 #include "Game.h"
-#include <SFML/Graphics.hpp>
 
 Game::Game() :
 	window(sf::VideoMode::getDesktopMode())
@@ -45,6 +44,7 @@ Game::Game() :
 		}
 
 		window.update(&gameover);
+		window.render();
 	}
 }
 

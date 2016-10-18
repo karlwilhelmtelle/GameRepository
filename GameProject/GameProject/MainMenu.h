@@ -13,7 +13,7 @@ public:
 
 	void draw(sf::RenderWindow &window);
 
-	void keyEvent(sf::Keyboard::Key key, Window &window);
+	void keyEvent(sf::Keyboard::Key key);
 private:
 		/* oben = 0, mitte = 1, unten = 2 */
 		int selectedIndex;

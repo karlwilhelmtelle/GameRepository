@@ -1,18 +1,17 @@
 #include "Window.h"
 #include "Object.h"
 
-Window::Window(sf::VideoMode resolution) :
-	sf::RenderWindow(resolution,
+Window::Window(sf::VideoMode res) :
+	sf::RenderWindow(res,
 		"Game", sf::Style::Fullscreen),
-	resolution(resolution),
-	menu(resolution),
-	item(resolution),
-	camera_speed(0.3f),
+	menu(res),
+	item(res),
+	camera_speed(0.1f),
 	show_menu(true)
 {
 	setMouseCursorVisible(false);
-	map.load("", resolution);
-}
+	map.load("", res);
+} 
 
 
 void Window::render()
@@ -39,10 +38,8 @@ void Window::render()
 
 void Window::update(bool *collision)
 {
-	sf::Vector2f item_position = item.getPosition();
-	float item_radius = item.getRadius();
-
-	map.update(item.getPosition(), item.getRadius(), camera_speed, collision, *this);
+	camera_speed *= 1.00001f;
+	map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
 }
 
 
@@ -50,11 +47,11 @@ void Window::keyAction(sf::Keyboard::Key key)
 {
 	if (show_menu)
 	{
-		menu.keyEvent(key, *this);
+		menu.keyEvent(key);
 	}
 	else
 	{
-		item.keyEvent(key, *this);
+		item.keyEvent(key, camera_speed);
 	}
 }
 

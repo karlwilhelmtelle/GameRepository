@@ -44,7 +44,7 @@ void MainMenu::draw(sf::RenderWindow &window)
 }
 
 
-void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
+void MainMenu::keyEvent(sf::Keyboard::Key key)
 {
 	// move up
 	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
@@ -60,6 +60,4 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 		selectedIndex++;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
 	}
-
-	window.render();
 }

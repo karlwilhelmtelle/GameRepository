@@ -9,7 +9,7 @@ class MainItem : public sf::CircleShape
 		/*	sets radius, position, fillColor */
 		MainItem(sf::VideoMode resolution);
 
-		void keyEvent(sf::Keyboard::Key key, Window &window);
+		void keyEvent(sf::Keyboard::Key key, float camera_speed);
 	private:
 		sf::VideoMode resolution;
 

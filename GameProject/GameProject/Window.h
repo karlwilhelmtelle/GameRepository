@@ -22,7 +22,7 @@ class Window : public sf::RenderWindow
 		/*	moves and updates item depending on events
 			updates map
 		*/
-		void update(bool* collision);
+		void update(bool *collision);
 
 		void keyAction(sf::Keyboard::Key key);
 
@@ -30,9 +30,6 @@ class Window : public sf::RenderWindow
 
 		void hideMenu();
 	private:
-		/*	resolution of the display */
-		sf::VideoMode resolution;
-
 		MainMenu menu;
 
 		/*	main item in the middle of the screen */
