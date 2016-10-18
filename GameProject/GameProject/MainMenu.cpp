@@ -12,20 +12,20 @@ MainMenu::MainMenu(sf::VideoMode resolution) :
 	textMainMenu[0].setFont(fontMainMenu);
 	textMainMenu[0].setFillColor(sf::Color::Yellow);
 	textMainMenu[0].setString("Ready To Play");
-	textMainMenu[0].setPosition(sf::Vector2f(resolution.width / 2, 
-		1 * (resolution.height / 4)));
+	textMainMenu[0].setPosition(sf::Vector2f(resolution.width / 2.5, 
+		resolution.height / (MAX_QUANTITY + 1) * 1));
 
 	textMainMenu[1].setFont(fontMainMenu);
 	textMainMenu[1].setFillColor(sf::Color::White);
 	textMainMenu[1].setString("Options");
-	textMainMenu[1].setPosition(sf::Vector2f(resolution.width / 2, 
-		2 * (resolution.height / 4)));
+	textMainMenu[1].setPosition(sf::Vector2f(resolution.width / 2.5, 
+		resolution.height / (MAX_QUANTITY + 1) * 2));
 
 	textMainMenu[2].setFont(fontMainMenu);
 	textMainMenu[2].setFillColor(sf::Color::White);
 	textMainMenu[2].setString("Exit Game?");
-	textMainMenu[2].setPosition(sf::Vector2f(resolution.width / 2, 
-		3 * (resolution.height / 4)));
+	textMainMenu[2].setPosition(sf::Vector2f(resolution.width /2.5, 
+		resolution.height / (MAX_QUANTITY + 1) * 3));
 }
 
 
