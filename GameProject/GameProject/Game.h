@@ -1,10 +1,5 @@
 #pragma once
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <vector>
-#include <string>
 #include "Window.h"
-#include "MainItem.h"
 
 class Game
 {

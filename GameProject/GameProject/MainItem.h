@@ -1,20 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Object.h"
+
+class Window;
 
 class MainItem : public sf::CircleShape
 {
 	public:
-		/*	sets radius and coordinates */
+		/*	sets radius, position, fillColor */
 		MainItem(sf::VideoMode resolution);
 
-		/*	changes y-coordinate */
-		void move(float dy);
-		
-		/*  sets radius, position, fillColor */
-		void update();
-
-		void keyEvent(sf::Keyboard::Key key);
+		void keyEvent(sf::Keyboard::Key key, Window &window);
 	private:
 		sf::VideoMode resolution;
 

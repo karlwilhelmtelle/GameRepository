@@ -1,4 +1,5 @@
 #include "MainItem.h"
+#include "Window.h"
 
 MainItem::MainItem(sf::VideoMode resolution) : 
 	sf::CircleShape(),
@@ -9,26 +10,14 @@ MainItem::MainItem(sf::VideoMode resolution) :
 		resolution.height / 2 - radius))
 {
 	setRadius(radius);
-	update();
-}
-
-
-void MainItem::move(float dy)
-{
-	position.y += 0.2f*dy;
-}
-
-
-void MainItem::update()
-{
 	setPosition(position);
 	setFillColor(sf::Color::Cyan);
 }
 
 
-void MainItem::keyEvent(sf::Keyboard::Key key)
+void MainItem::keyEvent(sf::Keyboard::Key key, Window &window)
 {
-	float velocity = 10;
+	float velocity = 50;
 	// go up
 	if (key == sf::Keyboard::Up &&
 		position.y > 0)
@@ -41,4 +30,8 @@ void MainItem::keyEvent(sf::Keyboard::Key key)
 	{
 		position.y += velocity;
 	}
+
+	setPosition(position);
+
+	window.render();
 }

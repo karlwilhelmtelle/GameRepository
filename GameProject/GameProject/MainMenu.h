@@ -1,7 +1,9 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 #define MAX_QUANTITY 3
+
+class Window;
 
 class MainMenu
 {
@@ -11,7 +13,7 @@ public:
 
 	void draw(sf::RenderWindow &window);
 
-	void keyEvent(sf::Keyboard::Key key);
+	void keyEvent(sf::Keyboard::Key key, Window &window);
 private:
 		/* oben = 0, mitte = 1, unten = 2 */
 		int selectedIndex;

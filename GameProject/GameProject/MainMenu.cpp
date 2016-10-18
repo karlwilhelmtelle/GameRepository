@@ -1,6 +1,5 @@
 #include "MainMenu.h"
-
-
+#include "Window.h"
 
 MainMenu::MainMenu(sf::VideoMode resolution) :
 	selectedIndex(0)
@@ -45,7 +44,7 @@ void MainMenu::draw(sf::RenderWindow &window)
 }
 
 
-void MainMenu::keyEvent(sf::Keyboard::Key key)
+void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 {
 	// move up
 	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
@@ -61,4 +60,6 @@ void MainMenu::keyEvent(sf::Keyboard::Key key)
 		selectedIndex++;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
 	}
+
+	window.render();
 }

@@ -1,4 +1,6 @@
 #include "ObjectContainer.h"
+#include <string>
+#include "Window.h"
 
 void ObjectContainer::load(std::string filename, sf::VideoMode resolution)
 {
@@ -6,8 +8,8 @@ void ObjectContainer::load(std::string filename, sf::VideoMode resolution)
 }
 
 
-void ObjectContainer::update(sf::Vector2f item_position, 
-	float item_radius, float camera_speed, bool* collision)
+void ObjectContainer::update(sf::Vector2f item_position, float item_radius, 
+	float camera_speed, bool *collision, Window &window)
 {
 	for (auto object = v.begin(); object != v.end();)
 	{
@@ -31,4 +33,6 @@ void ObjectContainer::update(sf::Vector2f item_position,
 			object = v.erase(object);
 		}
 	}
+
+	window.render();
 }

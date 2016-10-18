@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "Object.h"
 
 Window::Window(sf::VideoMode resolution) :
 	sf::RenderWindow(resolution,
@@ -36,13 +37,12 @@ void Window::render()
 }
 
 
-void Window::update(bool* collision)
+void Window::update(bool *collision)
 {
 	sf::Vector2f item_position = item.getPosition();
 	float item_radius = item.getRadius();
 
-	map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
-	item.update();
+	map.update(item.getPosition(), item.getRadius(), camera_speed, collision, *this);
 }
 
 
@@ -50,11 +50,11 @@ void Window::keyAction(sf::Keyboard::Key key)
 {
 	if (show_menu)
 	{
-		menu.keyEvent(key);
+		menu.keyEvent(key, *this);
 	}
 	else
 	{
-		item.keyEvent(key);
+		item.keyEvent(key, *this);
 	}
 }
 
