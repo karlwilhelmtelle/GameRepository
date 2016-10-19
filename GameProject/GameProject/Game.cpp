@@ -1,6 +1,8 @@
 #include "Game.h"
+
 enum class GameStates { MAIN_MENU, PLAY, OPTIONS, EXIT };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
+
 Game::Game() :
 	window(sf::VideoMode::getDesktopMode())
 {
