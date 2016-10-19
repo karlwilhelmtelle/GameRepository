@@ -1,10 +1,13 @@
 #include "ObjectContainer.h"
 #include <string>
 
-void ObjectContainer::load(std::string filename, sf::VideoMode res)
+void ObjectContainer::load(sf::VideoMode res)
 {
-	resolution = res;
-	v.push_back(Object(resolution, sf::Vector2f(20 + 1000, 600), 60.f));
+	const int max_objects = 4;
+	for (int i = 0; i < max_objects; i++)
+	{
+		v.push_back(Object(res, 60, i * (res.width / max_objects)));
+	}
 }
 
 

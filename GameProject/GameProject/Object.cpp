@@ -1,14 +1,26 @@
 #include "Object.h"
+#include <random>
 
-
-Object::Object(sf::VideoMode resolution, sf::Vector2f pos, float radius) :
+Object::Object(sf::VideoMode resolution, float radius, float x_offset) :
 	sf::CircleShape(),
-	position_start(sf::Vector2f(resolution.width + pos.x, pos.y)),
-	radius(radius)
+	radius(radius),
+	resolution(resolution),
+	x_offset(x_offset)
 {
 	refresh();
 	setRadius(radius);
 	setFillColor(sf::Color::Red);
+}
+
+
+void Object::refresh()
+{
+	std::random_device rd;
+	std::mt19937 rng(rd());
+	std::uniform_int_distribution<int> uni(0, resolution.height - 2 * radius);
+
+	position = sf::Vector2f(resolution.width + x_offset, uni(rng));
+	setPosition(position);
 }
 
 
@@ -40,11 +52,4 @@ bool Object::collision(sf::Vector2f item_position, float item_radius)
 		}
 	}
 	return false;
-}
-
-
-void Object::refresh()
-{
-	position = position_start;
-	setPosition(position);
 }

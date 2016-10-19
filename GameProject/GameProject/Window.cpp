@@ -6,11 +6,11 @@ Window::Window(sf::VideoMode res) :
 		"Game", sf::Style::Fullscreen),
 	menu(res),
 	item(res),
-	camera_speed(0.1f),
+	camera_speed(0.2f),
 	show_menu(true)
 {
 	setMouseCursorVisible(false);
-	map.load("", res);
+	map.load(res);
 } 
 
 

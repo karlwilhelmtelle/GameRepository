@@ -10,7 +10,7 @@ struct ObjectContainer
 		std::vector<Object> v;
 		
 		/*  loads all objects with position and radius from a file*/
-		void load(std::string filename, sf::VideoMode resolution);
+		void load(sf::VideoMode resolution);
 
 		/*  deletes if Object::notDrawable()
 			checks for collision
@@ -18,6 +18,4 @@ struct ObjectContainer
 		*/
 		void update(sf::Vector2f item_position, float item_radius, 
 			float camera_speed, bool *collision);
-	private:
-		sf::VideoMode resolution;
 };
