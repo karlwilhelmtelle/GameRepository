@@ -23,7 +23,7 @@ MainMenu::MainMenu(sf::VideoMode resolution) :
 
 	textMainMenu[2].setFont(fontMainMenu);
 	textMainMenu[2].setFillColor(sf::Color::White);
-	textMainMenu[2].setString("Exit Game?");
+	textMainMenu[2].setString("Exit Game");
 	textMainMenu[2].setPosition(sf::Vector2f((float)resolution.width /2.5,
 		(float)resolution.height / (MAX_QUANTITY + 1) * 3));
 }
