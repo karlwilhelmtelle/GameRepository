@@ -17,9 +17,9 @@ void Object::refresh()
 {
 	std::random_device rd;
 	std::mt19937 rng(rd());
-	std::uniform_int_distribution<int> uni(0, resolution.height - 2 * radius);
+	std::uniform_int_distribution<int> uni(0, (int)(resolution.height - 2 * radius));
 
-	position = sf::Vector2f(resolution.width + x_offset, uni(rng));
+	position = sf::Vector2f(resolution.width + x_offset, (float)uni(rng));
 	setPosition(position);
 }
 
