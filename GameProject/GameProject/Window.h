@@ -34,6 +34,8 @@ class Window : public sf::RenderWindow
 		void showGame();
 
 		void showOptions();
+
+		void refresh();
 	private:
 		GameStates game_states;
 

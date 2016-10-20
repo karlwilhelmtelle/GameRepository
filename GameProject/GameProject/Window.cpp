@@ -69,23 +69,23 @@ void Window::keyAction(sf::Keyboard::Key key)
 {
 	switch (game_states)
 	{
-		case(GameStates::MAIN_MENU):
+		case GameStates::MAIN_MENU:
 		{
 			menu.keyEvent(key, *this);
 			break;
 		}
-		case(GameStates::PLAY):
+		case GameStates::PLAY:
 		{
 			item.keyEvent(key, camera_speed);
 			break;
 		}
-		case(GameStates::OPTIONS):
+		case GameStates::OPTIONS:
 		{
 			//sf::Keyboard::Return;
 			//open options
 			break;
 		}
-		case(GameStates::EXIT):
+		case GameStates::EXIT:
 		{
 			//sf::Keyboard::Return;
 			//window.close();
@@ -113,4 +113,14 @@ void Window::showGame()
 void Window::showOptions()
 {
 	game_states = GameStates::OPTIONS;
+}
+
+
+void Window::refresh()
+{
+	showMenu();
+
+	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
+	item = MainItem(resolution);
+	map.load(resolution);
 }

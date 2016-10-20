@@ -41,7 +41,8 @@ Game::Game() :
 		
 		if (gameover)
 		{
-			window.showMenu();
+			gameover = false;
+			window.refresh();
 		}
 		
 		window.update(&gameover);
