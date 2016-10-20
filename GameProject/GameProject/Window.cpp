@@ -4,10 +4,10 @@
 Window::Window(sf::VideoMode res) :
 	sf::RenderWindow(res,
 		"Game", sf::Style::Fullscreen),
+	game_states(GameStates::MAIN_MENU),
 	menu(res),
 	item(res),
-	camera_speed(0.2f),
-	show_menu(true)
+	camera_speed(0.2f)
 {
 	setMouseCursorVisible(false);
 	map.load(res);
@@ -18,19 +18,41 @@ void Window::render()
 {
 	clear(sf::Color::Black);
 
-	if (show_menu)
+	switch (GameStates())
 	{
-		menu.draw(*this);
-	}
-	else
-	{
-		draw(item);
-
-		for (auto e = map.v.begin(); e != map.v.end(); ++e)
+		case GameStates::MAIN_MENU:
 		{
-			draw(*e);
+			menu.draw(*this);
+			break;
 		}
+		case GameStates::PLAY:
+		{
+			draw(item);
+
+			for (auto e = map.v.begin(); e != map.v.end(); ++e)
+			{
+				draw(*e);
+			}
+
+			break;
+		}
+		case GameStates::OPTIONS:
+		{
+			//sf::Keyboard::Return;
+			//open options
+			break;
+		}
+		case GameStates::EXIT:
+		{
+			//sf::Keyboard::Return;
+			//window.close();
+			break;
+		}
+		default:
+			break;
 	}
+
+
 
 	display();
 }
@@ -45,24 +67,49 @@ void Window::update(bool *collision)
 
 void Window::keyAction(sf::Keyboard::Key key)
 {
-	if (show_menu)
+	switch (GameStates())
 	{
-		menu.keyEvent(key);
-	}
-	else
-	{
-		item.keyEvent(key, camera_speed);
+		case(GameStates::MAIN_MENU):
+		{
+			menu.keyEvent(key, *this);
+			break;
+		}
+		case(GameStates::PLAY):
+		{
+			item.keyEvent(key, camera_speed);
+			break;
+		}
+		case(GameStates::OPTIONS):
+		{
+			//sf::Keyboard::Return;
+			//open options
+			break;
+		}
+		case(GameStates::EXIT):
+		{
+			//sf::Keyboard::Return;
+			//window.close();
+			break;
+		}
+		default:
+			break;
 	}
 }
 
 
 void Window::showMenu()
 {
-	show_menu = true;
+	game_states = GameStates::MAIN_MENU;
 }
 
 
-void Window::hideMenu()
+void Window::showGame()
 {
-	show_menu = false;
+	game_states = GameStates::PLAY;
+}
+
+
+void Window::showOptions()
+{
+	game_states = GameStates::OPTIONS;
 }

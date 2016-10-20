@@ -4,6 +4,9 @@
 #include "MainItem.h"
 #include "ObjectContainer.h"
 
+enum class GameStates { MAIN_MENU, PLAY, OPTIONS, EXIT };
+//enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
+
 class Window : public sf::RenderWindow
 {
 	public:
@@ -28,8 +31,12 @@ class Window : public sf::RenderWindow
 
 		void showMenu();
 
-		void hideMenu();
+		void showGame();
+
+		void showOptions();
 	private:
+		GameStates game_states;
+
 		MainMenu menu;
 
 		/*	main item in the middle of the screen */
@@ -40,6 +47,4 @@ class Window : public sf::RenderWindow
 
 		/*  vector of objects */
 		ObjectContainer map;
-
-		bool show_menu;
 };
