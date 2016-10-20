@@ -68,10 +68,13 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 		{
 			case 0:
 				window.showGame();
+				break;
 			case 1:
 				window.showOptions();
+				break;
 			case 2:
 				window.close();
+				break;
 		}
 	}
 }

@@ -3,6 +3,7 @@
 
 void ObjectContainer::load(sf::VideoMode res)
 {
+	// check x-position
 	const int max_objects = 4;
 	for (int i = 0; i < max_objects; i++)
 	{
