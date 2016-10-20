@@ -34,6 +34,9 @@ void Window::render()
 				draw(*e);
 			}
 
+			float game_time = clock.getElapsedTime().asMilliseconds() / 1000;
+			//Ausgabe der Zeit im Spiel und Ausgabe der Gesamtzeit fehlt
+
 			break;
 		}
 		case GameStates::OPTIONS:
@@ -51,9 +54,6 @@ void Window::render()
 		default:
 			break;
 	}
-
-
-
 	display();
 }
 
@@ -67,7 +67,7 @@ void Window::update(bool *collision)
 
 void Window::keyAction(sf::Keyboard::Key key)
 {
-	switch (GameStates())
+	switch (game_states)
 	{
 		case(GameStates::MAIN_MENU):
 		{
@@ -106,6 +106,7 @@ void Window::showMenu()
 void Window::showGame()
 {
 	game_states = GameStates::PLAY;
+	clock.restart();
 }
 
 

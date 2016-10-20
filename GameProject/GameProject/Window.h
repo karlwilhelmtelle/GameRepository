@@ -47,4 +47,6 @@ class Window : public sf::RenderWindow
 
 		/*  vector of objects */
 		ObjectContainer map;
+
+		sf::Clock clock;
 };
