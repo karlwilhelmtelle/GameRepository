@@ -18,7 +18,7 @@ void Window::render()
 {
 	clear(sf::Color::Black);
 
-	switch (GameStates())
+	switch (game_states)
 	{
 		case GameStates::MAIN_MENU:
 		{
