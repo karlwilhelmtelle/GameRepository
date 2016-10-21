@@ -94,18 +94,52 @@ void Window::keyAction(sf::Keyboard::Key key)
 		default:
 			break;
 	}
+	switch (level_states)
+	{
+		case LevelStates::MAIN_LEVEL_MENU:
+		{
+			menu.keyEvent(key, *this);
+			break;
+		}
+		case LevelStates::LEVEL1:
+		{
+			item.keyEvent(key, camera_speed);
+			break;
+		}
+		case LevelStates::LEVEL2:
+		{
+			//window.showLevel2();
+			break;
+		}
+		case LevelStates::LEVEL3:
+		{
+			//window.showLevel3();
+			break;
+		}
+		case LevelStates::LEVEL4:
+		{
+			//window.showLevel4();
+			break;
+		}
+		case LevelStates::LEVEL5:
+		{
+			//window.showLevel5();
+			break;
+		}
+		default:
+			break;
+	}
 }
-
 
 void Window::showMenu()
 {
 	game_states = GameStates::MAIN_MENU;
 }
 
-
 void Window::showGame()
 {
 	game_states = GameStates::PLAY;
+	//level_states = LevelStates::LEVEL1;
 	clock.restart();
 }
 
@@ -119,8 +153,37 @@ void Window::showOptions()
 void Window::refresh()
 {
 	showMenu();
-
 	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
 	item = MainItem(resolution);
 	map.load(resolution);
+}
+
+void Window::showMainLevelMenu()
+{
+	level_states = LevelStates::MAIN_LEVEL_MENU;
+}
+
+void Window::showLevel1()
+{
+	level_states = LevelStates::LEVEL1;
+}
+
+void Window::showLevel2()
+{
+	level_states = LevelStates::LEVEL2;
+}
+
+void Window::showLevel3()
+{
+	level_states = LevelStates::LEVEL3;
+}
+
+void Window::showLevel4()
+{
+	level_states = LevelStates::LEVEL4;
+}
+
+void Window::showLevel5()
+{
+	level_states = LevelStates::LEVEL5;
 }

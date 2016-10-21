@@ -6,7 +6,8 @@
 
 enum class GameStates { MAIN_MENU, PLAY, OPTIONS, EXIT };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
-
+enum class LevelStates { MAIN_LEVEL_MENU, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5 };
+//Menüpunkte im Level-Menü
 class Window : public sf::RenderWindow
 {
 	public:
@@ -29,6 +30,8 @@ class Window : public sf::RenderWindow
 
 		void keyAction(sf::Keyboard::Key key);
 
+		void win();
+
 		void showMenu();
 
 		void showGame();
@@ -36,8 +39,22 @@ class Window : public sf::RenderWindow
 		void showOptions();
 
 		void refresh();
+
+		void showMainLevelMenu();
+
+		void showLevel1();
+
+		void showLevel2();
+
+		void showLevel3();
+
+		void showLevel4();
+
+		void showLevel5();
 	private:
 		GameStates game_states;
+
+		LevelStates level_states;
 
 		MainMenu menu;
 
