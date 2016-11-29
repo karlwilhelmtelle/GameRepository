@@ -5,11 +5,11 @@
 
 class Window;
 
-class MainLevelMenu
+class LevelMenu
 {
 public:
-	MainLevelMenu(sf::VideoMode resolution);
-	~MainLevelMenu();
+	LevelMenu(sf::VideoMode resolution);
+	~LevelMenu();
 
 	void draw(sf::RenderWindow &window);
 
@@ -18,7 +18,7 @@ public:
 	int getSelectedLevelIndex();
 private:
 	int selectedLevelIndex;
-	sf::Font fontMainLevelMenu;
-	sf::Text textMainLevelMenu[MAX_LEVEL_MENU_POINTS];
+	sf::Font fontLevelMenu;
+	sf::Text textLevelMenu[MAX_LEVEL_MENU_POINTS];
 };
 

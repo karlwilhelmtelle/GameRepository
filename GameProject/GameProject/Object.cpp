@@ -36,7 +36,7 @@ bool Object::notDrawable()
 	return (position.x < -2*radius);
 }
 
-
+// TODO: fix collision bugs
 bool Object::collision(sf::Vector2f item_position, float item_radius)
 {
 	if (abs(position.x - item_position.x) < radius + item_radius &&

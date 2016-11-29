@@ -25,7 +25,7 @@ Game::Game() :
 					switch (event.key.code)
 					{
 						case sf::Keyboard::Escape:
-							window.close();
+							window.showMenu();
 							break;
 
 						default:

@@ -3,10 +3,11 @@
 #include "MainMenu.h"
 #include "MainItem.h"
 #include "ObjectContainer.h"
+#include "LevelMenu.h"
 
-enum class GameStates { MAIN_MENU, PLAY, OPTIONS, EXIT };
+enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
-enum class LevelStates { MAIN_LEVEL_MENU, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5 };
+enum class LevelStates { LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5 };
 //Menüpunkte im Level-Menü
 class Window : public sf::RenderWindow
 {
@@ -30,8 +31,6 @@ class Window : public sf::RenderWindow
 
 		void keyAction(sf::Keyboard::Key key);
 
-		void win();
-
 		void showMenu();
 
 		void showGame();
@@ -40,23 +39,17 @@ class Window : public sf::RenderWindow
 
 		void refresh();
 
-		void showMainLevelMenu();
+		void showLevelMenu();
 
-		void showLevel1();
-
-		void showLevel2();
-
-		void showLevel3();
-
-		void showLevel4();
-
-		void showLevel5();
+		void playLevel(int selectedLevelIndex);
 	private:
-		GameStates game_states;
+		GameStates game_state;
 
-		LevelStates level_states;
+		LevelStates level_state;
 
 		MainMenu menu;
+
+		LevelMenu level_menu;
 
 		/*	main item in the middle of the screen */
 		MainItem item;

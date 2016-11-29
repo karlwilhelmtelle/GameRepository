@@ -9,23 +9,16 @@ MainMenu::MainMenu(sf::VideoMode resolution) :
 		//Fehler beheben
 	}
 
-	textMainMenu[0].setFont(fontMainMenu);
+	const sf::String text[] = {"Play", "Options", "Exit"};
+	for (int i = 0; i < MAX_QUANTITY; i++)
+	{
+		textMainMenu[i].setFont(fontMainMenu);
+		textMainMenu[i].setFillColor(sf::Color::White);
+		textMainMenu[i].setString(text[i]);
+		textMainMenu[i].setPosition(sf::Vector2f((float)resolution.width / 2.5,
+			(float)resolution.height / (MAX_QUANTITY + 1) * (i+1)));
+	}
 	textMainMenu[0].setFillColor(sf::Color::Yellow);
-	textMainMenu[0].setString("Ready To Play");
-	textMainMenu[0].setPosition(sf::Vector2f((float)resolution.width / 2.5, 
-		(float)resolution.height / (MAX_QUANTITY + 1) * 1));
-
-	textMainMenu[1].setFont(fontMainMenu);
-	textMainMenu[1].setFillColor(sf::Color::White);
-	textMainMenu[1].setString("Options");
-	textMainMenu[1].setPosition(sf::Vector2f((float)resolution.width / 2.5,
-		(float)resolution.height / (MAX_QUANTITY + 1) * 2));
-
-	textMainMenu[2].setFont(fontMainMenu);
-	textMainMenu[2].setFillColor(sf::Color::White);
-	textMainMenu[2].setString("Exit Game");
-	textMainMenu[2].setPosition(sf::Vector2f((float)resolution.width /2.5,
-		(float)resolution.height / (MAX_QUANTITY + 1) * 3));
 }
 
 
@@ -67,7 +60,7 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 		switch (selectedIndex)
 		{
 			case 0:
-				window.showGame();
+				window.showLevelMenu();
 				break;
 			case 1:
 				window.showOptions();
