@@ -14,7 +14,7 @@ LevelMenu::LevelMenu(sf::VideoMode resolution):
 		textLevelMenu[i].setFont(fontLevelMenu);
 		textLevelMenu[i].setFillColor(sf::Color::White);
 		textLevelMenu[i].setString("Level " + std::to_string(i+1));
-		textLevelMenu[i].setPosition(sf::Vector2f((float)resolution.width / 2.5,
+		textLevelMenu[i].setPosition(sf::Vector2f((float)resolution.width / 2.5f,
 			(float)resolution.height / (MAX_LEVEL_MENU_POINTS + 1) * (i+1)));
 	}
 	textLevelMenu[0].setFillColor(sf::Color::Yellow);

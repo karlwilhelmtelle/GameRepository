@@ -35,7 +35,7 @@ void Window::render()
 					}
 
 					// TODO: Ausgabe der Zeit im Spiel und Ausgabe der Gesamtzeit fehlt
-					float game_time = clock.getElapsedTime().asMilliseconds() / 1000;
+					float game_time = clock.getElapsedTime().asMilliseconds() / 1000.f;
 					break;
 				}
 				// TODO: add further levels and graphics
