@@ -8,7 +8,7 @@ Window::Window(sf::VideoMode res) :
 	menu(res),
 	level_menu(res),
 	item(res),
-	camera_speed(0.2f)
+	camera_speed(0.3f)
 {
 	setMouseCursorVisible(false);
 	map.load(res);
