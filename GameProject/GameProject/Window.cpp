@@ -138,6 +138,7 @@ void Window::refresh()
 	showMenu();
 	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
 	item = MainItem(resolution);
+	camera_speed = 0.3f;
 	map.load(resolution);
 }
 
