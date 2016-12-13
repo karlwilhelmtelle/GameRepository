@@ -27,6 +27,7 @@ void ObjectContainer::update(sf::Vector2f item_position, float item_radius,
 				return;
 			}
 
+			object->move(-1 * camera_speed);
 
 			++object; // go to next object
 		}
