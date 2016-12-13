@@ -15,7 +15,7 @@ MainMenu::MainMenu(sf::VideoMode resolution) :
 		textMainMenu[i].setFont(fontMainMenu);
 		textMainMenu[i].setFillColor(sf::Color::White);
 		textMainMenu[i].setString(text[i]);
-		textMainMenu[i].setPosition(sf::Vector2f((float)resolution.width / 2.5,
+		textMainMenu[i].setPosition(sf::Vector2f((float)resolution.width / 2.5f,
 			(float)resolution.height / (MAX_QUANTITY + 1) * (i+1)));
 	}
 	textMainMenu[0].setFillColor(sf::Color::Yellow);
