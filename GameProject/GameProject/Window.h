@@ -18,6 +18,8 @@ class Window : public sf::RenderWindow
 		*/
 		Window(sf::VideoMode resolution);
 
+		void init(sf::VideoMode resolution);
+
 		/*	clears window using a black background
 			draws Window.item
 			displays the new frame

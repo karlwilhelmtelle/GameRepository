@@ -7,12 +7,19 @@ Window::Window(sf::VideoMode res) :
 	game_state(GameStates::MAIN_MENU),
 	menu(res),
 	level_menu(res),
-	item(res),
-	camera_speed(0.3f)
+	item(res)
 {
 	setMouseCursorVisible(false);
-	map.load(res);
+	init(res);
 } 
+
+
+void Window::init(sf::VideoMode res)
+{
+	camera_speed = 0.2f;
+	map.load(res);
+}
+
 
 // TODO: improve rendering performance
 void Window::render()
@@ -138,8 +145,7 @@ void Window::refresh()
 	showMenu();
 	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
 	item = MainItem(resolution);
-	camera_speed = 0.3f;
-	map.load(resolution);
+	init(resolution);
 }
 
 void Window::showLevelMenu()
