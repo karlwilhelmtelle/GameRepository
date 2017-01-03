@@ -2,7 +2,7 @@
 
 Sound::Sound()
 {
-	if (!menu.loadFromFile("menusound.wav"))
+	if (!menu.loadFromFile("menu_sound.wav"))
 	{
 	}
 	if (!game_over.loadFromFile("game_over_sound.wav"))
