@@ -177,3 +177,9 @@ void Window::playLevel(int selectedLevelIndex)
 		break;
 	}
 }
+
+
+void Window::playSound()
+{
+	sound.playSound();
+}

@@ -4,6 +4,7 @@
 #include "MainItem.h"
 #include "ObjectContainer.h"
 #include "LevelMenu.h"
+#include "Sound.h"
 
 enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
@@ -44,6 +45,8 @@ class Window : public sf::RenderWindow
 		void showLevelMenu();
 
 		void playLevel(int selectedLevelIndex);
+
+		void playSound();
 	private:
 		GameStates game_state;
 
@@ -63,4 +66,6 @@ class Window : public sf::RenderWindow
 		ObjectContainer map;
 
 		sf::Clock clock;
+
+		Sound sound;
 };

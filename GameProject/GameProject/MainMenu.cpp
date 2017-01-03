@@ -40,17 +40,10 @@ void MainMenu::draw(sf::RenderWindow &window)
 
 void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 {
-	sf::SoundBuffer buffer;
-	sf::Sound sound;
 	// move up
 	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
 	{
-		if (!buffer.loadFromFile("nope sound.wav"))
-		{
-			//Fehler beheben
-		}
-		sound.setBuffer(buffer);
-		sound.play();
+		window.playSound();
 		textMainMenu[selectedIndex].setFillColor(sf::Color::White);
 		selectedIndex--;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
@@ -58,12 +51,7 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 	// move down
 	else if (key == sf::Keyboard::Down && selectedIndex + 1 < MAX_QUANTITY)
 	{
-		if (!buffer.loadFromFile("nope sound.wav"))
-		{
-			//Fehler beheben
-		}
-		sound.setBuffer(buffer);
-		sound.play();
+		window.playSound();
 		textMainMenu[selectedIndex].setFillColor(sf::Color::White);
 		selectedIndex++;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
