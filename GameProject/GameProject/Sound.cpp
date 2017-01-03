@@ -5,17 +5,9 @@ Sound::Sound()
 	if (!menu.loadFromFile("menusound.wav"))
 	{
 	}
-	if (!game_over.loadFromFile("gameoversound.wav"))
+	if (!game_over.loadFromFile("game_over_sound.wav"))
 	{
 	}
-	if (!nope.loadFromFile("nope.wav"))
-	{
-	}
-	if (!test.loadFromFile("game_over_sound_full.wav"))
-	{
-	}
-	setBuffer(test);
-	play();
 }
 
 
