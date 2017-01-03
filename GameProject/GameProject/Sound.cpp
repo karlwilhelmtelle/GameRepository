@@ -2,14 +2,20 @@
 
 Sound::Sound()
 {
-	if (!menu.loadFromFile("main_menu_sound.wav"))
+	if (!menu.loadFromFile("menusound.wav"))
 	{
 		//Fehler beheben
 	}
-	if (!game_over.loadFromFile("game_over_sound.wav"))
+	if (!game_over.loadFromFile("gameoversound.wav"))
 	{
 		//Fehler beheben
 	}
+	if (!nope.loadFromFile("nope.wav"))
+	{
+		//Fehler beheben
+	}
+	setBuffer(nope);
+	play();
 }
 
 
