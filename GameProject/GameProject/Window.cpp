@@ -179,7 +179,7 @@ void Window::playLevel(int selectedLevelIndex)
 }
 
 
-void Window::playSound()
+void Window::playSound(SoundName sound_name)
 {
-	sound.playSound();
+	sound.playSound(sound_name);
 }

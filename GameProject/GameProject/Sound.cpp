@@ -2,15 +2,18 @@
 
 Sound::Sound()
 {
-	if (!nope_sound.loadFromFile("nope sound.wav"))
+	if (!menu.loadFromFile("main_menu_sound.wav"))
 	{
 		//Fehler beheben
 	}
 }
 
 
-void Sound::playSound()
+void Sound::playSound(SoundName sound_name)
 {
-	setBuffer(nope_sound);
+	if (sound_name == SoundName::MENU)
+	{
+		setBuffer(menu);
+	}
 	play();
 }

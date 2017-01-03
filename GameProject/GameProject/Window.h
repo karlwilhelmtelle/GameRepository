@@ -46,7 +46,7 @@ class Window : public sf::RenderWindow
 
 		void playLevel(int selectedLevelIndex);
 
-		void playSound();
+		void playSound(SoundName sound_name);
 	private:
 		GameStates game_state;
 
@@ -68,5 +68,4 @@ class Window : public sf::RenderWindow
 		sf::Clock clock;
 
 		Sound sound;
-
 };

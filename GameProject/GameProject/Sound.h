@@ -1,12 +1,14 @@
 #pragma once
 #include <SFML/Audio.hpp>
 
+enum class SoundName { MENU };
+
 class Sound : public sf::Sound
 {
 	public:
 		Sound();
 
-		void playSound();
+		void playSound(SoundName sound_name);
 	private:
-		sf::SoundBuffer nope_sound;
+		sf::SoundBuffer menu;
 };
