@@ -130,6 +130,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectContainer.cpp" />
     <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +141,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectContainer.h" />
     <ClInclude Include="Sound.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

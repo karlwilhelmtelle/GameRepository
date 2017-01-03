@@ -38,7 +38,7 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 	// move up
 	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
 	{
-		window.playSound();
+		window.playSound(SoundName::MENU);
 		textMainMenu[selectedIndex].setFillColor(sf::Color::White);
 		selectedIndex--;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
@@ -46,7 +46,7 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 	// move down
 	else if (key == sf::Keyboard::Down && selectedIndex + 1 < MAX_QUANTITY)
 	{
-		window.playSound();
+		window.playSound(SoundName::MENU);
 		textMainMenu[selectedIndex].setFillColor(sf::Color::White);
 		selectedIndex++;
 		textMainMenu[selectedIndex].setFillColor(sf::Color::Yellow);
