@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Text.h"
 
 #define MAX_QUANTITY 3
 
@@ -19,7 +19,6 @@ public:
 private:
 		/* oben = 0, mitte = 1, unten = 2 */
 		int selectedIndex;
-		sf::Font fontMainMenu;
-		sf::Text textMainMenu[MAX_QUANTITY];
+		Text textMainMenu[MAX_QUANTITY];
 };
 

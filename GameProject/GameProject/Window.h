@@ -68,4 +68,5 @@ class Window : public sf::RenderWindow
 		sf::Clock clock;
 
 		Sound sound;
+
 };

@@ -5,15 +5,10 @@
 MainMenu::MainMenu(sf::VideoMode resolution) :
 	selectedIndex(0)
 {
-	if (!fontMainMenu.loadFromFile("OpenSans-Bold.ttf"))
-	{
-		//Fehler beheben
-	}
 
 	const sf::String text[] = {"Play", "Options", "Exit"};
 	for (int i = 0; i < MAX_QUANTITY; i++)
 	{
-		textMainMenu[i].setFont(fontMainMenu);
 		textMainMenu[i].setFillColor(sf::Color::White);
 		textMainMenu[i].setString(text[i]);
 		textMainMenu[i].setPosition(sf::Vector2f((float)resolution.width / 2.5f,
