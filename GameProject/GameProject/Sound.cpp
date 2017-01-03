@@ -6,6 +6,10 @@ Sound::Sound()
 	{
 		//Fehler beheben
 	}
+	if (!game_over.loadFromFile("game_over_sound.wav"))
+	{
+		//Fehler beheben
+	}
 }
 
 
@@ -15,5 +19,10 @@ void Sound::playSound(SoundName sound_name)
 	{
 		setBuffer(menu);
 	}
+	else if (sound_name == SoundName::GAME_OVER)
+	{
+		setBuffer(game_over);
+	}
+
 	play();
 }

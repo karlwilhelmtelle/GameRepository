@@ -42,6 +42,7 @@ Game::Game() :
 		if (gameover)
 		{
 			gameover = false;
+			window.playSound(SoundName::GAME_OVER);
 			window.refresh();
 		}
 		
