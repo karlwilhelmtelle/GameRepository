@@ -12,6 +12,4 @@ class Sound : public sf::Sound
 	private:
 		sf::SoundBuffer menu;
 		sf::SoundBuffer game_over;
-		sf::SoundBuffer nope;
-		sf::SoundBuffer test;
 };

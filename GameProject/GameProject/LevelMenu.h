@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Text.h"
 
 #define MAX_LEVEL_MENU_POINTS 5
 
@@ -18,7 +19,6 @@ public:
 	int getSelectedLevelIndex();
 private:
 	int selectedLevelIndex;
-	sf::Font fontLevelMenu;
-	sf::Text textLevelMenu[MAX_LEVEL_MENU_POINTS];
+	Text textLevelMenu[MAX_LEVEL_MENU_POINTS];
 };
 

@@ -4,14 +4,8 @@
 LevelMenu::LevelMenu(sf::VideoMode resolution):
 	selectedLevelIndex(0)
 {
-	if (!fontLevelMenu.loadFromFile("OpenSans-Bold.ttf"))
-	{
-		//Fehler beheben
-	}
-
 	for (int i = 0; i < MAX_LEVEL_MENU_POINTS; i++)
 	{
-		textLevelMenu[i].setFont(fontLevelMenu);
 		textLevelMenu[i].setFillColor(sf::Color::White);
 		textLevelMenu[i].setString("Level " + std::to_string(i+1));
 		textLevelMenu[i].setPosition(sf::Vector2f((float)resolution.width / 2.5f,

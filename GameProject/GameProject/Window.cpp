@@ -146,6 +146,7 @@ void Window::keyAction(sf::Keyboard::Key key)
 
 void Window::showMenu()
 {
+	playSound(SoundName::MENU);
 	game_state = GameStates::MAIN_MENU;
 }
 
