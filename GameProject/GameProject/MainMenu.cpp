@@ -55,6 +55,7 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 	//enter
 	if (key == sf::Keyboard::Return)
 	{
+		window.playSound(SoundName::MENU);
 		switch (selectedIndex)
 		{
 			case 0:

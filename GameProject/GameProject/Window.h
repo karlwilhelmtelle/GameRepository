@@ -5,6 +5,7 @@
 #include "ObjectContainer.h"
 #include "LevelMenu.h"
 #include "Sound.h"
+#include "Item_Level_2.h"
 
 enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
@@ -42,6 +43,8 @@ class Window : public sf::RenderWindow
 
 		void refresh();
 
+		void refresh2();
+
 		void showLevelMenu();
 
 		void playLevel(int selectedLevelIndex);
@@ -58,6 +61,8 @@ class Window : public sf::RenderWindow
 
 		/*	main item in the middle of the screen */
 		MainItem item;
+
+		Item_Level_2 item_2;
 
 		/*  current speed of the background, moving left */
 		float camera_speed;

@@ -38,6 +38,7 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 	// move up
 	if (key == sf::Keyboard::Up && selectedLevelIndex - 1 >= 0)
 	{
+		window.playSound(SoundName::MENU);
 		textLevelMenu[selectedLevelIndex].setFillColor(sf::Color::White);
 		selectedLevelIndex--;
 		textLevelMenu[selectedLevelIndex].setFillColor(sf::Color::Yellow);
@@ -45,6 +46,7 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 	// move down
 	else if (key == sf::Keyboard::Down && selectedLevelIndex + 1 < MAX_LEVEL_MENU_POINTS)
 	{
+		window.playSound(SoundName::MENU);
 		textLevelMenu[selectedLevelIndex].setFillColor(sf::Color::White);
 		selectedLevelIndex++;
 		textLevelMenu[selectedLevelIndex].setFillColor(sf::Color::Yellow);
@@ -53,10 +55,12 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 	//enter
 	if (key == sf::Keyboard::Return)
 	{
+		window.playSound(SoundName::MENU);
 		window.playLevel(selectedLevelIndex);
 	}
 	else if (key == sf::Keyboard::Escape)
 	{
+		window.playSound(SoundName::MENU);
 		window.showMenu();
 	}
 }
