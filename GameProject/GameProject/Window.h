@@ -43,13 +43,14 @@ class Window : public sf::RenderWindow
 
 		void refresh();
 
-		void refresh2();
-
 		void showLevelMenu();
 
 		void playLevel(int selectedLevelIndex);
 
 		void playSound(SoundName sound_name);
+
+		void updateElapsedTime();
+
 	private:
 		GameStates game_state;
 
@@ -73,4 +74,6 @@ class Window : public sf::RenderWindow
 		sf::Clock clock;
 
 		Sound sound;
+
+		Text time;
 };

@@ -1,5 +1,8 @@
 #include "Window.h"
 #include "Object.h"
+#include <sstream>
+#include <iostream>
+#include <iomanip>
 
 Window::Window(sf::VideoMode res) :
 	sf::RenderWindow(res,
@@ -12,7 +15,12 @@ Window::Window(sf::VideoMode res) :
 {
 	setMouseCursorVisible(false);
 	init(res);
-} 
+
+	time.setFillColor(sf::Color::White);
+	time.setString("00:00:000");
+	time.setPosition(sf::Vector2f((float)res.width / 50,
+		(float)res.height / 50));
+}
 
 
 void Window::init(sf::VideoMode res)
@@ -26,7 +34,7 @@ void Window::init(sf::VideoMode res)
 void Window::render()
 {
 	clear(sf::Color::Black);
-
+	draw(time);
 	switch (game_state)
 	{
 		case GameStates::PLAY:
@@ -93,11 +101,13 @@ void Window::update(bool *collision)
 	{
 		camera_speed *= 1.00001f;
 		map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
+		updateElapsedTime();
 	}
 	if (game_state == GameStates::PLAY && level_state == LevelStates::LEVEL2)
 	{
 		camera_speed *= 1.00001f;
 		map.update(item_2.getPosition(), item_2.getRadius(), camera_speed, collision);
+		updateElapsedTime();
 	}
 }
 
@@ -146,7 +156,6 @@ void Window::keyAction(sf::Keyboard::Key key)
 
 void Window::showMenu()
 {
-	playSound(SoundName::MENU);
 	game_state = GameStates::MAIN_MENU;
 }
 
@@ -172,14 +181,6 @@ void Window::refresh()
 	init(resolution);
 }
 
-void Window::refresh2()
-{
-	showMenu();
-	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
-	item_2 = Item_Level_2(resolution);
-	init(resolution);
-}
-
 void Window::showLevelMenu()
 {
 	game_state = GameStates::LEVEL_MENU;
@@ -189,6 +190,7 @@ void Window::showLevelMenu()
 void Window::playLevel(int selectedLevelIndex)
 {
 	game_state = GameStates::PLAY;
+	clock.restart();
 
 	switch (selectedLevelIndex)
 	{
@@ -214,4 +216,17 @@ void Window::playLevel(int selectedLevelIndex)
 void Window::playSound(SoundName sound_name)
 {
 	sound.playSound(sound_name);
+}
+
+
+void Window::updateElapsedTime()
+{
+	sf::Int32 t1 = clock.getElapsedTime().asMilliseconds();
+	std::stringstream os;
+	os << std::setfill('0') << std::setw(2) << t1 / (1000 * 60);
+	os << ":"; 
+	os << std::setfill('0') << std::setw(2) << (t1 % (1000 * 60)) / 1000;
+	os << ":";
+	os << std::setfill('0') << std::setw(3) << t1 % 1000;
+	time.setString(os.str());
 }

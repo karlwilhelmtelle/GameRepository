@@ -19,7 +19,7 @@ void Item_Level_2::keyEvent(sf::Keyboard::Key key, float camera_speed)
 	//wird 'Up' gedrückt geht das Objekt kurz nach oben
 
 	float dy = 100 * camera_speed;
-	float gravity = 0.1;
+	float gravity = 0.1f;
 	float upForce = 10;
 	bool a = 0;
 	if (a == 0)
@@ -27,9 +27,9 @@ void Item_Level_2::keyEvent(sf::Keyboard::Key key, float camera_speed)
 		position.y -= gravity;
 		if (key == sf::Keyboard::Up)
 		{
-			a == 1;
+			a = 1;
 			position.y += upForce;
-			a == 0;
+			a = 0;
 		}
 		setPosition(position);
 	}
