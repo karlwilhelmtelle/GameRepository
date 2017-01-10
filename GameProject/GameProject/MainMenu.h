@@ -1,7 +1,7 @@
 #pragma once
 #include "Text.h"
 
-#define MAX_QUANTITY 3
+#define MAX_QUANTITY 4
 
 class Window;
 

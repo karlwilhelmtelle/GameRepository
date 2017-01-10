@@ -6,7 +6,7 @@ MainMenu::MainMenu(sf::VideoMode resolution) :
 	selectedIndex(0)
 {
 
-	const sf::String text[] = {"Play", "Options", "Exit"};
+	const sf::String text[] = {"Play", "Options", "Highscore", "Exit"};
 	for (int i = 0; i < MAX_QUANTITY; i++)
 	{
 		textMainMenu[i].setFillColor(sf::Color::White);
@@ -65,6 +65,9 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 				window.showOptions();
 				break;
 			case 2:
+				window.showHighscore();
+				break;
+			case 3:
 				window.close();
 				break;
 		}

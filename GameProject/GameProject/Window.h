@@ -7,7 +7,7 @@
 #include "Sound.h"
 #include "Item_Level_2.h"
 
-enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS };
+enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
 enum class LevelStates { LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5 };
 //Menüpunkte im Level-Menü
@@ -41,6 +41,8 @@ class Window : public sf::RenderWindow
 
 		void showOptions();
 
+		void showHighscore();
+
 		void refresh();
 
 		void showLevelMenu();
@@ -51,6 +53,9 @@ class Window : public sf::RenderWindow
 
 		void updateElapsedTime();
 
+		void updateHighscore();
+
+		void highscore_window();
 	private:
 		GameStates game_state;
 
@@ -76,4 +81,6 @@ class Window : public sf::RenderWindow
 		Sound sound;
 
 		Text time;
+
+		Text highscore;
 };

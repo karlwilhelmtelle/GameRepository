@@ -20,6 +20,11 @@ Window::Window(sf::VideoMode res) :
 	time.setString("00:00:000");
 	time.setPosition(sf::Vector2f((float)res.width / 50,
 		(float)res.height / 50));
+
+	highscore.setFillColor(sf::Color::White);
+	highscore.setString("0");
+	highscore.setPosition(sf::Vector2f((float) 9 * res.width / 10,
+		 (float)res.height / 50));
 }
 
 
@@ -35,6 +40,7 @@ void Window::render()
 {
 	clear(sf::Color::Black);
 	draw(time);
+	draw(highscore);
 	switch (game_state)
 	{
 		case GameStates::PLAY:
@@ -52,6 +58,7 @@ void Window::render()
 
 					// TODO: Ausgabe der Zeit im Spiel und Ausgabe der Gesamtzeit fehlt
 					float game_time = clock.getElapsedTime().asMilliseconds() / 1000.f;
+					int score = (int) game_time / 1000;
 					break;
 				}
 				case LevelStates::LEVEL2:
@@ -102,12 +109,15 @@ void Window::update(bool *collision)
 		camera_speed *= 1.00001f;
 		map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
 		updateElapsedTime();
+		updateHighscore();
+		
 	}
 	if (game_state == GameStates::PLAY && level_state == LevelStates::LEVEL2)
 	{
 		camera_speed *= 1.00001f;
 		map.update(item_2.getPosition(), item_2.getRadius(), camera_speed, collision);
 		updateElapsedTime();
+		updateHighscore();
 	}
 }
 
@@ -172,6 +182,12 @@ void Window::showOptions()
 	game_state = GameStates::OPTIONS;
 }
 
+void Window::showHighscore()
+{
+	game_state = GameStates::HIGHSCORE;
+}
+
+
 
 void Window::refresh()
 {
@@ -229,4 +245,17 @@ void Window::updateElapsedTime()
 	os << ":";
 	os << std::setfill('0') << std::setw(3) << t1 % 1000;
 	time.setString(os.str());
+}
+
+void Window::updateHighscore()
+{
+	sf::Int32 t1 = clock.getElapsedTime().asMilliseconds();
+	std::stringstream hs;
+	hs << std::setfill('0') << std::setw(1) << t1 / 1000;
+	highscore.setString(hs.str());
+}
+
+void Window::highscore_window()
+{
+	
 }
