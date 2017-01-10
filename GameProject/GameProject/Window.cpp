@@ -112,12 +112,14 @@ void Window::update(bool *collision)
 		camera_speed *= 1.00001f;
 		map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
 		updateElapsedTime();
+		updateHighscore();
 	}
 	if (game_state == GameStates::PLAY && level_state == LevelStates::LEVEL2)
 	{
 		camera_speed *= 1.00001f;
 		map.update(item_2.getPosition(), item_2.getRadius(), camera_speed, collision);
 		updateElapsedTime();
+		updateHighscore();
 	}
 }
 
@@ -193,7 +195,6 @@ void Window::restart()
 	item = MainItem(resolution);
 	init(resolution);
 	playSound(SoundName::GAME_OVER);
-	updateHighscore();
 	showMenu();
 }
 
