@@ -11,7 +11,8 @@ Window::Window(sf::VideoMode res) :
 	menu(res),
 	level_menu(res),
 	item(res),
-	item_2(res)
+	item_2(res),
+	highscoreMilliseconds(0)
 {
 	setMouseCursorVisible(false);
 	init(res);
@@ -22,7 +23,7 @@ Window::Window(sf::VideoMode res) :
 		(float)res.height / 50));
 
 	highscore.setFillColor(sf::Color::White);
-	highscore.setString("0");
+	highscore.setString(timeToString(0));
 	highscore.setPosition(sf::Vector2f((float) 9 * res.width / 10,
 		 (float)res.height / 50));
 }
@@ -41,6 +42,7 @@ void Window::render()
 	clear(sf::Color::Black);
 	draw(time);
 	draw(highscore);
+
 	switch (game_state)
 	{
 		case GameStates::PLAY:
@@ -95,6 +97,7 @@ void Window::render()
 			//open options
 			break;
 		}
+
 		default:
 			break;
 	}
@@ -109,15 +112,12 @@ void Window::update(bool *collision)
 		camera_speed *= 1.00001f;
 		map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
 		updateElapsedTime();
-		updateHighscore();
-		
 	}
 	if (game_state == GameStates::PLAY && level_state == LevelStates::LEVEL2)
 	{
 		camera_speed *= 1.00001f;
 		map.update(item_2.getPosition(), item_2.getRadius(), camera_speed, collision);
 		updateElapsedTime();
-		updateHighscore();
 	}
 }
 
@@ -187,14 +187,14 @@ void Window::showHighscore()
 	game_state = GameStates::HIGHSCORE;
 }
 
-
-
-void Window::refresh()
+void Window::restart()
 {
-	showMenu();
 	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
 	item = MainItem(resolution);
 	init(resolution);
+	playSound(SoundName::GAME_OVER);
+	updateHighscore();
+	showMenu();
 }
 
 void Window::showLevelMenu()
@@ -235,24 +235,33 @@ void Window::playSound(SoundName sound_name)
 }
 
 
-void Window::updateElapsedTime()
+std::string Window::timeToString(sf::Int32 t1)
 {
-	sf::Int32 t1 = clock.getElapsedTime().asMilliseconds();
 	std::stringstream os;
 	os << std::setfill('0') << std::setw(2) << t1 / (1000 * 60);
-	os << ":"; 
+	os << ":";
 	os << std::setfill('0') << std::setw(2) << (t1 % (1000 * 60)) / 1000;
 	os << ":";
 	os << std::setfill('0') << std::setw(3) << t1 % 1000;
-	time.setString(os.str());
+
+	return os.str();
+}
+
+
+void Window::updateElapsedTime()
+{
+	timeMilliseconds = clock.getElapsedTime().asMilliseconds();
+	
+	time.setString(timeToString(timeMilliseconds));
 }
 
 void Window::updateHighscore()
 {
-	sf::Int32 t1 = clock.getElapsedTime().asMilliseconds();
-	std::stringstream hs;
-	hs << std::setfill('0') << std::setw(1) << t1 / 1000;
-	highscore.setString(hs.str());
+	if (timeMilliseconds > highscoreMilliseconds)
+	{
+		highscoreMilliseconds = timeMilliseconds;
+		highscore.setString(timeToString(highscoreMilliseconds));
+	}
 }
 
 void Window::highscore_window()

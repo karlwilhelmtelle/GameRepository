@@ -43,7 +43,7 @@ class Window : public sf::RenderWindow
 
 		void showHighscore();
 
-		void refresh();
+		void restart();
 
 		void showLevelMenu();
 
@@ -56,6 +56,9 @@ class Window : public sf::RenderWindow
 		void updateHighscore();
 
 		void highscore_window();
+
+		std::string timeToString(sf::Int32 time);
+
 	private:
 		GameStates game_state;
 
@@ -80,7 +83,9 @@ class Window : public sf::RenderWindow
 
 		Sound sound;
 
+		sf::Int32 timeMilliseconds;
 		Text time;
 
+		sf::Int32 highscoreMilliseconds;
 		Text highscore;
 };
