@@ -12,7 +12,8 @@ Window::Window(sf::VideoMode res) :
 	level_menu(res),
 	item(res),
 	item_2(res),
-	highscoreMilliseconds(0)
+	highscoreMilliseconds(0),
+	HighscoreMenu(res)
 {
 	setMouseCursorVisible(false);
 	init(res);
@@ -40,8 +41,6 @@ void Window::init(sf::VideoMode res)
 void Window::render()
 {
 	clear(sf::Color::Black);
-	draw(time);
-	draw(highscore);
 
 	switch (game_state)
 	{
@@ -52,6 +51,8 @@ void Window::render()
 				case LevelStates::LEVEL1:
 				{
 					draw(item);
+					draw(highscore);
+					draw(time);
 
 					for (auto e = map.v.begin(); e != map.v.end(); ++e)
 					{
@@ -66,6 +67,8 @@ void Window::render()
 				case LevelStates::LEVEL2:
 				{
 					draw(item_2);
+					draw(highscore);
+					draw(time);
 
 					for (auto e = map.v.begin(); e != map.v.end(); ++e)
 					{
@@ -95,6 +98,13 @@ void Window::render()
 			// TODO: add options
 			//sf::Keyboard::Return;
 			//open options
+			break;
+		}
+		case GameStates::HIGHSCORE:
+		{
+			HighscoreMenu.draw(*this);
+			score();
+			
 			break;
 		}
 
@@ -158,6 +168,11 @@ void Window::keyAction(sf::Keyboard::Key key)
 		{
 			//sf::Keyboard::Return;
 			//open options
+			break;
+		}
+		case GameStates::HIGHSCORE:
+		{
+			HighscoreMenu.keyEvent(key, *this);
 			break;
 		}
 		default:
@@ -265,7 +280,11 @@ void Window::updateHighscore()
 	}
 }
 
-void Window::highscore_window()
+void Window::score()
 {
-	
+		sf::VideoMode resolution1 = sf::VideoMode::getDesktopMode();
+		time.setString(timeToString(timeMilliseconds));
+		time.setPosition(sf::Vector2f((float)resolution1.width / 2.0f,
+			(float)resolution1.height / 4 ));
+		draw(time);
 }

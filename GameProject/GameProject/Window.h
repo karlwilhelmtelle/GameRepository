@@ -6,6 +6,7 @@
 #include "LevelMenu.h"
 #include "Sound.h"
 #include "Item_Level_2.h"
+#include "highscore_menu.h"
 
 enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
@@ -55,7 +56,7 @@ class Window : public sf::RenderWindow
 
 		void updateHighscore();
 
-		void highscore_window();
+		void score();
 
 		std::string timeToString(sf::Int32 time);
 
@@ -88,4 +89,6 @@ class Window : public sf::RenderWindow
 
 		sf::Int32 highscoreMilliseconds;
 		Text highscore;
+
+		highscore_menu HighscoreMenu;
 };
