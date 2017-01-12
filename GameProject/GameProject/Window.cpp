@@ -13,7 +13,8 @@ Window::Window(sf::VideoMode res) :
 	item(res),
 	item_2(res),
 	highscoreMilliseconds(0),
-	HighscoreMenu(res)
+	HighscoreMenu(res),
+	option_menu(res)
 {
 	setMouseCursorVisible(false);
 	init(res);
@@ -95,16 +96,13 @@ void Window::render()
 
 		case GameStates::OPTIONS:
 		{
-			// TODO: add options
-			//sf::Keyboard::Return;
-			//open options
+			option_menu.draw(*this);
 			break;
 		}
 		case GameStates::HIGHSCORE:
 		{
 			HighscoreMenu.draw(*this);
 			score();
-			
 			break;
 		}
 
@@ -166,8 +164,7 @@ void Window::keyAction(sf::Keyboard::Key key)
 
 		case GameStates::OPTIONS:
 		{
-			//sf::Keyboard::Return;
-			//open options
+			option_menu.keyEvent(key, *this);
 			break;
 		}
 		case GameStates::HIGHSCORE:
@@ -189,7 +186,6 @@ void Window::showMenu()
 void Window::showGame()
 {
 	game_state = GameStates::PLAY;
-	//level_state = LevelStates::LEVEL1;
 	clock.restart();
 }
 
@@ -285,6 +281,6 @@ void Window::score()
 		sf::VideoMode resolution1 = sf::VideoMode::getDesktopMode();
 		time.setString(timeToString(timeMilliseconds));
 		time.setPosition(sf::Vector2f((float)resolution1.width / 2.0f,
-			(float)resolution1.height / 4 ));
+			(float)resolution1.height / 3 ));
 		draw(time);
 }

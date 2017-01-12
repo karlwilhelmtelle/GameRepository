@@ -7,6 +7,7 @@
 #include "Sound.h"
 #include "Item_Level_2.h"
 #include "highscore_menu.h"
+#include "OptionMenu.h"
 
 enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
 //enum = Aufzählung; zeigt die verschiedenen Zustände im Menü an; wird als Array behandelt
@@ -91,4 +92,6 @@ class Window : public sf::RenderWindow
 		Text highscore;
 
 		highscore_menu HighscoreMenu;
+
+		OptionMenu option_menu;
 };

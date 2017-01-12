@@ -30,6 +30,7 @@
     </ClCompile>
     <ClCompile Include="Item_Level_2.cpp" />
     <ClCompile Include="highscore_menu.cpp" />
+    <ClCompile Include="OptionMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -61,6 +62,7 @@
     </ClInclude>
     <ClInclude Include="Item_Level_2.h" />
     <ClInclude Include="highscore_menu.h" />
+    <ClInclude Include="OptionMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

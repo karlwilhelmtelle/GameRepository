@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "Text.h"
 
-#define MAX_QUANTITY_HIGHSCORE 3
-#define SOUND_OPTION_QUANTITY 2
+#define MAX_QUANTITY_HIGHSCORE 2
+
 
 class Window;
 
@@ -21,8 +21,7 @@ public:
 	
 private:
 	Text textHighscore_menu[MAX_QUANTITY_HIGHSCORE];
-	Text s_o_Highscore_menu[SOUND_OPTION_QUANTITY];
-
+	
 	int selectedIndexHighscore;
 };
 
