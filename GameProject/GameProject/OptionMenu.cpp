@@ -152,10 +152,8 @@ void OptionMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 			window.playSound(SoundName::MENU);
 			line = line - 1;
 			s_o_Colours2[column].setFillColor(sf::Color::Yellow);
-			s_o_Menu[0].setFillColor(sf::Color::White);
-			s_o_Menu[1].setFillColor(sf::Color::White);
+			s_o_Menu[column].setFillColor(sf::Color::White);
 		}
-
 	}
 	}
 }
