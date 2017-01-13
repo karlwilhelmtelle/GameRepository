@@ -3,11 +3,11 @@
 
 class Window;
 
-class Item_Level_2 : public sf::CircleShape
+class MainItem_Level2 : public sf::CircleShape
 {
 public:
 	/*	sets radius, position, fillColor */
-	Item_Level_2(sf::VideoMode resolution);
+	MainItem_Level2(sf::VideoMode resolution);
 
 	void keyEvent(sf::Keyboard::Key key, float camera_speed);
 private:

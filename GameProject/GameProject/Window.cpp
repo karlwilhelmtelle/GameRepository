@@ -1,32 +1,30 @@
 #include "Window.h"
 #include "Object.h"
-#include <sstream>
-#include <iostream>
-#include <iomanip>
 
 Window::Window(sf::VideoMode res) :
 	sf::RenderWindow(res,
 		"Game", sf::Style::Fullscreen),
 	game_state(GameStates::MAIN_MENU),
-	menu(res),
+	main_menu(res),
+	level_index(0),
 	level_menu(res),
 	item(res),
 	item_2(res),
-	highscoreMilliseconds(0),
-	HighscoreMenu(res),
-	option_menu(res)
+	highscore_milliseconds(0),
+	highscore_menu(res),
+	options_menu(res)
 {
 	setMouseCursorVisible(false);
 	init(res);
 
-	time.setFillColor(sf::Color::White);
-	time.setString("00:00:000");
-	time.setPosition(sf::Vector2f((float)res.width / 50,
+	time_text.setFillColor(sf::Color::White);
+	time_text.setString("00:00:000");
+	time_text.setPosition(sf::Vector2f((float)res.width / 50,
 		(float)res.height / 50));
 
-	highscore.setFillColor(sf::Color::White);
-	highscore.setString(timeToString(0));
-	highscore.setPosition(sf::Vector2f((float) 9 * res.width / 10,
+	highscore_text.setFillColor(sf::Color::White);
+	highscore_text.setStringToTime(0);
+	highscore_text.setPosition(sf::Vector2f((float) 9 * res.width / 10,
 		 (float)res.height / 50));
 }
 
@@ -39,7 +37,7 @@ void Window::init(sf::VideoMode res)
 
 
 // TODO: improve rendering performance
-void Window::render()
+void Window::renderGraphics()
 {
 	clear(sf::Color::Black);
 
@@ -47,35 +45,35 @@ void Window::render()
 	{
 		case GameStates::PLAY:
 		{
-			switch (level_state)
+			switch (level_index)
 			{
-				case LevelStates::LEVEL1:
+				case 0:
 				{
 					draw(item);
-					draw(highscore);
-					draw(time);
+					draw(highscore_text);
+					draw(time_text);
 
 					for (auto e = map.v.begin(); e != map.v.end(); ++e)
 					{
 						draw(*e);
 					}
-
+					/*
 					// TODO: Ausgabe der Zeit im Spiel und Ausgabe der Gesamtzeit fehlt
 					float game_time = clock.getElapsedTime().asMilliseconds() / 1000.f;
-					int score = (int) game_time / 1000;
+					int score = (int) game_time / 1000;*/
 					break;
 				}
-				case LevelStates::LEVEL2:
+				case 1:
 				{
 					draw(item_2);
-					draw(highscore);
-					draw(time);
+					draw(highscore_text);
+					draw(time_text);
 
 					for (auto e = map.v.begin(); e != map.v.end(); ++e)
 					{
 						draw(*e);
 					}
-					
+					break;
 				}
 			}
 
@@ -84,7 +82,7 @@ void Window::render()
 		
 		case GameStates::MAIN_MENU:
 		{
-			menu.draw(*this);
+			main_menu.draw(*this);
 			break;
 		}
 
@@ -96,16 +94,15 @@ void Window::render()
 
 		case GameStates::OPTIONS:
 		{
-			option_menu.draw(*this);
+			options_menu.draw(*this);
 			break;
 		}
 		case GameStates::HIGHSCORE:
 		{
-			HighscoreMenu.draw(*this);
-			score();
+			highscore_menu.draw(*this);
+			//score();
 			break;
 		}
-
 		default:
 			break;
 	}
@@ -113,19 +110,19 @@ void Window::render()
 }
 
 
-void Window::update(bool *collision)
+void Window::updateGame(bool *game_over)
 {
-	if (game_state == GameStates::PLAY && level_state == LevelStates::LEVEL1)
+	if (game_state == GameStates::PLAY && level_index == 0)
 	{
 		camera_speed *= 1.00001f;
-		map.update(item.getPosition(), item.getRadius(), camera_speed, collision);
+		map.update(item.getPosition(), item.getRadius(), camera_speed, game_over);
 		updateElapsedTime();
 		updateHighscore();
 	}
-	if (game_state == GameStates::PLAY && level_state == LevelStates::LEVEL2)
+	if (game_state == GameStates::PLAY && level_index == 1)
 	{
 		camera_speed *= 1.00001f;
-		map.update(item_2.getPosition(), item_2.getRadius(), camera_speed, collision);
+		map.update(item_2.getPosition(), item_2.getRadius(), camera_speed, game_over);
 		updateElapsedTime();
 		updateHighscore();
 	}
@@ -138,11 +135,11 @@ void Window::keyAction(sf::Keyboard::Key key)
 	{
 		case GameStates::PLAY:
 		{
-			if (level_state == LevelStates::LEVEL1)
+			if (level_index == 0)
 			{
 				item.keyEvent(key, camera_speed);
 			}
-			if (level_state == LevelStates::LEVEL2)
+			if (level_index == 1)
 			{
 				item_2.keyEvent(key, camera_speed);
 			}
@@ -152,7 +149,7 @@ void Window::keyAction(sf::Keyboard::Key key)
 
 		case GameStates::MAIN_MENU:
 		{
-			menu.keyEvent(key, *this);
+			main_menu.keyEvent(key, *this);
 			break;
 		}
 
@@ -164,12 +161,12 @@ void Window::keyAction(sf::Keyboard::Key key)
 
 		case GameStates::OPTIONS:
 		{
-			option_menu.keyEvent(key, *this);
+			options_menu.keyEvent(key, *this);
 			break;
 		}
 		case GameStates::HIGHSCORE:
 		{
-			HighscoreMenu.keyEvent(key, *this);
+			highscore_menu.keyEvent(key, *this);
 			break;
 		}
 		default:
@@ -178,66 +175,33 @@ void Window::keyAction(sf::Keyboard::Key key)
 	
 }
 
-void Window::showMenu()
+void Window::setGameState(GameStates state)
 {
-	game_state = GameStates::MAIN_MENU;
+	game_state = state;
 }
 
-void Window::showGame()
+void Window::restartClock()
 {
-	game_state = GameStates::PLAY;
 	clock.restart();
 }
 
 
-void Window::showOptions()
-{
-	game_state = GameStates::OPTIONS;
-}
-
-void Window::showHighscore()
-{
-	game_state = GameStates::HIGHSCORE;
-}
-
-void Window::restart()
+void Window::gameOver()
 {
 	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
 	item = MainItem(resolution);
 	init(resolution);
 	playSound(SoundName::GAME_OVER);
-	showMenu();
-}
-
-void Window::showLevelMenu()
-{
-	game_state = GameStates::LEVEL_MENU;
+	setGameState(GameStates::MAIN_MENU);
 }
 
 
-void Window::playLevel(int selectedLevelIndex)
+void Window::playLevel(int selected_level_index)
 {
-	game_state = GameStates::PLAY;
-	clock.restart();
+	setGameState(GameStates::PLAY);
+	restartClock();
 
-	switch (selectedLevelIndex)
-	{
-	case 0:
-		level_state = LevelStates::LEVEL1;
-		break;
-	case 1:
-		level_state = LevelStates::LEVEL2;
-		break;
-	case 2:
-		level_state = LevelStates::LEVEL3;
-		break;
-	case 3:
-		level_state = LevelStates::LEVEL4;
-		break;
-	case 4:
-		level_state = LevelStates::LEVEL5;
-		break;
-	}
+	level_index = selected_level_index;
 }
 
 
@@ -247,40 +211,27 @@ void Window::playSound(SoundName sound_name)
 }
 
 
-std::string Window::timeToString(sf::Int32 t1)
-{
-	std::stringstream os;
-	os << std::setfill('0') << std::setw(2) << t1 / (1000 * 60);
-	os << ":";
-	os << std::setfill('0') << std::setw(2) << (t1 % (1000 * 60)) / 1000;
-	os << ":";
-	os << std::setfill('0') << std::setw(3) << t1 % 1000;
-
-	return os.str();
-}
-
-
 void Window::updateElapsedTime()
 {
-	timeMilliseconds = clock.getElapsedTime().asMilliseconds();
+	time_milliseconds = clock.getElapsedTime().asMilliseconds();
 	
-	time.setString(timeToString(timeMilliseconds));
+	time_text.setStringToTime(time_milliseconds);
 }
 
 void Window::updateHighscore()
 {
-	if (timeMilliseconds > highscoreMilliseconds)
+	if (time_milliseconds > highscore_milliseconds)
 	{
-		highscoreMilliseconds = timeMilliseconds;
-		highscore.setString(timeToString(highscoreMilliseconds));
+		highscore_milliseconds = time_milliseconds;
+		highscore_text.setStringToTime(highscore_milliseconds);
 	}
 }
-
+/*
 void Window::score()
 {
-		sf::VideoMode resolution1 = sf::VideoMode::getDesktopMode();
-		time.setString(timeToString(timeMilliseconds));
-		time.setPosition(sf::Vector2f((float)resolution1.width / 2.0f,
-			(float)resolution1.height / 3 ));
-		draw(time);
-}
+	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
+	time_text.timeToString(time_milliseconds);
+	time_text.setPosition(sf::Vector2f((float)resolution.width / 2.0f,
+		(float)resolution.height / 3 ));
+	draw(time_text);
+}*/

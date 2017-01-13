@@ -5,7 +5,7 @@ Game::Game() :
 {
 	//d.h. man startet im Menü
 	level = 1;
-	bool gameover = false;
+	bool game_over = false;
 	
 	//window.hideMenu();
 
@@ -25,7 +25,7 @@ Game::Game() :
 					switch (event.key.code)
 					{
 						case sf::Keyboard::Escape:
-							window.showMenu();
+							window.setGameState(GameStates::MAIN_MENU);
 							break;
 
 						default:
@@ -39,15 +39,14 @@ Game::Game() :
 			}
 		}
 		
-		if (gameover)
+		if (game_over)
 		{
-			gameover = false;
-
-			window.restart();
+			game_over = false;
+			window.gameOver();
 		}
 		
-		window.update(&gameover);
-		window.render();
+		window.updateGame(&game_over);
+		window.renderGraphics();
 	}
 }
 

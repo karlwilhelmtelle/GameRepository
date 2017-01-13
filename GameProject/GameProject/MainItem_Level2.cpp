@@ -1,7 +1,7 @@
-#include "Item_Level_2.h"
+#include "MainItem_Level2.h"
 #include "Window.h"
 
-Item_Level_2::Item_Level_2(sf::VideoMode resolution):
+MainItem_Level2::MainItem_Level2(sf::VideoMode resolution):
 	sf::CircleShape(),
 	resolution(resolution),
 	radius(40),
@@ -13,7 +13,7 @@ Item_Level_2::Item_Level_2(sf::VideoMode resolution):
 	setFillColor(sf::Color::Green);
 }
 
-void Item_Level_2::keyEvent(sf::Keyboard::Key key, float camera_speed)
+void MainItem_Level2::keyEvent(sf::Keyboard::Key key, float camera_speed)
 {
 	//wenn keine Taste gedrückt wird fällt das Objekt
 	//wird 'Up' gedrückt geht das Objekt kurz nach oben

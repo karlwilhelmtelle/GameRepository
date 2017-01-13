@@ -7,11 +7,10 @@
 
 class Window;
 
-class highscore_menu
+class HighscoreMenu
 {
 public:
-	~highscore_menu();
-	highscore_menu(sf::VideoMode resolution);
+	HighscoreMenu(sf::VideoMode resolution);
 
 	void draw(sf::RenderWindow &window);
 
@@ -20,8 +19,8 @@ public:
 	int getSelectedIndex();
 	
 private:
-	Text textHighscore_menu[MAX_QUANTITY_HIGHSCORE];
+	Text text[MAX_QUANTITY_HIGHSCORE];
 	
-	int selectedIndexHighscore;
+	int selected_index;
 };
 

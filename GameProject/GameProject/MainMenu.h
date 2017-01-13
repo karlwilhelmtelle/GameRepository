@@ -9,7 +9,6 @@ class MainMenu
 {
 public:
 	MainMenu(sf::VideoMode resolution);
-	~MainMenu();
 
 	void draw(sf::RenderWindow &window);
 
@@ -17,8 +16,7 @@ public:
 
 	int getSelectedIndex();
 private:
-		/* oben = 0, mitte = 1, unten = 2 */
-		int selectedIndex;
-		Text textMainMenu[MAX_QUANTITY];
+	int selected_index;
+	Text text[MAX_QUANTITY];
 };
 

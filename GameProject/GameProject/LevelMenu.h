@@ -10,7 +10,6 @@ class LevelMenu
 {
 public:
 	LevelMenu(sf::VideoMode resolution);
-	~LevelMenu();
 
 	void draw(sf::RenderWindow &window);
 
@@ -18,7 +17,7 @@ public:
 
 	int getSelectedLevelIndex();
 private:
-	int selectedLevelIndex;
-	Text textLevelMenu[MAX_LEVEL_MENU_POINTS];
+	int selected_index;
+	Text text[MAX_LEVEL_MENU_POINTS];
 };
 

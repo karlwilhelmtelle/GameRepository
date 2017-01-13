@@ -8,19 +8,18 @@
 #define COLOUR_QUANTITY_2 8
 
 class Window;
-class OptionMenu
+class OptionsMenu
 {
 public:
-	OptionMenu(sf::VideoMode resolution);
-	~OptionMenu();
+	OptionsMenu(sf::VideoMode resolution);
 
 	void draw(sf::RenderWindow &window);
 
 	void keyEvent(sf::Keyboard::Key key, Window &window);
 
-	int getline();
+	int getLine();
 
-	int getcolumn();
+	int getColumn();
 
 private:
 	Text s_o_Menu[SOUND_OPTION_QUANTITY];
