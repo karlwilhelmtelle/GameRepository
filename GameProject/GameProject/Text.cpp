@@ -24,3 +24,11 @@ void Text::setStringToTime(sf::Int32 milliseconds)
 
 	setString(os.str());
 }
+
+void Text::setStringToMilliseconds(sf::Int32 milliseconds)
+{
+	std::stringstream os;
+	os << milliseconds;
+
+	setString(os.str());
+}

@@ -54,7 +54,7 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 	}
 }
 
-int LevelMenu::getSelectedLevelIndex()
+int LevelMenu::getSelectedIndex()
 {
 	return selected_index;
 }

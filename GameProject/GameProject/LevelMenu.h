@@ -15,7 +15,7 @@ public:
 
 	void keyEvent(sf::Keyboard::Key key, Window &window);
 
-	int getSelectedLevelIndex();
+	int getSelectedIndex();
 private:
 	int selected_index;
 	Text text[MAX_LEVEL_MENU_POINTS];

@@ -192,7 +192,7 @@ void Window::gameOver()
 	item = MainItem(resolution);
 	init(resolution);
 	playSound(SoundName::GAME_OVER);
-	setGameState(GameStates::MAIN_MENU);
+	setGameState(GameStates::HIGHSCORE);
 }
 
 
@@ -223,7 +223,7 @@ void Window::updateHighscore()
 	if (time_milliseconds > highscore_milliseconds)
 	{
 		highscore_milliseconds = time_milliseconds;
-		highscore_text.setStringToTime(highscore_milliseconds);
+		highscore_text.setStringToMilliseconds(highscore_milliseconds);
 	}
 }
 /*

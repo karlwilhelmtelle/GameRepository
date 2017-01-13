@@ -4,10 +4,12 @@
 
 class Text : public sf::Text
 {
-	public:
-		Text();
+public:
+	Text();
 
-		void setStringToTime(sf::Int32 milliseconds);
-	private:
-		sf::Font font;
+	void setStringToTime(sf::Int32 milliseconds);
+	
+	void setStringToMilliseconds(sf::Int32 milliseconds);
+private:
+	sf::Font font;
 };
