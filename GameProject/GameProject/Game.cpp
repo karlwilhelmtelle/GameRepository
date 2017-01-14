@@ -22,16 +22,7 @@ Game::Game() :
 					break;
 
 				case sf::Event::KeyPressed:
-					switch (event.key.code)
-					{
-						case sf::Keyboard::Escape:
-							window.setGameState(GameStates::MAIN_MENU);
-							break;
-
-						default:
-							window.keyAction(event.key.code);
-							break;
-					}
+					window.keyAction(event.key.code);
 					break;
 					
 				default:

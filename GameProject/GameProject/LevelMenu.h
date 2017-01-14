@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Text.h"
 
-#define MAX_LEVEL_MENU_POINTS 5
+#define MAX_LEVEL_MENU_POINTS 4
 
 class Window;
 
@@ -14,10 +14,14 @@ public:
 	void draw(sf::RenderWindow &window);
 
 	void keyEvent(sf::Keyboard::Key key, Window &window);
-
+	
 	int getSelectedIndex();
+
+	void disableSelection(int level_index_keep_selected);
+	void enableSelection();
 private:
 	int selected_index;
 	Text text[MAX_LEVEL_MENU_POINTS];
+	bool selection_disabled;
 };
 

@@ -4,15 +4,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectContainer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -20,9 +11,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainItem_Level2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HighscoreMenu.cpp">
@@ -37,18 +25,21 @@
     <ClCompile Include="MainMenu.cpp">
       <Filter>Source Files\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectContainer.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="MainItem.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="MainItem_Level2.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainItem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
@@ -58,9 +49,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainItem_Level2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HighscoreMenu.h">
@@ -75,6 +63,18 @@
     <ClInclude Include="OptionsMenu.h">
       <Filter>Header Files\Menus</Filter>
     </ClInclude>
+    <ClInclude Include="MainItem.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="MainItem_Level2.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectContainer.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -88,6 +88,12 @@
     </Filter>
     <Filter Include="Source Files\Menus">
       <UniqueIdentifier>{315e72d6-6f41-4da8-8186-7c3f9d778607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects">
+      <UniqueIdentifier>{6391ce82-d39a-4fa0-9665-947e2d3a3532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{70d39869-8f3f-4f8b-b1e0-9cb97016ab28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

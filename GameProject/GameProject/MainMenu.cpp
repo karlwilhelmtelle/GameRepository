@@ -54,13 +54,13 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
 		switch (selected_index)
 		{
 			case 0:
-				window.setGameState(GameStates::LEVEL_MENU);
+				window.setGameState(GameState::LEVEL_MENU);
 				break;
 			case 1:
-				window.setGameState(GameStates::OPTIONS);
+				window.setGameState(GameState::OPTIONS);
 				break;
 			case 2:
-				window.setGameState(GameStates::HIGHSCORE);
+				window.setGameState(GameState::HIGHSCORE);
 				break;
 			case 3:
 				window.close();

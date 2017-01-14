@@ -9,7 +9,7 @@
 #include "HighscoreMenu.h"
 #include "OptionsMenu.h"
 
-enum class GameStates { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
+enum class GameState { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
 
 class Window : public sf::RenderWindow
 {
@@ -26,11 +26,13 @@ class Window : public sf::RenderWindow
 
 		void gameOver();
 
-		void setGameState(GameStates state);
+		void setGameState(GameState state);
 
 		void restartClock();
 
-		void playLevel(int selected_level_index);
+		int getLevelIndex();
+
+		void setLevelIndex(int selected_level_index);
 
 		void playSound(SoundName sound_name);
 
@@ -38,11 +40,17 @@ class Window : public sf::RenderWindow
 
 		void updateHighscore();
 
+		void pauseGame();
+
+		void unpauseGame();
+
 		//void score();
 	private:
-		GameStates game_state;
+		GameState game_state;
 
 		int level_index;
+
+		bool pause;
 
 		MainItem item;
 		MainItem_Level2 item_2;

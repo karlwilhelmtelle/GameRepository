@@ -4,7 +4,7 @@
 Window::Window(sf::VideoMode res) :
 	sf::RenderWindow(res,
 		"Game", sf::Style::Fullscreen),
-	game_state(GameStates::MAIN_MENU),
+	game_state(GameState::MAIN_MENU),
 	main_menu(res),
 	level_index(0),
 	level_menu(res),
@@ -12,7 +12,8 @@ Window::Window(sf::VideoMode res) :
 	item_2(res),
 	highscore_milliseconds(0),
 	highscore_menu(res),
-	options_menu(res)
+	options_menu(res),
+	pause(false)
 {
 	setMouseCursorVisible(false);
 	init(res);
@@ -43,7 +44,7 @@ void Window::renderGraphics()
 
 	switch (game_state)
 	{
-		case GameStates::PLAY:
+		case GameState::PLAY:
 		{
 			switch (level_index)
 			{
@@ -80,24 +81,24 @@ void Window::renderGraphics()
 			break;
 		}
 		
-		case GameStates::MAIN_MENU:
+		case GameState::MAIN_MENU:
 		{
 			main_menu.draw(*this);
 			break;
 		}
 
-		case GameStates::LEVEL_MENU:
+		case GameState::LEVEL_MENU:
 		{
 			level_menu.draw(*this);
 			break;
 		}
 
-		case GameStates::OPTIONS:
+		case GameState::OPTIONS:
 		{
 			options_menu.draw(*this);
 			break;
 		}
-		case GameStates::HIGHSCORE:
+		case GameState::HIGHSCORE:
 		{
 			highscore_menu.draw(*this);
 			//score();
@@ -112,14 +113,14 @@ void Window::renderGraphics()
 
 void Window::updateGame(bool *game_over)
 {
-	if (game_state == GameStates::PLAY && level_index == 0)
+	if (game_state == GameState::PLAY && level_index == 0)
 	{
 		camera_speed *= 1.00001f;
 		map.update(item.getPosition(), item.getRadius(), camera_speed, game_over);
 		updateElapsedTime();
 		updateHighscore();
 	}
-	if (game_state == GameStates::PLAY && level_index == 1)
+	if (game_state == GameState::PLAY && level_index == 1)
 	{
 		camera_speed *= 1.00001f;
 		map.update(item_2.getPosition(), item_2.getRadius(), camera_speed, game_over);
@@ -131,51 +132,61 @@ void Window::updateGame(bool *game_over)
 
 void Window::keyAction(sf::Keyboard::Key key)
 {
-	switch (game_state)
+	if (key == sf::Keyboard::Escape)
 	{
-		case GameStates::PLAY:
+		if (game_state == GameState::PLAY)
 		{
-			if (level_index == 0)
-			{
-				item.keyEvent(key, camera_speed);
-			}
-			if (level_index == 1)
-			{
-				item_2.keyEvent(key, camera_speed);
-			}
-
-			break;
+			pauseGame();
 		}
-
-		case GameStates::MAIN_MENU:
-		{
-			main_menu.keyEvent(key, *this);
-			break;
-		}
-
-		case GameStates::LEVEL_MENU:
-		{
-			level_menu.keyEvent(key, *this);
-			break;
-		}
-
-		case GameStates::OPTIONS:
-		{
-			options_menu.keyEvent(key, *this);
-			break;
-		}
-		case GameStates::HIGHSCORE:
-		{
-			highscore_menu.keyEvent(key, *this);
-			break;
-		}
-		default:
-			break;
+		setGameState(GameState::MAIN_MENU);
 	}
-	
+	else
+	{
+		switch (game_state)
+		{
+			case GameState::PLAY:
+			{
+				if (level_index == 0)
+				{
+					item.keyEvent(key, camera_speed);
+				}
+				if (level_index == 1)
+				{
+					item_2.keyEvent(key, camera_speed);
+				}
+
+				break;
+			}
+
+			case GameState::MAIN_MENU:
+			{
+				main_menu.keyEvent(key, *this);
+				break;
+			}
+
+			case GameState::LEVEL_MENU:
+			{
+				level_menu.keyEvent(key, *this);
+				break;
+			}
+
+			case GameState::OPTIONS:
+			{
+				options_menu.keyEvent(key, *this);
+				break;
+			}
+			case GameState::HIGHSCORE:
+			{
+				highscore_menu.keyEvent(key, *this);
+				break;
+			}
+			default:
+				break;
+		}
+	}
 }
 
-void Window::setGameState(GameStates state)
+void Window::setGameState(GameState state)
 {
 	game_state = state;
 }
@@ -185,6 +196,11 @@ void Window::restartClock()
 	clock.restart();
 }
 
+int Window::getLevelIndex()
+{
+	return level_index;
+}
+
 
 void Window::gameOver()
 {
@@ -192,16 +208,20 @@ void Window::gameOver()
 	item = MainItem(resolution);
 	init(resolution);
 	playSound(SoundName::GAME_OVER);
-	setGameState(GameStates::HIGHSCORE);
+	setGameState(GameState::HIGHSCORE);
 }
 
 
-void Window::playLevel(int selected_level_index)
+void Window::setLevelIndex(int selected_level_index)
 {
-	setGameState(GameStates::PLAY);
-	restartClock();
+	setGameState(GameState::PLAY);
+	unpauseGame();
 
-	level_index = selected_level_index;
+	if (level_index != selected_level_index)
+	{
+		restartClock();
+		level_index = selected_level_index;
+	}
 }
 
 
@@ -226,6 +246,19 @@ void Window::updateHighscore()
 		highscore_text.setStringToMilliseconds(highscore_milliseconds);
 	}
 }
+
+void Window::pauseGame()
+{
+	pause = true;
+	level_menu.disableSelection(level_index);
+}
+
+void Window::unpauseGame()
+{
+	pause = false;
+	level_menu.enableSelection();
+}
+
 /*
 void Window::score()
 {

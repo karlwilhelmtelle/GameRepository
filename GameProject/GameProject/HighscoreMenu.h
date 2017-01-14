@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Text.h"
 
-#define MAX_QUANTITY_HIGHSCORE 2
+#define MAX_QUANTITY_HIGHSCORE 3
 
 
 class Window;
