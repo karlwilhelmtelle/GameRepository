@@ -8,15 +8,14 @@
 #include "MainItem_Level2.h"
 #include "HighscoreMenu.h"
 #include "OptionsMenu.h"
+#include "LevelController.h"
 
 enum class GameState { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
 
 class Window : public sf::RenderWindow
 {
 	public:
-		Window(sf::VideoMode resolution);
-
-		void init(sf::VideoMode resolution);
+		Window(sf::VideoMode &resolution);
 
 		void renderGraphics();
 
@@ -28,44 +27,19 @@ class Window : public sf::RenderWindow
 
 		void setGameState(GameState state);
 
-		void restartClock();
-
-		int getLevelIndex();
-
 		void setLevelIndex(int selected_level_index);
 
 		void playSound(SoundName sound_name);
 
-		void updateElapsedTime();
-
-		void updateHighscore();
-
-		void pauseGame();
-
-		void unpauseGame();
-
 		//void score();
 	private:
+		const sf::VideoMode &resolution;
+
 		GameState game_state;
 
-		int level_index;
-
-		bool pause;
-
-		MainItem item;
-		MainItem_Level2 item_2;
-
-		float camera_speed;
-
-		ObjectContainer map;
+		LevelController levels;
 
 		Sound sound;
-
-		sf::Clock clock;
-		Text time_text;
-		Text highscore_text;
-		sf::Int32 time_milliseconds;
-		sf::Int32 highscore_milliseconds;
 
 		MainMenu main_menu;
 		LevelMenu level_menu;

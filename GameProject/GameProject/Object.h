@@ -7,7 +7,7 @@ public:
 	/*	initializes sf::CircleShape
 		sets position, radius, fillColor
 	*/
-	Object(sf::VideoMode resolution, float radius, float x_offset);
+	Object(sf::VideoMode &resolution, float radius, float x_offset);
 
 	/*  random y-coordinate */
 	void refresh();
@@ -29,6 +29,6 @@ private:
 
 	float x_offset;
 
-	sf::VideoMode resolution;
+	sf::VideoMode &resolution;
 };
 

@@ -1,7 +1,7 @@
 #include "MainItem_Level2.h"
 #include "Window.h"
 
-MainItem_Level2::MainItem_Level2(sf::VideoMode resolution):
+MainItem_Level2::MainItem_Level2(sf::VideoMode &resolution) :
 	sf::CircleShape(),
 	resolution(resolution),
 	radius(40),

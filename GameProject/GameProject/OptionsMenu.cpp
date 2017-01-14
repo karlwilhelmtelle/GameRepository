@@ -3,7 +3,7 @@
 #include <SFML/Audio.hpp>
 
 
-OptionsMenu::OptionsMenu(sf::VideoMode resolution) :
+OptionsMenu::OptionsMenu(sf::VideoMode &resolution) :
 	line(0),
 	column(0)
 {
@@ -45,7 +45,7 @@ OptionsMenu::OptionsMenu(sf::VideoMode resolution) :
 	s_o_Colours[0].setFillColor(sf::Color::Yellow);
 }
 
-void OptionsMenu::draw(sf::RenderWindow & window)
+void OptionsMenu::draw(Window & window)
 {
 	for (int i = 0; i < SOUND_OPTION_QUANTITY; i++)
 	{
@@ -69,88 +69,88 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 {
 	switch (line)
 	{
-	case 0:
-	{
-		if (key == sf::Keyboard::Right && column <= 6)
+		case 0:
 		{
-			window.playSound(SoundName::MENU);
-			s_o_Colours[column].setFillColor(sf::Color::White);
-			column++;
-			s_o_Colours[column].setFillColor(sf::Color::Yellow);
+			if (key == sf::Keyboard::Right && column <= 6)
+			{
+				window.playSound(SoundName::MENU);
+				s_o_Colours[column].setFillColor(sf::Color::White);
+				column++;
+				s_o_Colours[column].setFillColor(sf::Color::Yellow);
+			}
+			if (key == sf::Keyboard::Left && column > 0)
+			{
+				window.playSound(SoundName::MENU);
+				s_o_Colours[column].setFillColor(sf::Color::White);
+				column--;
+				s_o_Colours[column].setFillColor(sf::Color::Yellow);
+			}
+			if (key == sf::Keyboard::Down)
+			{
+				window.playSound(SoundName::MENU);
+				line = line + 1;
+				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
+				s_o_Colours[column].setFillColor(sf::Color::White);
+			}
+			break;
 		}
-		if (key == sf::Keyboard::Left && column > 0)
+		case 1:
 		{
-			window.playSound(SoundName::MENU);
-			s_o_Colours[column].setFillColor(sf::Color::White);
-			column--;
-			s_o_Colours[column].setFillColor(sf::Color::Yellow);
+			if (key == sf::Keyboard::Right && column <= 6)
+			{
+				window.playSound(SoundName::MENU);
+				s_o_Colours2[column].setFillColor(sf::Color::White);
+				column++;
+				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
+			}
+			if (key == sf::Keyboard::Left && column > 0)
+			{
+				window.playSound(SoundName::MENU);
+				s_o_Colours2[column].setFillColor(sf::Color::White);
+				column--;
+				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
+			}
+			if (key == sf::Keyboard::Down)
+			{
+				window.playSound(SoundName::MENU);
+				line = line + 1;
+				s_o_Menu[0].setFillColor(sf::Color::Yellow);
+				s_o_Colours2[column].setFillColor(sf::Color::White);
+				column = 0;
+			}
+			if (key == sf::Keyboard::Up)
+			{
+				window.playSound(SoundName::MENU);
+				line = line - 1;
+				s_o_Colours[column].setFillColor(sf::Color::Yellow);
+				s_o_Colours2[column].setFillColor(sf::Color::White);
+			}
+			break;
 		}
-		if (key == sf::Keyboard::Down)
+		case 2:
 		{
-			window.playSound(SoundName::MENU);
-			line = line + 1;
-			s_o_Colours2[column].setFillColor(sf::Color::Yellow);
-			s_o_Colours[column].setFillColor(sf::Color::White);
+			if (key == sf::Keyboard::Right && column < 1)
+			{
+				window.playSound(SoundName::MENU);
+				s_o_Menu[column].setFillColor(sf::Color::White);
+				column++;
+				s_o_Menu[column].setFillColor(sf::Color::Yellow);
+			}
+			if (key == sf::Keyboard::Left && column > 0)
+			{
+				window.playSound(SoundName::MENU);
+				s_o_Menu[column].setFillColor(sf::Color::White);
+				column--;
+				s_o_Menu[column].setFillColor(sf::Color::Yellow);
+			}
+			if (key == sf::Keyboard::Up)
+			{
+				window.playSound(SoundName::MENU);
+				line = line - 1;
+				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
+				s_o_Menu[column].setFillColor(sf::Color::White);
+			}
 		}
-		break;
-	}
-	case 1:
-	{
-		if (key == sf::Keyboard::Right && column <= 6)
-		{
-			window.playSound(SoundName::MENU);
-			s_o_Colours2[column].setFillColor(sf::Color::White);
-			column++;
-			s_o_Colours2[column].setFillColor(sf::Color::Yellow);
-		}
-		if (key == sf::Keyboard::Left && column > 0)
-		{
-			window.playSound(SoundName::MENU);
-			s_o_Colours2[column].setFillColor(sf::Color::White);
-			column--;
-			s_o_Colours2[column].setFillColor(sf::Color::Yellow);
-		}
-		if (key == sf::Keyboard::Down)
-		{
-			window.playSound(SoundName::MENU);
-			line = line + 1;
-			s_o_Menu[0].setFillColor(sf::Color::Yellow);
-			s_o_Colours2[column].setFillColor(sf::Color::White);
-			column = 0;
-		}
-		if (key == sf::Keyboard::Up)
-		{
-			window.playSound(SoundName::MENU);
-			line = line - 1;
-			s_o_Colours[column].setFillColor(sf::Color::Yellow);
-			s_o_Colours2[column].setFillColor(sf::Color::White);
-		}
-		break;
-	}
-	case 2:
-	{
-		if (key == sf::Keyboard::Right && column < 1)
-		{
-			window.playSound(SoundName::MENU);
-			s_o_Menu[column].setFillColor(sf::Color::White);
-			column++;
-			s_o_Menu[column].setFillColor(sf::Color::Yellow);
-		}
-		if (key == sf::Keyboard::Left && column > 0)
-		{
-			window.playSound(SoundName::MENU);
-			s_o_Menu[column].setFillColor(sf::Color::White);
-			column--;
-			s_o_Menu[column].setFillColor(sf::Color::Yellow);
-		}
-		if (key == sf::Keyboard::Up)
-		{
-			window.playSound(SoundName::MENU);
-			line = line - 1;
-			s_o_Colours2[column].setFillColor(sf::Color::Yellow);
-			s_o_Menu[column].setFillColor(sf::Color::White);
-		}
-	}
 	}
 }
 

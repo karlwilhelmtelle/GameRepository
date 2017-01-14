@@ -2,7 +2,7 @@
 #include "Window.h"
 #include <SFML/Audio.hpp>
 
-MainMenu::MainMenu(sf::VideoMode resolution) :
+MainMenu::MainMenu(sf::VideoMode &resolution) :
 	selected_index(0)
 {
 	const sf::String strings[] = {"Play", "Options", "Highscore", "Exit"};
@@ -19,7 +19,7 @@ MainMenu::MainMenu(sf::VideoMode resolution) :
 }
 
 
-void MainMenu::draw(sf::RenderWindow &window)
+void MainMenu::draw(Window &window)
 {
 	for (int i = 0; i < MAX_QUANTITY; i++)
 	{

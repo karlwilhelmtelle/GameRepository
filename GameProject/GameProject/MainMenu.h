@@ -8,9 +8,9 @@ class Window;
 class MainMenu
 {
 public:
-	MainMenu(sf::VideoMode resolution);
+	MainMenu(sf::VideoMode &resolution);
 
-	void draw(sf::RenderWindow &window);
+	void draw(Window &window);
 
 	void keyEvent(sf::Keyboard::Key key, Window &window);
 

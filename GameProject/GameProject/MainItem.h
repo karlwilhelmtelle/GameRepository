@@ -7,11 +7,13 @@ class MainItem : public sf::CircleShape
 {
 	public:
 		/*	sets radius, position, fillColor */
-		MainItem(sf::VideoMode resolution);
+		MainItem(sf::VideoMode &resolution);
 
 		void keyEvent(sf::Keyboard::Key key, float camera_speed);
+
+		void init();
 	private:
-		sf::VideoMode resolution;
+		sf::VideoMode &resolution;
 
 		/*  radius */
 		float radius;

@@ -9,19 +9,18 @@ class Window;
 class LevelMenu
 {
 public:
-	LevelMenu(sf::VideoMode resolution);
+	LevelMenu(sf::VideoMode &resolution);
 
-	void draw(sf::RenderWindow &window);
+	void draw(Window &window);
 
 	void keyEvent(sf::Keyboard::Key key, Window &window);
 	
 	int getSelectedIndex();
 
-	void disableSelection(int level_index_keep_selected);
-	void enableSelection();
+	void disableIndex(int index);
+	void enableIndex(int index);
 private:
 	int selected_index;
 	Text text[MAX_LEVEL_MENU_POINTS];
-	bool selection_disabled;
 };
 

@@ -3,7 +3,8 @@
 #include <iostream>
 #include <iomanip>
 
-Text::Text()
+Text::Text() :
+	is_disabled(false)
 {
 	if (!font.loadFromFile("OpenSans-Bold.ttf"))
 	{
@@ -31,4 +32,21 @@ void Text::setStringToMilliseconds(sf::Int32 milliseconds)
 	os << milliseconds;
 
 	setString(os.str());
+}
+
+void Text::enable()
+{
+	is_disabled = false;
+	setFillColor(sf::Color::White);
+}
+
+void Text::disable()
+{
+	is_disabled = true;
+	setFillColor(sf::Color::Red);
+}
+
+bool Text::isDisabled()
+{
+	return is_disabled;
 }

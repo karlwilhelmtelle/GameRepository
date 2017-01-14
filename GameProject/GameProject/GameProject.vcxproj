@@ -131,6 +131,8 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HighscoreMenu.cpp" />
+    <ClCompile Include="LevelController.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainItem_Level2.cpp" />
     <ClCompile Include="MainItem.cpp" />
     <ClCompile Include="LevelMenu.cpp" />
@@ -144,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HighscoreMenu.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="LevelController.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="MainItem_Level2.h" />
     <ClInclude Include="MainItem.h" />
     <ClInclude Include="Game.h" />

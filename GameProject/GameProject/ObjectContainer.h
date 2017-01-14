@@ -10,7 +10,7 @@ struct ObjectContainer
 		std::vector<Object> v;
 		
 		/*  loads all objects with position and radius from a file*/
-		void load(sf::VideoMode resolution);
+		void load(sf::VideoMode &resolution);
 
 		/*  deletes if Object::notDrawable()
 			checks for collision

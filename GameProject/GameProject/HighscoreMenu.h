@@ -10,9 +10,9 @@ class Window;
 class HighscoreMenu
 {
 public:
-	HighscoreMenu(sf::VideoMode resolution);
+	HighscoreMenu(sf::VideoMode &resolution);
 
-	void draw(sf::RenderWindow &window);
+	void draw(Window &window);
 
 	void keyEvent(sf::Keyboard::Key key, Window &window);
 

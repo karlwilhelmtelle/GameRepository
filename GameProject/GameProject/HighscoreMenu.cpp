@@ -2,7 +2,7 @@
 #include "Window.h"
 #include <SFML/Audio.hpp>
 
-HighscoreMenu::HighscoreMenu(sf::VideoMode resolution):
+HighscoreMenu::HighscoreMenu(sf::VideoMode &resolution):
 	selected_index(MAX_QUANTITY_HIGHSCORE - 1)
 {
 	const sf::String strings[] = { "Last Score: ", "Highscore: ", "Back"};
@@ -17,7 +17,7 @@ HighscoreMenu::HighscoreMenu(sf::VideoMode resolution):
 	text[selected_index].setFillColor(sf::Color::Yellow);
 }
 
-void HighscoreMenu::draw(sf::RenderWindow & window)
+void HighscoreMenu::draw(Window & window)
 {
 	for (int i = 0; i < MAX_QUANTITY_HIGHSCORE; i++)
 	{

@@ -1,7 +1,7 @@
 #include "LevelMenu.h"
 #include "Window.h"
 
-LevelMenu::LevelMenu(sf::VideoMode resolution):
+LevelMenu::LevelMenu(sf::VideoMode &resolution):
 	selected_index(0)
 {
 	const sf::String strings[] = { "Level 1", "Level 2", "Level 3", "Back" };
@@ -17,7 +17,7 @@ LevelMenu::LevelMenu(sf::VideoMode resolution):
 	text[0].setFillColor(sf::Color::Yellow);
 }
 
-void LevelMenu::draw(sf::RenderWindow & window)
+void LevelMenu::draw(Window & window)
 {
 	for (int i = 0; i < MAX_LEVEL_MENU_POINTS; i++)
 	{
@@ -32,13 +32,13 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 	{
 		window.playSound(SoundName::MENU);
 		text[selected_index].setFillColor(sf::Color::White);
-		if (!selection_disabled)
+		while (true)
 		{
 			selected_index--;
-		}
-		else
-		{
-			selected_index = window.getLevelIndex();
+			if (!text[selected_index].isDisabled())
+			{
+				break;
+			}
 		}
 		text[selected_index].setFillColor(sf::Color::Yellow);
 	}
@@ -47,13 +47,13 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, Window & window)
 	{
 		window.playSound(SoundName::MENU);
 		text[selected_index].setFillColor(sf::Color::White);
-		if (!selection_disabled)
+		while (true)
 		{
 			selected_index++;
-		}
-		else
-		{
-			selected_index = MAX_LEVEL_MENU_POINTS - 1;
+			if (!text[selected_index].isDisabled())
+			{
+				break;
+			}
 		}
 		text[selected_index].setFillColor(sf::Color::Yellow);
 	}
@@ -83,28 +83,12 @@ int LevelMenu::getSelectedIndex()
 	return selected_index;
 }
 
-void LevelMenu::disableSelection(int level_index_keep_selected)
+void LevelMenu::disableIndex(int index)
 {
-	selection_disabled = true;
-
-	for (int i = 0; i < MAX_LEVEL_MENU_POINTS - 1; i++)
-	{
-		if (i != level_index_keep_selected)
-		{
-			text[i].setFillColor(sf::Color::Red);
-		}
-	}
+	text[index].disable();
 }
 
-void LevelMenu::enableSelection()
+void LevelMenu::enableIndex(int index)
 {
-	selection_disabled = false;
-
-	for (int i = 0; i < MAX_LEVEL_MENU_POINTS - 1; i++)
-	{
-		if (i != selected_index)
-		{
-			text[i].setFillColor(sf::Color::White);
-		}
-	}
+	text[index].enable();
 }

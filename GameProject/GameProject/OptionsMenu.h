@@ -11,9 +11,9 @@ class Window;
 class OptionsMenu
 {
 public:
-	OptionsMenu(sf::VideoMode resolution);
+	OptionsMenu(sf::VideoMode &resolution);
 
-	void draw(sf::RenderWindow &window);
+	void draw(Window &window);
 
 	void keyEvent(sf::Keyboard::Key key, Window &window);
 

@@ -1,14 +1,13 @@
 #include "MainItem.h"
 #include "Window.h"
 
-MainItem::MainItem(sf::VideoMode resolution) : 
+MainItem::MainItem(sf::VideoMode &resolution) : 
 	sf::CircleShape(),
 	resolution(resolution),
-	radius(40),
-	position(sf::Vector2f(	resolution.width / 2 - radius,
-							resolution.height / 2 - radius))
+	radius(40)
 {
 	setRadius(radius);
+	init();
 	setPosition(position);
 	setFillColor(sf::Color::Cyan);
 }
@@ -34,4 +33,11 @@ void MainItem::keyEvent(sf::Keyboard::Key key, float camera_speed)
 
 		setPosition(position);
 	}
+}
+
+void MainItem::init()
+{
+	position = sf::Vector2f(resolution.width / 2 - radius,
+		resolution.height / 2 - radius);
+	setPosition(position);
 }
