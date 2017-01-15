@@ -1,7 +1,7 @@
 #include "LevelMenu.h"
-#include "Window.h"
+#include "View.h"
 
-LevelMenu::LevelMenu(sf::VideoMode &resolution):
+LevelMenu::LevelMenu(const sf::VideoMode &resolution):
 	selected_index(0)
 {
 	const sf::String strings[] = { "Level 1", "Level 2", "Level 3", "Back" };
@@ -17,7 +17,7 @@ LevelMenu::LevelMenu(sf::VideoMode &resolution):
 	text[0].setFillColor(sf::Color::Yellow);
 }
 
-void LevelMenu::draw(Window & window)
+void LevelMenu::draw(View & window)
 {
 	for (int i = 0; i < MAX_LEVEL_MENU_POINTS; i++)
 	{
@@ -25,7 +25,7 @@ void LevelMenu::draw(Window & window)
 	}
 }
 
-void LevelMenu::keyEvent(sf::Keyboard::Key key, Window & window)
+void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 {
 	// move up
 	if (key == sf::Keyboard::Up && selected_index - 1 >= 0)

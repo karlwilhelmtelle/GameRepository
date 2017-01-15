@@ -1,6 +1,6 @@
 #include "LevelController.h"
 
-LevelController::LevelController(sf::VideoMode &res) :
+LevelController::LevelController(const sf::VideoMode &res) :
 	resolution(res),
 	level1(res),
 	currentLevel(&level1),

@@ -6,7 +6,7 @@
 Text::Text() :
 	is_disabled(false)
 {
-	if (!font.loadFromFile("OpenSans-Bold.ttf"))
+	if (!font.loadFromFile("Fonts/OpenSans-Bold.ttf"))
 	{
 		//Fehler beheben
 	}

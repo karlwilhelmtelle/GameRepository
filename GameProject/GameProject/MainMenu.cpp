@@ -1,8 +1,8 @@
 #include "MainMenu.h"
-#include "Window.h"
+#include "View.h"
 #include <SFML/Audio.hpp>
 
-MainMenu::MainMenu(sf::VideoMode &resolution) :
+MainMenu::MainMenu(const sf::VideoMode &resolution) :
 	selected_index(0)
 {
 	const sf::String strings[] = {"Play", "Options", "Highscore", "Exit"};
@@ -19,7 +19,7 @@ MainMenu::MainMenu(sf::VideoMode &resolution) :
 }
 
 
-void MainMenu::draw(Window &window)
+void MainMenu::draw(View &window)
 {
 	for (int i = 0; i < MAX_QUANTITY; i++)
 	{
@@ -28,7 +28,7 @@ void MainMenu::draw(Window &window)
 }
 
 
-void MainMenu::keyEvent(sf::Keyboard::Key key, Window &window)
+void MainMenu::keyEvent(sf::Keyboard::Key key, View &window)
 {
 	// move up
 	if (key == sf::Keyboard::Up && selected_index - 1 >= 0)

@@ -1,7 +1,7 @@
 #include "MainItem.h"
-#include "Window.h"
+#include "View.h"
 
-MainItem::MainItem(sf::VideoMode &resolution) : 
+MainItem::MainItem(const sf::VideoMode &resolution) : 
 	sf::CircleShape(),
 	resolution(resolution),
 	radius(40)

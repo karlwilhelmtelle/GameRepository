@@ -1,5 +1,5 @@
 #pragma once
-#include "Window.h"
+#include "View.h"
 
 class Game
 {
@@ -8,7 +8,7 @@ class Game
 		Game();
 	private:
 		/*	window of the game */
-		Window window;
+		View window;
 		
 		/*	current level */
 		int level;

@@ -7,15 +7,16 @@
 #define COLOUR_QUANTITY 8
 #define COLOUR_QUANTITY_2 8
 
-class Window;
+class View;
+
 class OptionsMenu
 {
 public:
-	OptionsMenu(sf::VideoMode &resolution);
+	OptionsMenu(const sf::VideoMode &resolution);
 
-	void draw(Window &window);
+	void draw(View &window);
 
-	void keyEvent(sf::Keyboard::Key key, Window &window);
+	void keyEvent(sf::Keyboard::Key key, View &window);
 
 	int getLine();
 

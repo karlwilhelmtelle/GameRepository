@@ -12,10 +12,10 @@
 
 enum class GameState { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
 
-class Window : public sf::RenderWindow
+class View : public sf::RenderWindow
 {
 	public:
-		Window(sf::VideoMode &resolution);
+		View(const sf::VideoMode &resolution);
 
 		void renderGraphics();
 

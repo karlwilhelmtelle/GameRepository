@@ -1,9 +1,9 @@
 #include "OptionsMenu.h"
-#include "Window.h"
+#include "View.h"
 #include <SFML/Audio.hpp>
 
 
-OptionsMenu::OptionsMenu(sf::VideoMode &resolution) :
+OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
 	line(0),
 	column(0)
 {
@@ -45,7 +45,7 @@ OptionsMenu::OptionsMenu(sf::VideoMode &resolution) :
 	s_o_Colours[0].setFillColor(sf::Color::Yellow);
 }
 
-void OptionsMenu::draw(Window & window)
+void OptionsMenu::draw(View & window)
 {
 	for (int i = 0; i < SOUND_OPTION_QUANTITY; i++)
 	{
@@ -65,7 +65,7 @@ void OptionsMenu::draw(Window & window)
 	}
 }
 
-void OptionsMenu::keyEvent(sf::Keyboard::Key key, Window & window)
+void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 {
 	switch (line)
 	{

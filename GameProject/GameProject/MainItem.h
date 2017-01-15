@@ -1,19 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class Window;
+class View;
 
 class MainItem : public sf::CircleShape
 {
 	public:
 		/*	sets radius, position, fillColor */
-		MainItem(sf::VideoMode &resolution);
+		MainItem(const sf::VideoMode &resolution);
 
 		void keyEvent(sf::Keyboard::Key key, float camera_speed);
 
 		void init();
 	private:
-		sf::VideoMode &resolution;
+		const sf::VideoMode &resolution;
 
 		/*  radius */
 		float radius;

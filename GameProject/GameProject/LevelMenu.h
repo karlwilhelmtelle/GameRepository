@@ -4,16 +4,16 @@
 
 #define MAX_LEVEL_MENU_POINTS 4
 
-class Window;
+class View;
 
 class LevelMenu
 {
 public:
-	LevelMenu(sf::VideoMode &resolution);
+	LevelMenu(const sf::VideoMode &resolution);
 
-	void draw(Window &window);
+	void draw(View &window);
 
-	void keyEvent(sf::Keyboard::Key key, Window &window);
+	void keyEvent(sf::Keyboard::Key key, View &window);
 	
 	int getSelectedIndex();
 

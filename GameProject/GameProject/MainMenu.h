@@ -3,16 +3,16 @@
 
 #define MAX_QUANTITY 4
 
-class Window;
+class View;
 
 class MainMenu
 {
 public:
-	MainMenu(sf::VideoMode &resolution);
+	MainMenu(const sf::VideoMode &resolution);
 
-	void draw(Window &window);
+	void draw(View &window);
 
-	void keyEvent(sf::Keyboard::Key key, Window &window);
+	void keyEvent(sf::Keyboard::Key key, View &window);
 
 	int getSelectedIndex();
 private:

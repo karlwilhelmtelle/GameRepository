@@ -6,9 +6,9 @@
 class Level
 {
 public:
-	Level(sf::VideoMode &resolution);
+	Level(const sf::VideoMode &resolution);
 
-	void draw(Window &window);
+	void draw(View &window);
 
 	void init();
 
@@ -23,7 +23,7 @@ public:
 private:
 	const int level_index;
 
-	sf::VideoMode &resolution;
+	const sf::VideoMode &resolution;
 
 	float camera_speed;
 

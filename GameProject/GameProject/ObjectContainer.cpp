@@ -1,7 +1,7 @@
 #include "ObjectContainer.h"
 #include <string>
 
-void ObjectContainer::load(sf::VideoMode &res)
+void ObjectContainer::load(const sf::VideoMode &res)
 {
 	v.clear();
 

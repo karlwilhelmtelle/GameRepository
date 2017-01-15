@@ -1,7 +1,7 @@
-#include "Window.h"
+#include "View.h"
 #include "Level.h"
 
-Level::Level(sf::VideoMode &res) :
+Level::Level(const sf::VideoMode &res) :
 	resolution(res),
 	item(res),
 	level_index(0)
@@ -33,7 +33,7 @@ void Level::update(bool * game_over)
 	camera_speed *= 1.00001f;
 }
 
-void Level::draw(Window & window)
+void Level::draw(View & window)
 {
 	window.draw(item);
 	window.draw(time_text);

@@ -5,16 +5,16 @@
 #define MAX_QUANTITY_HIGHSCORE 3
 
 
-class Window;
+class View;
 
 class HighscoreMenu
 {
 public:
-	HighscoreMenu(sf::VideoMode &resolution);
+	HighscoreMenu(const sf::VideoMode &resolution);
 
-	void draw(Window &window);
+	void draw(View &window);
 
-	void keyEvent(sf::Keyboard::Key key, Window &window);
+	void keyEvent(sf::Keyboard::Key key, View &window);
 
 	int getSelectedIndex();
 	

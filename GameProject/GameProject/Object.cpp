@@ -1,7 +1,7 @@
 #include "Object.h"
 #include <random>
 
-Object::Object(sf::VideoMode &resolution, float radius, float x_offset) :
+Object::Object(const sf::VideoMode &resolution, float radius, float x_offset) :
 	sf::CircleShape(),
 	radius(radius),
 	resolution(resolution),

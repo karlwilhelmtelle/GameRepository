@@ -1,7 +1,7 @@
-#include "Window.h"
+#include "View.h"
 #include "Object.h"
 
-Window::Window(sf::VideoMode &res) :
+View::View(const sf::VideoMode &res) :
 	sf::RenderWindow(res,
 		"Game", sf::Style::Fullscreen),
 	resolution(res),
@@ -16,7 +16,7 @@ Window::Window(sf::VideoMode &res) :
 }
 
 
-void Window::setLevelIndex(int selected_level_index)
+void View::setLevelIndex(int selected_level_index)
 {
 	setGameState(GameState::PLAY);
 	levels.setLevelIndex(selected_level_index);
@@ -24,7 +24,7 @@ void Window::setLevelIndex(int selected_level_index)
 
 
 // TODO: improve rendering performance
-void Window::renderGraphics()
+void View::renderGraphics()
 {
 	clear(sf::Color::Black);
 
@@ -66,7 +66,7 @@ void Window::renderGraphics()
 }
 
 
-void Window::updateGame(bool *game_over)
+void View::updateGame(bool *game_over)
 {
 	if (game_state == GameState::PLAY)
 	{
@@ -75,7 +75,7 @@ void Window::updateGame(bool *game_over)
 }
 
 
-void Window::keyAction(sf::Keyboard::Key key)
+void View::keyAction(sf::Keyboard::Key key)
 {
 	if (key == sf::Keyboard::Escape)
 	{
@@ -119,12 +119,12 @@ void Window::keyAction(sf::Keyboard::Key key)
 	}
 }
 
-void Window::setGameState(GameState state)
+void View::setGameState(GameState state)
 {
 	game_state = state;
 }
 
-void Window::gameOver()
+void View::gameOver()
 {
 	levels.getCurrentLevel()->init();
 	playSound(SoundName::GAME_OVER);
@@ -132,7 +132,7 @@ void Window::gameOver()
 }
 
 
-void Window::playSound(SoundName sound_name)
+void View::playSound(SoundName sound_name)
 {
 	sound.playSound(sound_name);
 }
