@@ -15,6 +15,7 @@ public:
 	void update(bool * game_over);
 
 	void updateElapsedTime();
+
 	void updateHighscore();
 
 	void keyEvent(sf::Keyboard::Key key);
@@ -34,6 +35,8 @@ private:
 	sf::Clock clock;
 	Text time_text;
 	Text highscore_text;
+	Text hs_text;
+	Text game_time;
 	sf::Int32 time_milliseconds;
 	sf::Int32 highscore_milliseconds;
 };

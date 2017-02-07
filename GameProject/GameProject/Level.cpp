@@ -6,9 +6,19 @@ Level::Level(const sf::VideoMode &res) :
 	item(res),
 	level_index(0)
 {
+	hs_text.setString("Highscore:");
+	hs_text.setPosition(sf::Vector2f((float)8 * res.width / 10,
+		(float)res.height / 50));
+	hs_text.setFillColor(sf::Color::White);
+
+	game_time.setString("Time:");
+	game_time.setPosition(sf::Vector2f((float)res.width / 50,
+		(float)res.height / 50));
+	game_time.setFillColor(sf::Color::White);
+
 	time_text.setFillColor(sf::Color::White);
 	time_text.setString("00:00:000");
-	time_text.setPosition(sf::Vector2f((float)res.width / 50,
+	time_text.setPosition(sf::Vector2f((float)4 * res.width / 50,
 		(float)res.height / 50));
 
 	highscore_text.setFillColor(sf::Color::White);
@@ -38,6 +48,8 @@ void Level::draw(View & window)
 	window.draw(item);
 	window.draw(time_text);
 	window.draw(highscore_text);
+	window.draw(hs_text);
+	window.draw(game_time);
 
 	for (auto e = map.v.begin(); e != map.v.end(); ++e)
 	{

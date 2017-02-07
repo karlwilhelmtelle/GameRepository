@@ -50,3 +50,36 @@ bool Text::isDisabled()
 {
 	return is_disabled;
 }
+
+void Text::hs_text()
+{
+	setFillColor(sf::Color::White);
+}
+
+void Text::game_time()
+{
+	setFillColor(sf::Color::White);
+}
+
+void Text::highscore_text()
+{
+	setFillColor(sf::Color::White);
+}
+
+void Text::highscore_menu_text()
+{
+	setFillColor(sf::Color::White);
+}
+
+void Text::highscore_menu_time()
+{
+	setFillColor(sf::Color::White);
+}
+
+void Text::highscore_menu(sf::Int32 milliseconds)
+{
+	std::stringstream os;
+	os << milliseconds;
+
+	setString(os.str());
+}
