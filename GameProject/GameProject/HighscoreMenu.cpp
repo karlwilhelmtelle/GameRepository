@@ -8,10 +8,14 @@ HighscoreMenu::HighscoreMenu(const sf::VideoMode &resolution):
 {
 	const sf::String strings[] = { "Last Score: ", "Highscore: ", "Back"};
 
-	highscore_menu_text.setFillColor(sf::Color::White);
-	highscore_menu_text.setStringToTime(0);
-	highscore_menu_text.setPosition(sf::Vector2f((float)resolution.width / 2,
+	last_score_value.setFillColor(sf::Color::White);
+	last_score_value.setStringToTime(0);
+	last_score_value.setPosition(sf::Vector2f((float)resolution.width / 2,
 		(float)resolution.height / 4));
+	highscore_value.setFillColor(sf::Color::White);
+	highscore_value.setStringToMilliseconds(0);
+	highscore_value.setPosition(sf::Vector2f((float)resolution.width / 2,
+		(float)resolution.height * 2 / 4));
 
 	for (int i = 0; i < MAX_QUANTITY_HIGHSCORE; i++)
 	{
@@ -29,7 +33,8 @@ void HighscoreMenu::draw(View & window)
 	{
 		window.draw(text[i]);
 	}
-	window.draw(highscore_menu_text);
+	window.draw(last_score_value);
+	window.draw(highscore_value);
 }
 
 void HighscoreMenu::keyEvent(sf::Keyboard::Key key, View & window)
@@ -45,18 +50,11 @@ int HighscoreMenu::getSelectedIndex()
 	return 0;
 }
 
-void HighscoreMenu::updateElapsedTime()
+void HighscoreMenu::updateTimeValues(sf::Int32 highscore, sf::Int32 last_score)
 {
-	time_milliseconds = clock.getElapsedTime().asMilliseconds();
-
-	time_menu_text.setStringToTime(time_milliseconds);
+	highscore_milliseconds = highscore;
+	last_score_milliseconds = last_score;
+	last_score_value.setStringToTime(last_score_milliseconds);
+	highscore_value.setStringToMilliseconds(highscore_milliseconds);
 }
 
-void HighscoreMenu::updateHighscore()
-{
-	if (time_milliseconds > highscore_milliseconds)
-	{
-		highscore_milliseconds = time_milliseconds;
-		highscore_menu_text.setStringToMilliseconds(highscore_milliseconds);
-	}
-}

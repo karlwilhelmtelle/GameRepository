@@ -21,6 +21,10 @@ public:
 	void keyEvent(sf::Keyboard::Key key);
 
 	void restartClock();
+
+	sf::Int32 getLastScore();
+	
+	sf::Int32 getHighscore();
 private:
 	const int level_index;
 
@@ -33,10 +37,10 @@ private:
 	ObjectContainer map;
 
 	sf::Clock clock;
-	Text time_text;
+	Text time_value;
+	Text highscore_value;
 	Text highscore_text;
-	Text hs_text;
-	Text game_time;
+	Text time_text;
 	sf::Int32 time_milliseconds;
 	sf::Int32 highscore_milliseconds;
 };

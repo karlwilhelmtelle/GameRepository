@@ -126,7 +126,9 @@ void View::setGameState(GameState state)
 
 void View::gameOver()
 {
-	levels.getCurrentLevel()->init();
+	Level* level = levels.getCurrentLevel();
+	highscore_menu.updateTimeValues(level->getHighscore(), level->getLastScore());
+	level->init();
 	playSound(SoundName::GAME_OVER);
 	setGameState(GameState::HIGHSCORE);
 }
