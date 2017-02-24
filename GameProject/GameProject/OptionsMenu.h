@@ -3,7 +3,7 @@
 #include "Text.h"
 
 #define SOUND_OPTION_QUANTITY 2
-#define SOUND_MENU_QUANTITY 3
+#define SOUND_MENU_QUANTITY 4
 #define COLOUR_QUANTITY 8
 #define COLOUR_QUANTITY_2 8
 
