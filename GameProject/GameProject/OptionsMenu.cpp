@@ -123,7 +123,7 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 			else if (key == sf::Keyboard::Up)
 			{
 				window.playSound(SoundName::MENU);
-				line++;
+				line--;
 				s_o_Colours[column].setFillColor(sf::Color::Yellow);
 				s_o_Colours2[column].setFillColor(sf::Color::White);
 			}
@@ -178,6 +178,7 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 				line--;
 				s_o_Menu[0].setFillColor(sf::Color::Yellow);
 				s_o_Colours2[column].setFillColor(sf::Color::White);
+				s_o_Menu[5].setFillColor(sf::Color::White);
 				column = 0;
 			}
 		}
