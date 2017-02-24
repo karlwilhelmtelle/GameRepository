@@ -14,12 +14,6 @@ public:
 	void enable();
 	void disable();
 	bool isDisabled();
-	void hs_text();
-	void game_time();
-	void highscore_text();
-	void highscore_menu_text();
-	void highscore_menu_time();
-	void highscore_menu(sf::Int32 milliseconds);
 private:
 	sf::Font font;
 	bool is_disabled;
