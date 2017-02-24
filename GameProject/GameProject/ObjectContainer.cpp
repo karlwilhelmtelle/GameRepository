@@ -8,7 +8,7 @@ void ObjectContainer::load(const sf::VideoMode &res)
 	const int max_objects = 4;
 	for (int i = 0; i < max_objects; i++)
 	{
-		v.push_back(Object(res, 60, i * (float)(res.width / max_objects)));
+		v.push_back(Object(res, 60, i * (float)(res.width / max_objects), color));
 	}
 }
 
@@ -35,5 +35,14 @@ void ObjectContainer::update(sf::Vector2f item_position, float item_radius,
 		{
 			object->refresh();
 		}
+	}
+}
+
+void ObjectContainer::setFillColor(sf::Color new_color)
+{
+	color = new_color;
+	for (auto& e : v)
+	{
+		e.setFillColor(new_color);
 	}
 }

@@ -9,9 +9,10 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
 {
 	//const sf::String soundMenu[] = { "Colour (Character):", "Colour (Enemies):", "Sound:", "Back" };
 	std::vector < std::vector <sf::String> > strings;
-	strings.push_back({ "Character:", "Black", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
-	strings.push_back({ "Enemies:", "Black", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
+	strings.push_back({ "Character:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
+	strings.push_back({ "Enemies:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
 	strings.push_back({ "Sound:", "On" , "Off" });
+	settings = { 2, 6, 1 };
 
 	int i = 0;
 	for (auto& row : strings)
@@ -29,7 +30,6 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
 			j++;
 		}
 		items.push_back(line_items);
-		settings.push_back(size_t(1));
 		i++;
 	}
 	items[line][settings[line]].setFillColor(sf::Color::Yellow);
@@ -72,9 +72,11 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 			window.playSound(SoundName::MENU);
 			break;
 		case sf::Keyboard::Return:
+			window.updateSettings(settings);
 			window.setGameState(GameState::MAIN_MENU);
 			break;
 		case sf::Keyboard::Escape:
+			window.updateSettings(settings);
 			window.setGameState(GameState::MAIN_MENU);
 			break;
 	}
@@ -82,4 +84,3 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 	settings[line] = std::min(std::max(settings[line], size_t(1)), items[line].size() - 1);
 	items[line][settings[line]].setFillColor(sf::Color::Yellow);
 }
-

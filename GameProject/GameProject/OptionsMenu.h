@@ -21,10 +21,6 @@ public:
 
 private:
 	std::vector< std::vector < Text > > items;
-	/*Text s_o_Menu[SOUND_OPTION_QUANTITY];
-	Text s_o_Points[SOUND_MENU_QUANTITY];
-	Text s_o_Colours[COLOUR_QUANTITY];
-	Text s_o_Colours2[COLOUR_QUANTITY_2];*/
 	size_t line;
 	std::vector < size_t > settings;
 };

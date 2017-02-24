@@ -1,7 +1,7 @@
 #include "Object.h"
 #include <random>
 
-Object::Object(const sf::VideoMode &resolution, float radius, float x_offset) :
+Object::Object(const sf::VideoMode &resolution, float radius, float x_offset, sf::Color color) :
 	sf::CircleShape(),
 	radius(radius),
 	resolution(resolution),
@@ -9,7 +9,7 @@ Object::Object(const sf::VideoMode &resolution, float radius, float x_offset) :
 {
 	refresh();
 	setRadius(radius);
-	setFillColor(sf::Color::Red);
+	setFillColor(color);
 }
 
 

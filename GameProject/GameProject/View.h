@@ -31,6 +31,8 @@ class View : public sf::RenderWindow
 
 		void playSound(SoundName sound_name);
 
+		void updateSettings(std::vector < size_t > settings);
+
 		//void score();
 	private:
 		const sf::VideoMode &resolution;

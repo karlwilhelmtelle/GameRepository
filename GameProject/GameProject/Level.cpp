@@ -77,6 +77,59 @@ void Level::updateHighscore()
 	}
 }
 
+void Level::updateSettings(std::vector<size_t> settings)
+{
+	switch (settings[0])
+	{
+		case 1:
+			item.setFillColor(sf::Color::Blue);
+			break;
+		case 2:
+			item.setFillColor(sf::Color::Cyan);
+			break;
+		case 3:
+			item.setFillColor(sf::Color::Green);
+			break;
+		case 4:
+			item.setFillColor(sf::Color::Yellow);
+			break;
+		case 5:
+			item.setFillColor(sf::Color::White);
+			break;
+		case 6:
+			item.setFillColor(sf::Color::Red);
+			break;
+		case 7:
+			item.setFillColor(sf::Color::Magenta);
+			break;
+	}
+
+	switch (settings[1])
+	{
+	case 1:
+		map.setFillColor(sf::Color::Blue);
+		break;
+	case 2:
+		map.setFillColor(sf::Color::Cyan);
+		break;
+	case 3:
+		map.setFillColor(sf::Color::Green);
+		break;
+	case 4:
+		map.setFillColor(sf::Color::Yellow);
+		break;
+	case 5:
+		map.setFillColor(sf::Color::White);
+		break;
+	case 6:
+		map.setFillColor(sf::Color::Red);
+		break;
+	case 7:
+		map.setFillColor(sf::Color::Magenta);
+		break;
+	}
+}
+
 void Level::keyEvent(sf::Keyboard::Key key)
 {
 	item.keyEvent(key, camera_speed);

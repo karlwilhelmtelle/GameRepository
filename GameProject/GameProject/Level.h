@@ -18,6 +18,8 @@ public:
 
 	void updateHighscore();
 
+	void updateSettings(std::vector < size_t > settings);
+
 	void keyEvent(sf::Keyboard::Key key);
 
 	void restartClock();

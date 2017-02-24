@@ -1,6 +1,7 @@
 #include "Sound.h"
 
-Sound::Sound()
+Sound::Sound() :
+	isEnabled(true)
 {
 	if (!menu.loadFromFile("Sounds/menu_sound.wav"))
 	{
@@ -15,14 +16,28 @@ Sound::Sound()
 
 void Sound::playSound(SoundName sound_name)
 {
-	if (sound_name == SoundName::MENU)
+	if (isEnabled)
 	{
-		setBuffer(menu);
-	}
-	else if (sound_name == SoundName::GAME_OVER)
-	{
-		setBuffer(game_over);
-	}
+		switch (sound_name)
+		{
+			case SoundName::MENU:
+				setBuffer(menu);
+				break;
+			case SoundName::GAME_OVER:
+				setBuffer(game_over);
+				break;
+		}
 
-	play();
+		play();
+	}
+}
+
+void Sound::disable()
+{
+	isEnabled = false;
+}
+
+void Sound::enable()
+{
+	isEnabled = true;
 }

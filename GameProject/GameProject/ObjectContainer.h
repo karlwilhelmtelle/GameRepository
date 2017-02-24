@@ -18,4 +18,8 @@ struct ObjectContainer
 		*/
 		void update(sf::Vector2f item_position, float item_radius, 
 			float camera_speed, bool *collision);
+
+		void setFillColor(sf::Color color);
+private:
+	sf::Color color;
 };

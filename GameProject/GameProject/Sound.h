@@ -9,7 +9,10 @@ class Sound : public sf::Sound
 		Sound();
 
 		void playSound(SoundName sound_name);
+		void disable();
+		void enable();
 	private:
+		bool isEnabled;
 		sf::SoundBuffer menu;
 		sf::SoundBuffer game_over;
 };

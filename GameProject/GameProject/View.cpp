@@ -139,6 +139,21 @@ void View::playSound(SoundName sound_name)
 	sound.playSound(sound_name);
 }
 
+void View::updateSettings(std::vector<size_t> settings)
+{
+	levels.getCurrentLevel()->updateSettings(settings);
+
+	switch (settings[2])
+	{
+		case 1:
+			sound.enable();
+			break;
+		case 2:
+			sound.disable();
+			break;
+	}
+}
+
 /*
 void Window::score()
 {
