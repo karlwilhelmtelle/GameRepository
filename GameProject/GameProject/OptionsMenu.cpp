@@ -79,22 +79,23 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 				column++;
 				s_o_Colours[column].setFillColor(sf::Color::Yellow);
 			}
-			if (key == sf::Keyboard::Left && column > 0)
+			else if (key == sf::Keyboard::Left && column > 0)
 			{
 				window.playSound(SoundName::MENU);
 				s_o_Colours[column].setFillColor(sf::Color::White);
 				column--;
 				s_o_Colours[column].setFillColor(sf::Color::Yellow);
 			}
-			if (key == sf::Keyboard::Down)
+			else if (key == sf::Keyboard::Down)
 			{
 				window.playSound(SoundName::MENU);
-				line = line + 1;
+				line++;
 				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
 				s_o_Colours[column].setFillColor(sf::Color::White);
 			}
 			break;
 		}
+
 		case 1:
 		{
 			if (key == sf::Keyboard::Right && column <= 6)
@@ -104,30 +105,31 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 				column++;
 				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
 			}
-			if (key == sf::Keyboard::Left && column > 0)
+			else if (key == sf::Keyboard::Left && column > 0)
 			{
 				window.playSound(SoundName::MENU);
 				s_o_Colours2[column].setFillColor(sf::Color::White);
 				column--;
 				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
 			}
-			if (key == sf::Keyboard::Down)
+			else if (key == sf::Keyboard::Down)
 			{
 				window.playSound(SoundName::MENU);
-				line = line + 1;
+				line++;
 				s_o_Menu[0].setFillColor(sf::Color::Yellow);
 				s_o_Colours2[column].setFillColor(sf::Color::White);
 				column = 0;
 			}
-			if (key == sf::Keyboard::Up)
+			else if (key == sf::Keyboard::Up)
 			{
 				window.playSound(SoundName::MENU);
-				line = line - 1;
+				line++;
 				s_o_Colours[column].setFillColor(sf::Color::Yellow);
 				s_o_Colours2[column].setFillColor(sf::Color::White);
 			}
 			break;
 		}
+
 		case 2:
 		{
 			if (key == sf::Keyboard::Right && column < 1)
@@ -138,7 +140,7 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 				s_o_Menu[column].setFillColor(sf::Color::Yellow);
 				s_o_Menu[5].setFillColor(sf::Color::White);
 			}
-			if (key == sf::Keyboard::Left && column > 0)
+			else if (key == sf::Keyboard::Left && column > 0)
 			{
 				window.playSound(SoundName::MENU);
 				s_o_Menu[column].setFillColor(sf::Color::White);
@@ -146,23 +148,37 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 				s_o_Menu[column].setFillColor(sf::Color::Yellow);
 				s_o_Menu[5].setFillColor(sf::Color::White);
 			}
-			if (key == sf::Keyboard::Up)
+			else if (key == sf::Keyboard::Up)
 			{
 				window.playSound(SoundName::MENU);
-				line = line - 1;
+				line--;
 				s_o_Colours2[column].setFillColor(sf::Color::Yellow);
 				s_o_Menu[column].setFillColor(sf::Color::White);
 				s_o_Menu[5].setFillColor(sf::Color::White);
 			}
-			if (key == sf::Keyboard::Down)
+			else if (key == sf::Keyboard::Down)
 			{
 				window.playSound(SoundName::MENU);
+				line++;
 				s_o_Menu[5].setFillColor(sf::Color::Yellow);
 				s_o_Menu[column].setFillColor(sf::Color::White);
 			}
+			break;
+		}
+
+		case 3:
+		{
 			if (key == sf::Keyboard::Return)
 			{
 				window.setGameState(GameState::MAIN_MENU);
+			}
+			else if (key == sf::Keyboard::Up)
+			{
+				window.playSound(SoundName::MENU);
+				line--;
+				s_o_Menu[0].setFillColor(sf::Color::Yellow);
+				s_o_Colours2[column].setFillColor(sf::Color::White);
+				column = 0;
 			}
 		}
 	}
