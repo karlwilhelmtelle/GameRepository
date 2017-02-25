@@ -63,7 +63,6 @@ void View::renderGraphics()
 		case GameState::HIGHSCORE:
 		{
 			highscoreMenu.draw(*this);
-			//score();
 			break;
 		}
 		default:
