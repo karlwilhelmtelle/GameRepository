@@ -191,8 +191,6 @@ void Menu::keyEvent(const sf::Keyboard::Key key, View & window)
 
 	if (key == sf::Keyboard::Return || key == sf::Keyboard::Space)
 	{
-		window.playSound(SoundName::MENU);
-
 		switch (currentMenu)
 		{
 			case MainMenu:
@@ -241,15 +239,17 @@ void Menu::keyEvent(const sf::Keyboard::Key key, View & window)
 				break;
 			} //end case HighscoreMenu
 		} //end switch currentMenu
+
+		window.playSound(SoundName::MENU);
 	}
 	else if (key == sf::Keyboard::Escape)
 	{
-		window.playSound(SoundName::MENU);
 		if (currentMenu == OptionsMenu)
 		{
 			window.updateSettings(selectedCol[OptionsMenu]);
 		}
 		setMenu(MainMenu);
+		window.playSound(SoundName::MENU);
 	}
 
 	if (change)
