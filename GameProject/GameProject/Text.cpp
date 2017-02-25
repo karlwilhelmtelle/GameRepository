@@ -29,7 +29,7 @@ void Text::setStringToTime(const sf::Int32 milliseconds)
 	setString(os.str());
 }
 
-void Text::setStringToMilliseconds(const sf::Int32 milliseconds)
+void Text::setStringToMilli(const sf::Int32 milliseconds)
 {
 	std::stringstream os;
 	os << milliseconds;

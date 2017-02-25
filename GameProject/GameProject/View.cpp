@@ -6,11 +6,8 @@ View::View(const sf::VideoMode &res) :
 		"Game", sf::Style::Fullscreen),
 	resolution(res),
 	levels(res),
-	gameState(GameState::MAIN_MENU),
-	mainMenu(res),
-	levelMenu(res),
-	highscoreMenu(res),
-	optionsMenu(res, settings.getSettings())
+	gameState(GameState::MENU),
+	menu(res, settings.getSettings())
 {
 	setMouseCursorVisible(false);
 	initSettings();
@@ -34,40 +31,16 @@ void View::setLevelIndex(const int selectedLevelIndex)
 void View::renderGraphics()
 {
 	clear(sf::Color::Black);
-
-	switch (gameState)
+	
+	if (gameState == GameState::PLAY)
 	{
-		case GameState::PLAY:
-		{
-			levels.getCurrentLevel()->draw(*this);
-			break;
-		}
-		
-		case GameState::MAIN_MENU:
-		{
-			mainMenu.draw(*this);
-			break;
-		}
-
-		case GameState::LEVEL_MENU:
-		{
-			levelMenu.draw(*this);
-			break;
-		}
-
-		case GameState::OPTIONS:
-		{
-			optionsMenu.draw(*this);
-			break;
-		}
-		case GameState::HIGHSCORE:
-		{
-			highscoreMenu.draw(*this);
-			break;
-		}
-		default:
-			break;
+		levels.getCurrentLevel()->draw(*this);
 	}
+	else
+	{
+		menu.draw(*this);
+	}
+
 	display();
 }
 
@@ -78,65 +51,48 @@ void View::updateGame(bool *game_over)
 	{
 		levels.getCurrentLevel()->update(game_over);
 	}
+	else
+	{
+		menu.draw(*this);
+	}
 }
 
 
 void View::keyAction(const sf::Keyboard::Key key)
 {
-	if (key == sf::Keyboard::Escape)
+	if (gameState == GameState::PLAY)
 	{
-		setGameState(GameState::MAIN_MENU);
+		if (key != sf::Keyboard::Escape)
+		{
+			levels.getCurrentLevel()->keyEvent(key);
+		}
+		else
+		{
+			setGameState(GameState::MENU);
+		}
 	}
 	else
 	{
-		switch (gameState)
-		{
-			case GameState::PLAY:
-			{
-				levels.getCurrentLevel()->keyEvent(key);
-				break;
-			}
-
-			case GameState::MAIN_MENU:
-			{
-				mainMenu.keyEvent(key, *this);
-				break;
-			}
-
-			case GameState::LEVEL_MENU:
-			{
-				levelMenu.keyEvent(key, *this);
-				break;
-			}
-
-			case GameState::OPTIONS:
-			{
-				optionsMenu.keyEvent(key, *this);
-				break;
-			}
-			case GameState::HIGHSCORE:
-			{
-				highscoreMenu.keyEvent(key, *this);
-				break;
-			}
-			default:
-				break;
-		}
+		menu.keyEvent(key, *this);
 	}
 }
 
 void View::setGameState(const GameState state)
 {
-	gameState = state;
+	if (gameState != state)
+	{
+		gameState = state;
+	}
 }
 
 void View::gameOver()
 {
 	Level* level = levels.getCurrentLevel();
-	highscoreMenu.updateTimeValues(level->getHighscore(), level->getLastScore());
+	menu.updateHighscore(level->getHighscore(), level->getLastScore());
 	level->init();
 	playSound(SoundName::GAME_OVER);
-	setGameState(GameState::HIGHSCORE);
+	setGameState(GameState::MENU);
+	menu.setMenu(MenuState::HighscoreMenu);
 }
 
 

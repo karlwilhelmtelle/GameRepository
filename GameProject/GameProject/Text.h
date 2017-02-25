@@ -9,7 +9,7 @@ class Text : public sf::Text
 
 		void setStringToTime(const sf::Int32 milliseconds);
 	
-		void setStringToMilliseconds(const sf::Int32 milliseconds);
+		void setStringToMilli(const sf::Int32 milliseconds);
 
 		void enable();
 		void disable();

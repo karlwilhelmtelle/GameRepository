@@ -130,35 +130,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="HighscoreMenu.cpp" />
     <ClCompile Include="LevelController.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainItem_Level2.cpp" />
     <ClCompile Include="MainItem.cpp" />
-    <ClCompile Include="LevelMenu.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectContainer.cpp" />
-    <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HighscoreMenu.h" />
     <ClInclude Include="LevelController.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainItem_Level2.h" />
     <ClInclude Include="MainItem.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="LevelMenu.h" />
-    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectContainer.h" />
-    <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Text.h" />

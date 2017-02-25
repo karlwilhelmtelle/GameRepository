@@ -1,17 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "MainMenu.h"
+#include "Menu.h"
 #include "MainItem.h"
 #include "ObjectContainer.h"
-#include "LevelMenu.h"
 #include "Sound.h"
 #include "MainItem_Level2.h"
-#include "HighscoreMenu.h"
-#include "OptionsMenu.h"
 #include "LevelController.h"
 #include "Settings.h"
 
-enum class GameState { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
+enum class GameState { PLAY, MENU };
 
 class View : public sf::RenderWindow
 {
@@ -45,8 +42,10 @@ class View : public sf::RenderWindow
 		Settings settings;
 		Sound sound;
 		
-		MainMenu mainMenu;
+		Menu menu;
+
+		/*MainMenu mainMenu;
 		LevelMenu levelMenu;
 		HighscoreMenu highscoreMenu;
-		OptionsMenu optionsMenu;
+		OptionsMenu optionsMenu;*/
 };

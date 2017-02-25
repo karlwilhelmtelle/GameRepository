@@ -10,18 +10,6 @@
     <ClCompile Include="Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HighscoreMenu.cpp">
-      <Filter>Source Files\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelMenu.cpp">
-      <Filter>Source Files\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionsMenu.cpp">
-      <Filter>Source Files\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
@@ -60,18 +48,6 @@
     <ClInclude Include="Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HighscoreMenu.h">
-      <Filter>Header Files\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelMenu.h">
-      <Filter>Header Files\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionsMenu.h">
-      <Filter>Header Files\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="MainItem.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
@@ -106,12 +82,6 @@
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{600bbdb9-2592-4eaf-b838-044d99f3dce3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Menus">
-      <UniqueIdentifier>{37a43890-ee9f-471e-8b31-5b1cd9405bd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Menus">
-      <UniqueIdentifier>{315e72d6-6f41-4da8-8186-7c3f9d778607}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Objects">
       <UniqueIdentifier>{6391ce82-d39a-4fa0-9665-947e2d3a3532}</UniqueIdentifier>
