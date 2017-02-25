@@ -15,6 +15,7 @@ Menu::Menu(const sf::VideoMode & res, const std::vector<size_t> settings) :
 			{ "Character:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" },
 			{ "Enemies:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" },
 			{ "Sound:", "On" , "Off" },
+			{ "Save" }
 		},
 		{
 			{ "Last Score: ", "" },
