@@ -4,27 +4,27 @@
 Level::Level(const sf::VideoMode &res) :
 	resolution(res),
 	item(res),
-	level_index(0)
+	levelIndex(0)
 {
-	highscore_text.setString("Highscore:");
-	highscore_text.setPosition(sf::Vector2f((float)8 * res.width / 10,
-		(float)res.height / 50));
-	highscore_text.setFillColor(sf::Color::White);
+	const std::vector<std::string> strings = { "Time:", "", "Highscore:", ""};
+	const std::vector<float> xPosition = {
+		res.width / 50.0f,
+		9.0f * res.width / 10.0f,
+		8.0f * res.width / 10.0f,
+		4.0f * res.width / 50.0f
+	};
 
-	time_text.setString("Time:");
-	time_text.setPosition(sf::Vector2f((float)res.width / 50,
-		(float)res.height / 50));
-	time_text.setFillColor(sf::Color::White);
+	int i = 0;
+	for (auto &string : strings)
+	{
+		Text *text = new Text();
+		text->setString(string);
+		text->setPosition(sf::Vector2f(xPosition[i], res.height / 50.0f));
+		textItems.push_back(*text);
+		i++;
+	}
 
-	time_value.setFillColor(sf::Color::White);
-	time_value.setString("00:00:000");
-	time_value.setPosition(sf::Vector2f((float)4 * res.width / 50,
-		(float)res.height / 50));
-
-	highscore_value.setFillColor(sf::Color::White);
-	highscore_value.setStringToTime(0);
-	highscore_value.setPosition(sf::Vector2f((float)9 * res.width / 10,
-		(float)res.height / 50));
+	init();
 }
 
 void Level::init()
@@ -45,23 +45,24 @@ void Level::update(bool * game_over)
 
 void Level::draw(View & window)
 {
-	for (auto e = map.v.begin(); e != map.v.end(); ++e)
+	for (auto &e : map.v)
 	{
-		window.draw(*e);
+		window.draw(e);
 	}
 
 	window.draw(item);
-	window.draw(time_value);
-	window.draw(highscore_value);
-	window.draw(highscore_text);
-	window.draw(time_text);
+
+	for (auto &e : textItems)
+	{
+		window.draw(e);
+	}
 }
 
 void Level::updateElapsedTime()
 {
 	time_milliseconds = clock.getElapsedTime().asMilliseconds();
 
-	time_value.setStringToTime(time_milliseconds);
+	textItems[3].setStringToTime(time_milliseconds);
 }
 
 void Level::updateHighscore()
@@ -69,61 +70,14 @@ void Level::updateHighscore()
 	if (time_milliseconds > highscore_milliseconds)
 	{
 		highscore_milliseconds = time_milliseconds;
-		highscore_value.setStringToMilliseconds(highscore_milliseconds);
+		textItems[1].setStringToMilliseconds(highscore_milliseconds);
 	}
 }
 
-void Level::updateSettings(std::vector<size_t> settings)
+void Level::updateSettings(sf::Color mainItemColor, sf::Color objectsColor)
 {
-	switch (settings[0])
-	{
-		case 1:
-			item.setFillColor(sf::Color::Blue);
-			break;
-		case 2:
-			item.setFillColor(sf::Color::Cyan);
-			break;
-		case 3:
-			item.setFillColor(sf::Color::Green);
-			break;
-		case 4:
-			item.setFillColor(sf::Color::Yellow);
-			break;
-		case 5:
-			item.setFillColor(sf::Color::White);
-			break;
-		case 6:
-			item.setFillColor(sf::Color::Red);
-			break;
-		case 7:
-			item.setFillColor(sf::Color::Magenta);
-			break;
-	}
-
-	switch (settings[1])
-	{
-	case 1:
-		map.setFillColor(sf::Color::Blue);
-		break;
-	case 2:
-		map.setFillColor(sf::Color::Cyan);
-		break;
-	case 3:
-		map.setFillColor(sf::Color::Green);
-		break;
-	case 4:
-		map.setFillColor(sf::Color::Yellow);
-		break;
-	case 5:
-		map.setFillColor(sf::Color::White);
-		break;
-	case 6:
-		map.setFillColor(sf::Color::Red);
-		break;
-	case 7:
-		map.setFillColor(sf::Color::Magenta);
-		break;
-	}
+	item.updateSettings(mainItemColor);
+	map.updateSettings(objectsColor);
 }
 
 void Level::keyEvent(sf::Keyboard::Key key)

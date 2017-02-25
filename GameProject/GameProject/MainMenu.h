@@ -16,7 +16,7 @@ public:
 
 	int getSelectedIndex();
 private:
-	int selected_index;
-	Text text[MAX_QUANTITY];
+	size_t selectedIndex;
+	std::vector < Text > items;
 };
 

@@ -140,6 +140,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectContainer.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="View.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectContainer.h" />
     <ClInclude Include="OptionsMenu.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="View.h" />

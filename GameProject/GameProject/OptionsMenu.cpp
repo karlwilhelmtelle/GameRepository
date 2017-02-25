@@ -8,29 +8,28 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
 	line(0)
 {
 	//const sf::String soundMenu[] = { "Colour (Character):", "Colour (Enemies):", "Sound:", "Back" };
-	std::vector < std::vector <sf::String> > strings;
+	std::vector< std::vector<sf::String> > strings;
 	strings.push_back({ "Character:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
 	strings.push_back({ "Enemies:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
 	strings.push_back({ "Sound:", "On" , "Off" });
 	settings = { 2, 6, 1 };
 
 	int i = 0;
-	for (auto& row : strings)
+	for (auto &row : strings)
 	{
-		std::vector<Text> line_items;
+		std::vector<Text> lineElements;
 		int j = 0;
-		for (auto& col : row)
-		{
+		for (auto &col : row)
+		{			
 			Text *text = new Text();
-			text->setFillColor(sf::Color::White);
 			text->setString(col);
 			text->setPosition(sf::Vector2f((float) resolution.width * (j + 1) / 10,
 				(float)resolution.height * (i + 1) / 5));
 			
-			line_items.push_back(*text);
+			lineElements.push_back(*text);
 			j++;
 		}
-		items.push_back(line_items);
+		items.push_back(lineElements);
 		i++;
 	}
 	items[line][settings[line]].select();
@@ -57,30 +56,30 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 	switch (key)
 	{
 		case sf::Keyboard::Right:
-			change = true;
 			if (temp_settings[line] < items[line].size() - 1)
 			{
+				change = true;
 				++temp_settings[line];
 			}
 			break;
 		case sf::Keyboard::Left:
-			change = true;
 			if (temp_settings[line] > size_t(1))
 			{
+				change = true;
 				--temp_settings[line];
 			}
 			break;
 		case sf::Keyboard::Down:
-			change = true;
 			if (temp_line < items.size() - 1)
 			{
+				change = true;
 				++temp_line;
 			}
 			break;
 		case sf::Keyboard::Up:
-			change = true;
 			if (temp_line > size_t(0))
 			{
+				change = true;
 				--temp_line;
 			}
 			break;

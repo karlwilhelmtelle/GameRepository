@@ -8,18 +8,16 @@ HighscoreMenu::HighscoreMenu(const sf::VideoMode &resolution):
 {
 	const sf::String strings[] = { "Last Score: ", "Highscore: ", "Back"};
 
-	last_score_value.setFillColor(sf::Color::White);
 	last_score_value.setStringToTime(0);
 	last_score_value.setPosition(sf::Vector2f((float)resolution.width / 2,
 		(float)resolution.height / 4));
-	highscore_value.setFillColor(sf::Color::White);
+
 	highscore_value.setStringToMilliseconds(0);
 	highscore_value.setPosition(sf::Vector2f((float)resolution.width / 2,
 		(float)resolution.height * 2 / 4));
 
 	for (int i = 0; i < MAX_QUANTITY_HIGHSCORE; i++)
 	{
-		text[i].setFillColor(sf::Color::White);
 		text[i].setString(strings[i]);
 		text[i].setPosition(sf::Vector2f((float)resolution.width / 3.5f,
 			(float)resolution.height / (MAX_QUANTITY_HIGHSCORE + 1) * (i + 1)));

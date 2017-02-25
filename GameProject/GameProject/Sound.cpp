@@ -32,18 +32,14 @@ void Sound::playSound(SoundName sound_name)
 	}
 }
 
-void Sound::disable()
+void Sound::updateSettings(bool isAudioEnabled)
 {
-	if (isEnabled)
-	{
-		isEnabled = false;
-	}
-}
-
-void Sound::enable()
-{
-	if (!isEnabled)
+	if (isAudioEnabled && !isEnabled)
 	{
 		isEnabled = true;
+	}
+	else if (!isAudioEnabled && isEnabled)
+	{
+		isEnabled = false;
 	}
 }

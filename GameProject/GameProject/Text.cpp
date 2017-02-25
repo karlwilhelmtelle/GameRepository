@@ -12,6 +12,8 @@ Text::Text() :
 		//Fehler beheben
 	}
 	setFont(font);
+
+	setFillColor(sf::Color::White);
 }
 
 

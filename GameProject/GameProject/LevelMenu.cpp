@@ -8,13 +8,12 @@ LevelMenu::LevelMenu(const sf::VideoMode &resolution):
 
 	for (int i = 0; i < MAX_LEVEL_MENU_POINTS; i++)
 	{
-		text[i].setFillColor(sf::Color::White);
 		text[i].setString(strings[i]);
 		text[i].setPosition(sf::Vector2f((float)resolution.width / 2.5f,
 			(float)resolution.height / (MAX_LEVEL_MENU_POINTS + 2) * (i+1)));
 	}
 
-	text[0].setFillColor(sf::Color::Yellow);
+	text[0].select();
 }
 
 void LevelMenu::draw(View & window)
@@ -31,7 +30,7 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
 	{
 		window.playSound(SoundName::MENU);
-		text[selectedIndex].setFillColor(sf::Color::White);
+		text[selectedIndex].deselect();
 		/*while (true)
 		{
 			selected_index--;
@@ -41,13 +40,13 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 			}
 		}*/
 		selectedIndex--;
-		text[selectedIndex].setFillColor(sf::Color::Yellow);
+		text[selectedIndex].select();
 	}
 	// move down
 	else if (key == sf::Keyboard::Down && selectedIndex + 1 < MAX_LEVEL_MENU_POINTS)
 	{
 		window.playSound(SoundName::MENU);
-		text[selectedIndex].setFillColor(sf::Color::White);
+		text[selectedIndex].deselect();
 		/*while (true)
 		{
 			selected_index++;
@@ -57,7 +56,7 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 			}
 		}*/
 		selectedIndex++;
-		text[selectedIndex].setFillColor(sf::Color::Yellow);
+		text[selectedIndex].select();
 	}
 
 	//enter

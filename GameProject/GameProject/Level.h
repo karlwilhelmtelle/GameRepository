@@ -18,7 +18,7 @@ public:
 
 	void updateHighscore();
 
-	void updateSettings(std::vector < size_t > settings);
+	void updateSettings(sf::Color mainItemColor, sf::Color objectsColor);
 
 	void keyEvent(sf::Keyboard::Key key);
 
@@ -28,7 +28,7 @@ public:
 	
 	sf::Int32 getHighscore();
 private:
-	const int level_index;
+	const size_t levelIndex;
 
 	const sf::VideoMode &resolution;
 
@@ -39,6 +39,7 @@ private:
 	ObjectContainer map;
 
 	sf::Clock clock;
+	std::vector<Text> textItems;
 	Text time_value;
 	Text highscore_value;
 	Text highscore_text;

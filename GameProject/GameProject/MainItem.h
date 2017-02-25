@@ -12,6 +12,7 @@ class MainItem : public sf::CircleShape
 		void keyEvent(sf::Keyboard::Key key, float camera_speed);
 
 		void init();
+		void updateSettings(sf::Color color);
 	private:
 		const sf::VideoMode &resolution;
 

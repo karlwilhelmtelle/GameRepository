@@ -3,73 +3,86 @@
 #include <SFML/Audio.hpp>
 
 MainMenu::MainMenu(const sf::VideoMode &resolution) :
-	selected_index(0)
+	selectedIndex(0)
 {
-	const sf::String strings[] = {"Play", "Options", "Highscore", "Exit"};
+	const std::vector<sf::String> strings = {"Play", "Options", "Highscore", "Exit"};
 
-	for (int i = 0; i < MAX_QUANTITY; i++)
+	int i = 0;
+	for (auto &string : strings)
 	{
-		text[i].setFillColor(sf::Color::White);
-		text[i].setString(strings[i]);
-		text[i].setPosition(sf::Vector2f((float)resolution.width / 2.5f,
-			(float)resolution.height / (MAX_QUANTITY + 1) * (i+1)));
+		Text *text = new Text();
+		text->setString(string);
+		text->setPosition(sf::Vector2f((float)resolution.width / 2.5f,
+			(float)resolution.height / (MAX_QUANTITY + 1) * (i + 1)));
+		
+		items.push_back(*text);
+		i++;
 	}
 
-	text[0].setFillColor(sf::Color::Yellow);
+	items[selectedIndex].select();
 }
 
 
 void MainMenu::draw(View &window)
 {
-	for (int i = 0; i < MAX_QUANTITY; i++)
+	for (auto &e : items)
 	{
-		window.draw(text[i]);
+		window.draw(e);
 	}
 }
 
 
 void MainMenu::keyEvent(sf::Keyboard::Key key, View &window)
 {
-	// move up
-	if (key == sf::Keyboard::Up && selected_index - 1 >= 0)
+	bool change = false;
+	size_t tempSelectedIndex = selectedIndex;
+
+	switch (key)
 	{
-		window.playSound(SoundName::MENU);
-		text[selected_index].setFillColor(sf::Color::White);
-		selected_index--;
-		text[selected_index].setFillColor(sf::Color::Yellow);
-	}
-	// move down
-	else if (key == sf::Keyboard::Down && selected_index + 1 < MAX_QUANTITY)
-	{
-		window.playSound(SoundName::MENU);
-		text[selected_index].setFillColor(sf::Color::White);
-		selected_index++;
-		text[selected_index].setFillColor(sf::Color::Yellow);
+		case sf::Keyboard::Up:
+			if (tempSelectedIndex > 0)
+			{
+				change = true;
+				--tempSelectedIndex;
+			}
+			break;
+		case sf::Keyboard::Down:
+			if (tempSelectedIndex < items.size() - 1)
+			{
+				change = true;
+				++tempSelectedIndex;
+			}
+			break;
+		case sf::Keyboard::Return:
+			change = true;
+			switch (selectedIndex)
+			{
+				case 0:
+					window.setGameState(GameState::LEVEL_MENU);
+					break;
+				case 1:
+					window.setGameState(GameState::OPTIONS);
+					break;
+				case 2:
+					window.setGameState(GameState::HIGHSCORE);
+					break;
+				case 3:
+					window.close();
+					break;
+			}
+			break;
 	}
 
-	//enter
-	if (key == sf::Keyboard::Return)
+	if (change)
 	{
 		window.playSound(SoundName::MENU);
-		switch (selected_index)
-		{
-			case 0:
-				window.setGameState(GameState::LEVEL_MENU);
-				break;
-			case 1:
-				window.setGameState(GameState::OPTIONS);
-				break;
-			case 2:
-				window.setGameState(GameState::HIGHSCORE);
-				break;
-			case 3:
-				window.close();
-				break;
-		}
+		items[selectedIndex].deselect();
+		selectedIndex = tempSelectedIndex;
+		items[selectedIndex].select();
 	}
 }
 
 int MainMenu::getSelectedIndex()
 {
-	return selected_index;
+	return selectedIndex;
 }

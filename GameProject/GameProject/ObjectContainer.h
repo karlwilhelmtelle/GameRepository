@@ -8,6 +8,8 @@ struct ObjectContainer
 	public:
 		/*  vector of objects */
 		std::vector<Object> v;
+
+		void init(const sf::Color color);
 		
 		/*  loads all objects with position and radius from a file*/
 		void load(const sf::VideoMode &resolution);
@@ -19,7 +21,7 @@ struct ObjectContainer
 		void update(sf::Vector2f item_position, float item_radius, 
 			float camera_speed, bool *collision);
 
-		void setFillColor(sf::Color color);
+		void updateSettings(sf::Color color);
 private:
 	sf::Color color;
 };

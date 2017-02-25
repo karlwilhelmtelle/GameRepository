@@ -13,8 +13,15 @@ View::View(const sf::VideoMode &res) :
 	options_menu(res)
 {
 	setMouseCursorVisible(false);
+	initSettings();
 }
 
+void View::initSettings()
+{
+	levels.getCurrentLevel()->updateSettings(settings.getMainItemColor(),
+		settings.getObjectsColor());
+	sound.updateSettings(settings.audioEnabled());
+}
 
 void View::setLevelIndex(int selected_level_index)
 {
@@ -139,27 +146,8 @@ void View::playSound(SoundName sound_name)
 	sound.playSound(sound_name);
 }
 
-void View::updateSettings(std::vector<size_t> settings)
+void View::updateSettings(std::vector<size_t> newSettings)
 {
-	levels.getCurrentLevel()->updateSettings(settings);
-
-	switch (settings[2])
-	{
-		case 1:
-			sound.enable();
-			break;
-		case 2:
-			sound.disable();
-			break;
-	}
+	settings.update(newSettings);
+	initSettings();
 }
-
-/*
-void Window::score()
-{
-	sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
-	time_text.timeToString(time_milliseconds);
-	time_text.setPosition(sf::Vector2f((float)resolution.width / 2.0f,
-		(float)resolution.height / 3 ));
-	draw(time_text);
-}*/

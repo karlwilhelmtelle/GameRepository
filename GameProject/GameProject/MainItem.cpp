@@ -41,3 +41,8 @@ void MainItem::init()
 		resolution.height / 2 - radius);
 	setPosition(position);
 }
+
+void MainItem::updateSettings(sf::Color color)
+{
+	setFillColor(color);
+}

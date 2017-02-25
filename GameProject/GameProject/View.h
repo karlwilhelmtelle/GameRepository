@@ -9,6 +9,7 @@
 #include "HighscoreMenu.h"
 #include "OptionsMenu.h"
 #include "LevelController.h"
+#include "Settings.h"
 
 enum class GameState { MAIN_MENU, LEVEL_MENU, PLAY, OPTIONS, HIGHSCORE };
 
@@ -32,17 +33,18 @@ class View : public sf::RenderWindow
 		void playSound(SoundName sound_name);
 
 		void updateSettings(std::vector < size_t > settings);
-
-		//void score();
 	private:
+		void initSettings();
+
 		const sf::VideoMode &resolution;
 
 		GameState game_state;
 
 		LevelController levels;
 
+		Settings settings;
 		Sound sound;
-
+		
 		MainMenu main_menu;
 		LevelMenu level_menu;
 		HighscoreMenu highscore_menu;

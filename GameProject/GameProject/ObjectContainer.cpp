@@ -38,11 +38,14 @@ void ObjectContainer::update(sf::Vector2f item_position, float item_radius,
 	}
 }
 
-void ObjectContainer::setFillColor(sf::Color new_color)
+void ObjectContainer::updateSettings(sf::Color newColor)
 {
-	color = new_color;
-	for (auto& e : v)
+	if (newColor != color)
 	{
-		e.setFillColor(new_color);
+		color = newColor;
+		for (auto &e : v)
+		{
+			e.setFillColor(newColor);
+		}
 	}
 }
