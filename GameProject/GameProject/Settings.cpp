@@ -1,10 +1,9 @@
 #include "Settings.h"
 
 Settings::Settings() :
-	mainItemColor(sf::Color::Cyan),
-	objectsColor(sf::Color::Red),
-	isAudioEnabled(true)
+	settings({2, 6, 1})
 {
+	update(settings);
 }
 
 void Settings::update(std::vector<size_t> settings)
@@ -74,6 +73,11 @@ void Settings::update(std::vector<size_t> settings)
 			}
 			break;
 	}
+}
+
+std::vector<size_t> Settings::getSettings()
+{
+	return settings;
 }
 
 sf::Color Settings::getMainItemColor()

@@ -1,8 +1,6 @@
 #pragma once
 #include "Text.h"
 
-#define MAX_QUANTITY 4
-
 class View;
 
 class MainMenu
@@ -14,7 +12,7 @@ public:
 
 	void keyEvent(sf::Keyboard::Key key, View &window);
 
-	int getSelectedIndex();
+	size_t getSelectedIndex();
 private:
 	size_t selectedIndex;
 	std::vector < Text > items;

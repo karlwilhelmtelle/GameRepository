@@ -4,7 +4,7 @@
 #include <SFML/Audio.hpp>
 
 
-OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
+OptionsMenu::OptionsMenu(const sf::VideoMode &resolution, const std::vector<size_t> initSettings) :
 	line(0)
 {
 	//const sf::String soundMenu[] = { "Colour (Character):", "Colour (Enemies):", "Sound:", "Back" };
@@ -12,7 +12,7 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
 	strings.push_back({ "Character:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
 	strings.push_back({ "Enemies:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" });
 	strings.push_back({ "Sound:", "On" , "Off" });
-	settings = { 2, 6, 1 };
+	settings = initSettings;
 
 	int i = 0;
 	for (auto &row : strings)
@@ -27,10 +27,10 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
 				(float)resolution.height * (i + 1) / 5));
 			
 			lineElements.push_back(*text);
-			j++;
+			++j;
 		}
 		items.push_back(lineElements);
-		i++;
+		++i;
 	}
 	items[line][settings[line]].select();
 }

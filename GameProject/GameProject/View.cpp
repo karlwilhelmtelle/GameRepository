@@ -10,7 +10,7 @@ View::View(const sf::VideoMode &res) :
 	main_menu(res),
 	level_menu(res),
 	highscore_menu(res),
-	options_menu(res)
+	options_menu(res, settings.getSettings())
 {
 	setMouseCursorVisible(false);
 	initSettings();

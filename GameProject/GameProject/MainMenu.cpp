@@ -13,10 +13,10 @@ MainMenu::MainMenu(const sf::VideoMode &resolution) :
 		Text *text = new Text();
 		text->setString(string);
 		text->setPosition(sf::Vector2f((float)resolution.width / 2.5f,
-			(float)resolution.height / (MAX_QUANTITY + 1) * (i + 1)));
+			(float)resolution.height / (strings.size() + 1) * (i + 1)));
 		
 		items.push_back(*text);
-		i++;
+		++i;
 	}
 
 	items[selectedIndex].select();
@@ -82,7 +82,7 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, View &window)
 	}
 }
 
-int MainMenu::getSelectedIndex()
+size_t MainMenu::getSelectedIndex()
 {
 	return selectedIndex;
 }

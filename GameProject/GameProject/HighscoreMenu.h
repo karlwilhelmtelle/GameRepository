@@ -16,19 +16,14 @@ public:
 
 	void keyEvent(sf::Keyboard::Key key, View &window);
 
-	int getSelectedIndex();
-
 	void updateTimeValues(sf::Int32 highscore, sf::Int32 last_score);
 	
 private:
-	Text last_score_value;
-	Text highscore_value;
-	Text text[MAX_QUANTITY_HIGHSCORE];
+	std::vector < std::vector < Text > > items;
 	
-	int selectedIndex;
+	size_t selectedIndex;
 
 	sf::Int32 highscore_milliseconds;
-
 	sf::Int32 last_score_milliseconds;
 };
 

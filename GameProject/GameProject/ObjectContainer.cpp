@@ -6,7 +6,7 @@ void ObjectContainer::load(const sf::VideoMode &res)
 	v.clear();
 
 	const int max_objects = 4;
-	for (int i = 0; i < max_objects; i++)
+	for (int i = 0; i < max_objects; ++i)
 	{
 		v.push_back(Object(res, 60, i * (float)(res.width / max_objects), color));
 	}

@@ -4,92 +4,79 @@
 LevelMenu::LevelMenu(const sf::VideoMode &resolution):
 	selectedIndex(0)
 {
-	const sf::String strings[] = { "Level 1", "Level 2", "Level 3", "Back" };
+	const std::vector<sf::String> strings = { "Level 1", "Level 2", "Level 3", "Back" };
 
-	for (int i = 0; i < MAX_LEVEL_MENU_POINTS; i++)
+	int i = 0;
+	for (auto &string : strings)
 	{
-		text[i].setString(strings[i]);
-		text[i].setPosition(sf::Vector2f((float)resolution.width / 2.5f,
-			(float)resolution.height / (MAX_LEVEL_MENU_POINTS + 2) * (i+1)));
+		Text *text = new Text();
+		text->setString(string);
+		text->setPosition(sf::Vector2f((float)resolution.width / 2.5f,
+			(float)resolution.height / (strings.size() + 2) * (i+1)));
+
+		items.push_back(*text);
+		++i;
 	}
 
-	text[0].select();
+	items[selectedIndex].select();
 }
 
 void LevelMenu::draw(View & window)
 {
-	for (int i = 0; i < MAX_LEVEL_MENU_POINTS; i++)
+	for (auto &e : items)
 	{
-		window.draw(text[i]);
+		window.draw(e);
 	}
 }
 
 void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 {
-	// move up
-	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
+	bool change = false;
+	size_t tempSelectedIndex = selectedIndex;
+
+	switch (key)
 	{
-		window.playSound(SoundName::MENU);
-		text[selectedIndex].deselect();
-		/*while (true)
-		{
-			selected_index--;
-			if (!text[selected_index].isDisabled())
+		case sf::Keyboard::Up:
+			if (tempSelectedIndex > 0)
 			{
-				break;
+				change = true;
+				--tempSelectedIndex;
 			}
-		}*/
-		selectedIndex--;
-		text[selectedIndex].select();
-	}
-	// move down
-	else if (key == sf::Keyboard::Down && selectedIndex + 1 < MAX_LEVEL_MENU_POINTS)
-	{
-		window.playSound(SoundName::MENU);
-		text[selectedIndex].deselect();
-		/*while (true)
-		{
-			selected_index++;
-			if (!text[selected_index].isDisabled())
+			break;
+		case sf::Keyboard::Down:
+			if (tempSelectedIndex < items.size() - 1)
 			{
-				break;
+				change = true;
+				++tempSelectedIndex;
 			}
-		}*/
-		selectedIndex++;
-		text[selectedIndex].select();
+			break;
+		case sf::Keyboard::Return:
+			change = true;
+			if (selectedIndex != items.size() - 1)
+			{
+				window.setLevelIndex(selectedIndex);
+			}
+			else
+			{
+				window.setGameState(GameState::MAIN_MENU);
+			}
+			break;
+		case sf::Keyboard::Escape:
+			change = true;
+			window.setGameState(GameState::MAIN_MENU);
+			break;
 	}
 
-	//enter
-	if (key == sf::Keyboard::Return)
+	if (change)
 	{
 		window.playSound(SoundName::MENU);
-		if (selectedIndex != MAX_LEVEL_MENU_POINTS - 1)
-		{
-			window.setLevelIndex(selectedIndex);
-		}
-		else
-		{
-			window.setGameState(GameState::MAIN_MENU);
-		}
-	}
-	else if (key == sf::Keyboard::Escape)
-	{
-		window.playSound(SoundName::MENU);
-		window.setGameState(GameState::MAIN_MENU);
+		items[selectedIndex].deselect();
+		selectedIndex = tempSelectedIndex;
+		items[selectedIndex].select();
 	}
 }
 
-int LevelMenu::getSelectedIndex()
+size_t LevelMenu::getSelectedIndex()
 {
 	return selectedIndex;
-}
-
-void LevelMenu::disableIndex(int index)
-{
-	text[index].disable();
-}
-
-void LevelMenu::enableIndex(int index)
-{
-	text[index].enable();
 }

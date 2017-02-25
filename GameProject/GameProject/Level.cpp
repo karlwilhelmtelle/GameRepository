@@ -21,7 +21,7 @@ Level::Level(const sf::VideoMode &res) :
 		text->setString(string);
 		text->setPosition(sf::Vector2f(xPosition[i], res.height / 50.0f));
 		textItems.push_back(*text);
-		i++;
+		++i;
 	}
 
 	init();
