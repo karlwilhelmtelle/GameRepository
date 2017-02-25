@@ -14,8 +14,7 @@ Menu::Menu(const sf::VideoMode & res, const std::vector<size_t> settings) :
 		{
 			{ "Character:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" },
 			{ "Enemies:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" },
-			{ "Sound:", "On" , "Off" },
-			{ "Save" }
+			{ "Sound:", "On" , "Off" }
 		},
 		{
 			{ "Last Score: ", "" },
@@ -28,7 +27,7 @@ Menu::Menu(const sf::VideoMode & res, const std::vector<size_t> settings) :
 	selectedCol = {
 		{ 0, 0, 0, 0 },
 		{ 0, 0, 0, 0 },
-		{ settings[0], settings[1], settings[2], 0 },
+		settings,
 		{ 0, 0, 0 }
 	};
 
@@ -147,166 +146,111 @@ void Menu::keyEvent(const sf::Keyboard::Key key, View & window)
 	size_t newSelectedRow = selectedRow[currentMenu];
 	size_t newSelectedCol = selectedCol[currentMenu][newSelectedRow];
 
-	switch (currentMenu)
+	if (currentMenu != HighscoreMenu)
 	{
-		case MainMenu:
+		switch (key)
 		{
-			switch (key)
+			case sf::Keyboard::Up:
 			{
-				case sf::Keyboard::Up:
+				if (newSelectedRow > 0)
 				{
-					if (newSelectedRow > 0)
-					{
-						change = true;
-						--newSelectedRow;
-					}
-					break;
+					change = true;
+					--newSelectedRow;
 				}
-				case sf::Keyboard::Down:
+				break;
+			}
+			case sf::Keyboard::Down:
+			{
+				if (newSelectedRow < items[currentMenu].size() - 1)
 				{
-					if (newSelectedRow < items[currentMenu].size() - 1)
-					{
-						change = true;
-						++newSelectedRow;
-					}
-					break;
+					change = true;
+					++newSelectedRow;
 				}
-				case sf::Keyboard::Return:
+				break;
+			}
+			case sf::Keyboard::Right:
+			{
+				if (newSelectedCol < items[currentMenu][newSelectedRow].size() - 1)
 				{
-					switch (newSelectedRow)
-					{
-						case 0:
-							setMenu(LevelMenu);
-							break;
-						case 1:
-							setMenu(OptionsMenu);
-							break;
-						case 2:
-							setMenu(HighscoreMenu);
-							break;
-						case 3:
-							window.close();
-							break;
-					}
-					window.playSound(SoundName::MENU);
-					break;
+					change = true;
+					++newSelectedCol;
 				}
-			} // end switch
-			break;
-		} // end case Main
+				break;
+			}
+			case sf::Keyboard::Left:
+			{
+				if (newSelectedCol > 1)
+				{
+					change = true;
+					--newSelectedCol;
+				}
+				break;
+			}
+		}
+	}
 
-		case LevelMenu:
+	if (key == sf::Keyboard::Return || key == sf::Keyboard::Space)
+	{
+		window.playSound(SoundName::MENU);
+
+		switch (currentMenu)
 		{
-			switch (key)
+			case MainMenu:
 			{
-				case sf::Keyboard::Up:
+				switch (newSelectedRow)
 				{
-					if (newSelectedRow > 0)
-					{
-						change = true;
-						--newSelectedRow;
-					}
-					break;
-				}
-				case sf::Keyboard::Down:
+					case 0:
+						setMenu(LevelMenu);
+						break;
+					case 1:
+						setMenu(OptionsMenu);
+						break;
+					case 2:
+						setMenu(HighscoreMenu);
+						break;
+					case 3:
+						window.close();
+						break;
+				} //end switch newSelectedRow
+				break;
+			} //end case MainMenu
+
+			case LevelMenu:
+			{
+				if (newSelectedRow != items[currentMenu].size() - 1)
 				{
-					if (newSelectedRow < items[currentMenu].size() - 1)
-					{
-						change = true;
-						++newSelectedRow;
-					}
-					break;
+					window.setLevelIndex(newSelectedRow);
 				}
-				case sf::Keyboard::Return:
-				{
-					if (newSelectedRow != items[currentMenu].size() - 1)
-					{
-						window.setLevelIndex(newSelectedRow);
-					}
-					else
-					{
-						setMenu(MainMenu);
-						window.playSound(SoundName::MENU);
-					}
-					break;
-				}
-				case sf::Keyboard::Escape:
+				else
 				{
 					setMenu(MainMenu);
-					window.playSound(SoundName::MENU);
-					break;
 				}
-			} // end switch
-			break;
-		} //end case Level
+				break;
+			} //end case LevelMenu
 
-		case OptionsMenu:
-		{
-			switch (key)
+			case OptionsMenu:
 			{
-				case sf::Keyboard::Right:
-				{
-					if (newSelectedCol < items[currentMenu][newSelectedRow].size() - 1)
-					{
-						change = true;
-						++newSelectedCol;
-					}
-					break;
-				}
-				case sf::Keyboard::Left:
-				{
-					if (newSelectedCol > size_t(1))
-					{
-						change = true;
-						--newSelectedCol;
-					}
-					break;
-				}
-				case sf::Keyboard::Down:
-				{
-					if (newSelectedRow < items[currentMenu].size() - 1)
-					{
-						change = true;
-						++newSelectedRow;
-					}
-					break;
-				}
-				case sf::Keyboard::Up:
-				{
-					if (newSelectedRow > size_t(0))
-					{
-						change = true;
-						--newSelectedRow;
-					}
-					break;
-				}
-				case sf::Keyboard::Return:
-				case sf::Keyboard::Escape:
-				{
-					window.updateSettings(selectedCol[currentMenu]);
-					setMenu(MainMenu);
-					window.playSound(SoundName::MENU);
-					break;
-				}
-			} //end switch
-			break;
-		} //end case Options
+				setMenu(MainMenu);
+				window.updateSettings(selectedCol[OptionsMenu]);
+				break;
+			} //end case OptionsMenu
 
-		case HighscoreMenu:
-		{
-			switch (key)
+			case HighscoreMenu:
 			{
-				case sf::Keyboard::Return:
-				case sf::Keyboard::Escape:
-				{
-					setMenu(MainMenu);
-					window.playSound(SoundName::MENU);
-					break;
-				}
-			} //end switch
-			break;
-		} //end case Highscore
-	} //end switch
+				setMenu(MainMenu);
+				break;
+			} //end case HighscoreMenu
+		} //end switch currentMenu
+	}
+	else if (key == sf::Keyboard::Escape)
+	{
+		window.playSound(SoundName::MENU);
+		if (currentMenu == OptionsMenu)
+		{
+			window.updateSettings(selectedCol[OptionsMenu]);
+		}
+		setMenu(MainMenu);
+	}
 
 	if (change)
 	{
