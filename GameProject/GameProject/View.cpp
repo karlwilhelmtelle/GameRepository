@@ -6,11 +6,11 @@ View::View(const sf::VideoMode &res) :
 		"Game", sf::Style::Fullscreen),
 	resolution(res),
 	levels(res),
-	game_state(GameState::MAIN_MENU),
-	main_menu(res),
-	level_menu(res),
-	highscore_menu(res),
-	options_menu(res, settings.getSettings())
+	gameState(GameState::MAIN_MENU),
+	mainMenu(res),
+	levelMenu(res),
+	highscoreMenu(res),
+	optionsMenu(res, settings.getSettings())
 {
 	setMouseCursorVisible(false);
 	initSettings();
@@ -35,7 +35,7 @@ void View::renderGraphics()
 {
 	clear(sf::Color::Black);
 
-	switch (game_state)
+	switch (gameState)
 	{
 		case GameState::PLAY:
 		{
@@ -45,24 +45,24 @@ void View::renderGraphics()
 		
 		case GameState::MAIN_MENU:
 		{
-			main_menu.draw(*this);
+			mainMenu.draw(*this);
 			break;
 		}
 
 		case GameState::LEVEL_MENU:
 		{
-			level_menu.draw(*this);
+			levelMenu.draw(*this);
 			break;
 		}
 
 		case GameState::OPTIONS:
 		{
-			options_menu.draw(*this);
+			optionsMenu.draw(*this);
 			break;
 		}
 		case GameState::HIGHSCORE:
 		{
-			highscore_menu.draw(*this);
+			highscoreMenu.draw(*this);
 			//score();
 			break;
 		}
@@ -75,7 +75,7 @@ void View::renderGraphics()
 
 void View::updateGame(bool *game_over)
 {
-	if (game_state == GameState::PLAY)
+	if (gameState == GameState::PLAY)
 	{
 		levels.getCurrentLevel()->update(game_over);
 	}
@@ -90,7 +90,7 @@ void View::keyAction(sf::Keyboard::Key key)
 	}
 	else
 	{
-		switch (game_state)
+		switch (gameState)
 		{
 			case GameState::PLAY:
 			{
@@ -100,24 +100,24 @@ void View::keyAction(sf::Keyboard::Key key)
 
 			case GameState::MAIN_MENU:
 			{
-				main_menu.keyEvent(key, *this);
+				mainMenu.keyEvent(key, *this);
 				break;
 			}
 
 			case GameState::LEVEL_MENU:
 			{
-				level_menu.keyEvent(key, *this);
+				levelMenu.keyEvent(key, *this);
 				break;
 			}
 
 			case GameState::OPTIONS:
 			{
-				options_menu.keyEvent(key, *this);
+				optionsMenu.keyEvent(key, *this);
 				break;
 			}
 			case GameState::HIGHSCORE:
 			{
-				highscore_menu.keyEvent(key, *this);
+				highscoreMenu.keyEvent(key, *this);
 				break;
 			}
 			default:
@@ -128,13 +128,13 @@ void View::keyAction(sf::Keyboard::Key key)
 
 void View::setGameState(GameState state)
 {
-	game_state = state;
+	gameState = state;
 }
 
 void View::gameOver()
 {
 	Level* level = levels.getCurrentLevel();
-	highscore_menu.updateTimeValues(level->getHighscore(), level->getLastScore());
+	highscoreMenu.updateTimeValues(level->getHighscore(), level->getLastScore());
 	level->init();
 	playSound(SoundName::GAME_OVER);
 	setGameState(GameState::HIGHSCORE);

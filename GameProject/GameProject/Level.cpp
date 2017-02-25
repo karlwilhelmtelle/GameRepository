@@ -31,16 +31,16 @@ void Level::init()
 {
 	restartClock();
 	item.init();
-	camera_speed = 0.2f;
+	cameraSpeed = 0.2f;
 	map.load(resolution);
 }
 
 void Level::update(bool * game_over)
 {
-	map.update(item.getPosition(), item.getRadius(), camera_speed, game_over);
+	map.update(item.getPosition(), item.getRadius(), cameraSpeed, game_over);
 	updateElapsedTime();
 	updateHighscore();
-	camera_speed *= 1.00001f;
+	cameraSpeed *= 1.00001f;
 }
 
 void Level::draw(View & window)
@@ -60,17 +60,17 @@ void Level::draw(View & window)
 
 void Level::updateElapsedTime()
 {
-	time_milliseconds = clock.getElapsedTime().asMilliseconds();
+	timeMilli = clock.getElapsedTime().asMilliseconds();
 
-	textItems[3].setStringToTime(time_milliseconds);
+	textItems[3].setStringToTime(timeMilli);
 }
 
 void Level::updateHighscore()
 {
-	if (time_milliseconds > highscore_milliseconds)
+	if (timeMilli > highscoreMilli)
 	{
-		highscore_milliseconds = time_milliseconds;
-		textItems[1].setStringToMilliseconds(highscore_milliseconds);
+		highscoreMilli = timeMilli;
+		textItems[1].setStringToMilliseconds(highscoreMilli);
 	}
 }
 
@@ -82,7 +82,7 @@ void Level::updateSettings(sf::Color mainItemColor, sf::Color objectsColor)
 
 void Level::keyEvent(sf::Keyboard::Key key)
 {
-	item.keyEvent(key, camera_speed);
+	item.keyEvent(key, cameraSpeed);
 }
 
 void Level::restartClock()
@@ -92,10 +92,10 @@ void Level::restartClock()
 
 sf::Int32 Level::getLastScore()
 {
-	return time_milliseconds;
+	return timeMilli;
 }
 
 sf::Int32 Level::getHighscore()
 {
-	return highscore_milliseconds;
+	return highscoreMilli;
 }

@@ -5,7 +5,7 @@
 
 
 OptionsMenu::OptionsMenu(const sf::VideoMode &resolution, const std::vector<size_t> initSettings) :
-	line(0)
+	selectedLineIndex(0)
 {
 	//const sf::String soundMenu[] = { "Colour (Character):", "Colour (Enemies):", "Sound:", "Back" };
 	std::vector< std::vector<sf::String> > strings;
@@ -32,7 +32,7 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution, const std::vector<size
 		items.push_back(lineElements);
 		++i;
 	}
-	items[line][settings[line]].select();
+	items[selectedLineIndex][settings[selectedLineIndex]].select();
 }
 
 
@@ -50,23 +50,23 @@ void OptionsMenu::draw(View & window)
 void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 {
 	bool change = false;
-	size_t temp_line = line;
+	size_t temp_line = selectedLineIndex;
 	std::vector < size_t > temp_settings = settings;
 
 	switch (key)
 	{
 		case sf::Keyboard::Right:
-			if (temp_settings[line] < items[line].size() - 1)
+			if (temp_settings[selectedLineIndex] < items[selectedLineIndex].size() - 1)
 			{
 				change = true;
-				++temp_settings[line];
+				++temp_settings[selectedLineIndex];
 			}
 			break;
 		case sf::Keyboard::Left:
-			if (temp_settings[line] > size_t(1))
+			if (temp_settings[selectedLineIndex] > size_t(1))
 			{
 				change = true;
-				--temp_settings[line];
+				--temp_settings[selectedLineIndex];
 			}
 			break;
 		case sf::Keyboard::Down:
@@ -93,9 +93,9 @@ void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 	if (change)
 	{
 		window.playSound(SoundName::MENU);
-		items[line][settings[line]].deselect();
-		line = temp_line;
-		settings[line] = temp_settings[line];
-		items[line][settings[line]].select();
+		items[selectedLineIndex][settings[selectedLineIndex]].deselect();
+		selectedLineIndex = temp_line;
+		settings[selectedLineIndex] = temp_settings[selectedLineIndex];
+		items[selectedLineIndex][settings[selectedLineIndex]].select();
 	}
 }

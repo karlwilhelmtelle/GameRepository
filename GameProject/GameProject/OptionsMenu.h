@@ -16,7 +16,7 @@ public:
 
 private:
 	std::vector< std::vector < Text > > items;
-	size_t line;
+	size_t selectedLineIndex;
 	std::vector < size_t > settings;
 };
 

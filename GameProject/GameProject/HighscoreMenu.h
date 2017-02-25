@@ -21,9 +21,9 @@ public:
 private:
 	std::vector < std::vector < Text > > items;
 	
-	size_t selectedIndex;
+	size_t selectedLineIndex;
 
-	sf::Int32 highscore_milliseconds;
-	sf::Int32 last_score_milliseconds;
+	sf::Int32 highscoreMilli;
+	sf::Int32 lastScoreMilli;
 };
 

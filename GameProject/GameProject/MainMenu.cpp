@@ -3,7 +3,7 @@
 #include <SFML/Audio.hpp>
 
 MainMenu::MainMenu(const sf::VideoMode &resolution) :
-	selectedIndex(0)
+	selectedLineIndex(0)
 {
 	const std::vector<sf::String> strings = {"Play", "Options", "Highscore", "Exit"};
 
@@ -19,7 +19,7 @@ MainMenu::MainMenu(const sf::VideoMode &resolution) :
 		++i;
 	}
 
-	items[selectedIndex].select();
+	items[selectedLineIndex].select();
 }
 
 
@@ -35,7 +35,7 @@ void MainMenu::draw(View &window)
 void MainMenu::keyEvent(sf::Keyboard::Key key, View &window)
 {
 	bool change = false;
-	size_t tempSelectedIndex = selectedIndex;
+	size_t tempSelectedIndex = selectedLineIndex;
 
 	switch (key)
 	{
@@ -55,7 +55,7 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, View &window)
 			break;
 		case sf::Keyboard::Return:
 			change = true;
-			switch (selectedIndex)
+			switch (selectedLineIndex)
 			{
 				case 0:
 					window.setGameState(GameState::LEVEL_MENU);
@@ -76,13 +76,8 @@ void MainMenu::keyEvent(sf::Keyboard::Key key, View &window)
 	if (change)
 	{
 		window.playSound(SoundName::MENU);
-		items[selectedIndex].deselect();
-		selectedIndex = tempSelectedIndex;
-		items[selectedIndex].select();
+		items[selectedLineIndex].deselect();
+		selectedLineIndex = tempSelectedIndex;
+		items[selectedLineIndex].select();
 	}
-}
-
-size_t MainMenu::getSelectedIndex()
-{
-	return selectedIndex;
 }

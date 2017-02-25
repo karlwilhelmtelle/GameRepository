@@ -38,15 +38,15 @@ class View : public sf::RenderWindow
 
 		const sf::VideoMode &resolution;
 
-		GameState game_state;
+		GameState gameState;
 
 		LevelController levels;
 
 		Settings settings;
 		Sound sound;
 		
-		MainMenu main_menu;
-		LevelMenu level_menu;
-		HighscoreMenu highscore_menu;
-		OptionsMenu options_menu;
+		MainMenu mainMenu;
+		LevelMenu levelMenu;
+		HighscoreMenu highscoreMenu;
+		OptionsMenu optionsMenu;
 };

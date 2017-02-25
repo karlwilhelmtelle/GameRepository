@@ -15,7 +15,7 @@ public:
 private:	
 	const sf::VideoMode &resolution;
 
-	int level_index;
+	int levelIndex;
 
 	Level* currentLevel;
 	Level level1;

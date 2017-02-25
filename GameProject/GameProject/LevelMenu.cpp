@@ -2,7 +2,7 @@
 #include "View.h"
 
 LevelMenu::LevelMenu(const sf::VideoMode &resolution):
-	selectedIndex(0)
+	selectedLineIndex(0)
 {
 	const std::vector<sf::String> strings = { "Level 1", "Level 2", "Level 3", "Back" };
 
@@ -18,7 +18,7 @@ LevelMenu::LevelMenu(const sf::VideoMode &resolution):
 		++i;
 	}
 
-	items[selectedIndex].select();
+	items[selectedLineIndex].select();
 }
 
 void LevelMenu::draw(View & window)
@@ -32,51 +32,46 @@ void LevelMenu::draw(View & window)
 void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 {
 	bool change = false;
-	size_t tempSelectedIndex = selectedIndex;
+	size_t tempSelectedIndex = selectedLineIndex;
 
 	switch (key)
 	{
-		case sf::Keyboard::Up:
-			if (tempSelectedIndex > 0)
-			{
-				change = true;
-				--tempSelectedIndex;
-			}
-			break;
-		case sf::Keyboard::Down:
-			if (tempSelectedIndex < items.size() - 1)
-			{
-				change = true;
-				++tempSelectedIndex;
-			}
-			break;
-		case sf::Keyboard::Return:
+	case sf::Keyboard::Up:
+		if (tempSelectedIndex > 0)
+		{
 			change = true;
-			if (selectedIndex != items.size() - 1)
-			{
-				window.setLevelIndex(selectedIndex);
-			}
-			else
-			{
-				window.setGameState(GameState::MAIN_MENU);
-			}
-			break;
-		case sf::Keyboard::Escape:
+			--tempSelectedIndex;
+		}
+		break;
+	case sf::Keyboard::Down:
+		if (tempSelectedIndex < items.size() - 1)
+		{
 			change = true;
+			++tempSelectedIndex;
+		}
+		break;
+	case sf::Keyboard::Return:
+		change = true;
+		if (selectedLineIndex != items.size() - 1)
+		{
+			window.setLevelIndex(selectedLineIndex);
+		}
+		else
+		{
 			window.setGameState(GameState::MAIN_MENU);
-			break;
+		}
+		break;
+	case sf::Keyboard::Escape:
+		change = true;
+		window.setGameState(GameState::MAIN_MENU);
+		break;
 	}
 
 	if (change)
 	{
 		window.playSound(SoundName::MENU);
-		items[selectedIndex].deselect();
-		selectedIndex = tempSelectedIndex;
-		items[selectedIndex].select();
+		items[selectedLineIndex].deselect();
+		selectedLineIndex = tempSelectedIndex;
+		items[selectedLineIndex].select();
 	}
-}
-
-size_t LevelMenu::getSelectedIndex()
-{
-	return selectedIndex;
 }

@@ -7,7 +7,7 @@ Sound::Sound() :
 	{
 		throw std::exception("Sounds/menu_sound.wav");
 	}
-	if (!game_over.loadFromFile("Sounds/game_over_sound.wav"))
+	if (!gameOver.loadFromFile("Sounds/game_over_sound.wav"))
 	{
 		throw std::exception("Sounds/game_over_sound.wav");
 	}
@@ -24,7 +24,7 @@ void Sound::playSound(SoundName sound_name)
 				setBuffer(menu);
 				break;
 			case SoundName::GAME_OVER:
-				setBuffer(game_over);
+				setBuffer(gameOver);
 				break;
 		}
 

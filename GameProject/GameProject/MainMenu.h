@@ -11,10 +11,8 @@ public:
 	void draw(View &window);
 
 	void keyEvent(sf::Keyboard::Key key, View &window);
-
-	size_t getSelectedIndex();
 private:
-	size_t selectedIndex;
+	size_t selectedLineIndex;
 	std::vector < Text > items;
 };
 

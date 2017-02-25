@@ -8,8 +8,6 @@ struct ObjectContainer
 	public:
 		/*  vector of objects */
 		std::vector<Object> v;
-
-		void init(const sf::Color color);
 		
 		/*  loads all objects with position and radius from a file*/
 		void load(const sf::VideoMode &resolution);

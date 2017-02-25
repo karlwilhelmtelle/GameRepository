@@ -32,7 +32,7 @@ private:
 
 	const sf::VideoMode &resolution;
 
-	float camera_speed;
+	float cameraSpeed;
 
 	MainItem item;
 
@@ -40,10 +40,6 @@ private:
 
 	sf::Clock clock;
 	std::vector<Text> textItems;
-	Text time_value;
-	Text highscore_value;
-	Text highscore_text;
-	Text time_text;
-	sf::Int32 time_milliseconds;
-	sf::Int32 highscore_milliseconds;
+	sf::Int32 timeMilli;
+	sf::Int32 highscoreMilli;
 };

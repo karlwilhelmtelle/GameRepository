@@ -8,10 +8,10 @@ class Sound : public sf::Sound
 	public:
 		Sound();
 
-		void playSound(SoundName sound_name);
+		void playSound(SoundName soundName);
 		void updateSettings(bool isEnabled);
 	private:
 		bool isEnabled;
 		sf::SoundBuffer menu;
-		sf::SoundBuffer game_over;
+		sf::SoundBuffer gameOver;
 };
