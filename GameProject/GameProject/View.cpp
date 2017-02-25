@@ -51,10 +51,6 @@ void View::updateGame(bool *gameOver)
 	{
 		levels.getCurrentLevel()->update(gameOver);
 	}
-	else
-	{
-		menu.draw(*this);
-	}
 }
 
 
