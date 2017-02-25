@@ -20,6 +20,6 @@ struct ObjectContainer
 			const float camera_speed, bool *collision);
 
 		void updateSettings(const sf::Color color);
-private:
-	sf::Color color;
+	private:
+		sf::Color color;
 };

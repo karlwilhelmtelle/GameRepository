@@ -4,21 +4,21 @@
 
 class Text : public sf::Text
 {
-public:
-	Text();
+	public:
+		Text();
 
-	void setStringToTime(const sf::Int32 milliseconds);
+		void setStringToTime(const sf::Int32 milliseconds);
 	
-	void setStringToMilliseconds(const sf::Int32 milliseconds);
+		void setStringToMilliseconds(const sf::Int32 milliseconds);
 
-	void enable();
-	void disable();
-	bool enabled() const;
+		void enable();
+		void disable();
+		bool enabled() const;
 
-	void select();
-	void deselect();
-private:
-	sf::Font font;
-	bool isEnabled;
-	bool isSelected;
+		void select();
+		void deselect();
+	private:
+		sf::Font font;
+		bool isEnabled;
+		bool isSelected;
 };

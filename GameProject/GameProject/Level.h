@@ -5,41 +5,41 @@
 
 class Level
 {
-public:
-	Level(const sf::VideoMode &resolution);
+	public:
+		Level(const sf::VideoMode &resolution);
 
-	void draw(View &window) const;
+		void draw(View &window) const;
 
-	void init();
+		void init();
 
-	void update(bool * game_over);
+		void update(bool * game_over);
 
-	void updateElapsedTime();
+		void updateElapsedTime();
 
-	void updateHighscore();
+		void updateHighscore();
 
-	void updateSettings(const sf::Color mainItemColor, const sf::Color objectsColor);
+		void updateSettings(const sf::Color mainItemColor, const sf::Color objectsColor);
 
-	void keyEvent(const sf::Keyboard::Key key);
+		void keyEvent(const sf::Keyboard::Key key);
 
-	void restartClock();
+		void restartClock();
 
-	sf::Int32 getLastScore() const;
+		sf::Int32 getLastScore() const;
 	
-	sf::Int32 getHighscore() const;
-private:
-	const size_t levelIndex;
+		sf::Int32 getHighscore() const;
+	private:
+		const size_t levelIndex;
 
-	const sf::VideoMode &resolution;
+		const sf::VideoMode &resolution;
 
-	float cameraSpeed;
+		float cameraSpeed;
 
-	MainItem item;
+		MainItem item;
 
-	ObjectContainer map;
+		ObjectContainer map;
 
-	sf::Clock clock;
-	std::vector<Text> textItems;
-	sf::Int32 timeMilli;
-	sf::Int32 highscoreMilli;
+		sf::Clock clock;
+		std::vector<Text> textItems;
+		sf::Int32 timeMilli;
+		sf::Int32 highscoreMilli;
 };

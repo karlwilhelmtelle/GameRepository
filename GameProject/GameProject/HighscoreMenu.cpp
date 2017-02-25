@@ -4,9 +4,7 @@
 #include <SFML/Audio.hpp>
 
 HighscoreMenu::HighscoreMenu(const sf::VideoMode &resolution) :
-	selectedLineIndex(2),
-	highscoreMilli(0),
-	lastScoreMilli(0)
+	selectedLineIndex(2)
 {
 	std::vector< std::vector < sf::String > > strings;
 	strings.push_back({ "Last Score: ", "" });
@@ -36,7 +34,7 @@ HighscoreMenu::HighscoreMenu(const sf::VideoMode &resolution) :
 	}
 
 	items[selectedLineIndex][0].select();
-	updateTimeValues(highscoreMilli, lastScoreMilli);
+	updateTimeValues(0, 0);
 }
 
 void HighscoreMenu::draw(View & window) const
@@ -61,11 +59,9 @@ void HighscoreMenu::keyEvent(const sf::Keyboard::Key key, View & window) const
 	}
 }
 
-void HighscoreMenu::updateTimeValues(const sf::Int32 highscore, const sf::Int32 last_score)
+void HighscoreMenu::updateTimeValues(const sf::Int32 highscore, const sf::Int32 lastScore)
 {
-	highscoreMilli = highscore;
-	lastScoreMilli = last_score;
-	items[0][1].setStringToTime(lastScoreMilli);
-	items[1][1].setStringToMilliseconds(highscoreMilli);
+	items[0][1].setStringToTime(lastScore);
+	items[1][1].setStringToMilliseconds(highscore);
 }
 
