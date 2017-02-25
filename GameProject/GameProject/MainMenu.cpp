@@ -23,7 +23,7 @@ MainMenu::MainMenu(const sf::VideoMode &resolution) :
 }
 
 
-void MainMenu::draw(View &window)
+void MainMenu::draw(View &window) const
 {
 	for (auto &e : items)
 	{
@@ -32,7 +32,7 @@ void MainMenu::draw(View &window)
 }
 
 
-void MainMenu::keyEvent(sf::Keyboard::Key key, View &window)
+void MainMenu::keyEvent(const sf::Keyboard::Key key, View &window)
 {
 	bool change = false;
 	size_t tempSelectedIndex = selectedLineIndex;

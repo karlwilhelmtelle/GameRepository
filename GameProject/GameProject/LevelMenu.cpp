@@ -21,7 +21,7 @@ LevelMenu::LevelMenu(const sf::VideoMode &resolution):
 	items[selectedLineIndex].select();
 }
 
-void LevelMenu::draw(View & window)
+void LevelMenu::draw(View & window) const
 {
 	for (auto &e : items)
 	{
@@ -29,7 +29,7 @@ void LevelMenu::draw(View & window)
 	}
 }
 
-void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
+void LevelMenu::keyEvent(const sf::Keyboard::Key key, View & window)
 {
 	bool change = false;
 	size_t tempSelectedIndex = selectedLineIndex;

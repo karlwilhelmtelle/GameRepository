@@ -6,15 +6,17 @@ class Settings
 public:
 	Settings();
 
-	void update(std::vector<size_t> settings);
+	void update(const std::vector<size_t> settings);
 
-	std::vector<size_t> getSettings();
+	std::vector<size_t> getSettings() const;
 
-	sf::Color getMainItemColor();
+	sf::Color getMainItemColor() const;
 
-	sf::Color getObjectsColor();
+	sf::Color getObjectsColor() const;
 
-	bool audioEnabled();
+	bool audioEnabled() const;
+
+	void convertToColor(sf::Color &color, const size_t colorSettings);
 private:
 	std::vector <size_t> settings;
 	sf::Color mainItemColor;

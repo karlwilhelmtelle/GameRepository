@@ -6,57 +6,10 @@ Settings::Settings() :
 	update(settings);
 }
 
-void Settings::update(std::vector<size_t> settings)
+void Settings::update(const std::vector<size_t> settings)
 {
-	switch (settings[0])
-	{
-		case 1:
-			mainItemColor = sf::Color::Blue;
-			break;
-		case 2:
-			mainItemColor = sf::Color::Cyan;
-			break;
-		case 3:
-			mainItemColor = sf::Color::Green;
-			break;
-		case 4:
-			mainItemColor = sf::Color::Yellow;
-			break;
-		case 5:
-			mainItemColor = sf::Color::White;
-			break;
-		case 6:
-			mainItemColor = sf::Color::Red;
-			break;
-		case 7:
-			mainItemColor = sf::Color::Magenta;
-			break;
-	}
-
-	switch (settings[1])
-	{
-		case 1:
-			objectsColor = sf::Color::Blue;
-			break;
-		case 2:
-			objectsColor = sf::Color::Cyan;
-			break;
-		case 3:
-			objectsColor = sf::Color::Green;
-			break;
-		case 4:
-			objectsColor = sf::Color::Yellow;
-			break;
-		case 5:
-			objectsColor = sf::Color::White;
-			break;
-		case 6:
-			objectsColor = sf::Color::Red;
-			break;
-		case 7:
-			objectsColor = sf::Color::Magenta;
-			break;
-	}
+	convertToColor(mainItemColor, settings[0]);
+	convertToColor(objectsColor, settings[1]);
 
 	switch (settings[2])
 	{
@@ -75,22 +28,49 @@ void Settings::update(std::vector<size_t> settings)
 	}
 }
 
-std::vector<size_t> Settings::getSettings()
+void Settings::convertToColor(sf::Color &color, const size_t colorSettings)
+{
+	switch (colorSettings)
+	{
+	case 1:
+		color = sf::Color::Blue;
+	case 2:
+		color = sf::Color::Cyan;
+		break;
+	case 3:
+		color = sf::Color::Green;
+		break;
+	case 4:
+		color = sf::Color::Yellow;
+		break;
+	case 5:
+		color = sf::Color::White;
+		break;
+	case 6:
+		color = sf::Color::Red;
+		break;
+	case 7:
+		color = sf::Color::Magenta;
+		break;
+	}
+}
+
+std::vector<size_t> Settings::getSettings() const
 {
 	return settings;
 }
 
-sf::Color Settings::getMainItemColor()
+sf::Color Settings::getMainItemColor() const
 {
 	return mainItemColor;
 }
 
-sf::Color Settings::getObjectsColor()
+sf::Color Settings::getObjectsColor() const
 {
 	return objectsColor;
 }
 
-bool Settings::audioEnabled()
+bool Settings::audioEnabled() const
 {
 	return isAudioEnabled;
 }

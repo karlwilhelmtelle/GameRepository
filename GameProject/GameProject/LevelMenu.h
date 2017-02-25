@@ -9,9 +9,9 @@ class LevelMenu
 public:
 	LevelMenu(const sf::VideoMode &resolution);
 
-	void draw(View &window);
+	void draw(View &window) const;
 
-	void keyEvent(sf::Keyboard::Key key, View &window);
+	void keyEvent(const sf::Keyboard::Key key, View &window);
 private:
 	size_t selectedLineIndex;
 	std::vector<Text> items;

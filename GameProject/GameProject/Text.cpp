@@ -17,7 +17,7 @@ Text::Text() :
 }
 
 
-void Text::setStringToTime(sf::Int32 milliseconds)
+void Text::setStringToTime(const sf::Int32 milliseconds)
 {
 	std::stringstream os;
 	os << std::setfill('0') << std::setw(2) << milliseconds / (1000 * 60);
@@ -29,7 +29,7 @@ void Text::setStringToTime(sf::Int32 milliseconds)
 	setString(os.str());
 }
 
-void Text::setStringToMilliseconds(sf::Int32 milliseconds)
+void Text::setStringToMilliseconds(const sf::Int32 milliseconds)
 {
 	std::stringstream os;
 	os << milliseconds;
@@ -56,7 +56,7 @@ void Text::disable()
 	}
 }
 
-bool Text::enabled()
+bool Text::enabled() const
 {
 	return isEnabled;
 }

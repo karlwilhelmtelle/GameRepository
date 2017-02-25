@@ -1,11 +1,12 @@
 #include "Object.h"
 #include <random>
 
-Object::Object(const sf::VideoMode &resolution, float radius, float x_offset, sf::Color color) :
-	sf::CircleShape(),
-	radius(radius),
-	resolution(resolution),
-	x_offset(x_offset)
+Object::Object(const sf::VideoMode &resolution, const float radius, 
+	const float x_offset, const sf::Color color) :
+		sf::CircleShape(),
+		radius(radius),
+		resolution(resolution),
+		x_offset(x_offset)
 {
 	refresh();
 	setRadius(radius);
@@ -24,20 +25,20 @@ void Object::refresh()
 }
 
 
-void Object::move(float dx)
+void Object::move(const float dx)
 {
 	position.x += dx;
 	setPosition(position);
 }
 
 
-bool Object::notDrawable()
+bool Object::notDrawable() const
 {
 	return (position.x < -2*radius);
 }
 
 // TODO: fix collision bugs
-bool Object::collision(sf::Vector2f item_position, float item_radius)
+bool Object::collision(const sf::Vector2f item_position, const float item_radius)
 {
 	if (abs(position.x - item_position.x) < radius + item_radius &&
 		abs(position.y - item_position.y) < radius + item_radius)

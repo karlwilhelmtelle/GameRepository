@@ -9,10 +9,10 @@ class MainItem : public sf::CircleShape
 		/*	sets radius, position, fillColor */
 		MainItem(const sf::VideoMode &resolution);
 
-		void keyEvent(sf::Keyboard::Key key, float camera_speed);
+		void keyEvent(const sf::Keyboard::Key key, float camera_speed);
 
 		void init();
-		void updateSettings(sf::Color color);
+		void updateSettings(const sf::Color color);
 	private:
 		const sf::VideoMode &resolution;
 

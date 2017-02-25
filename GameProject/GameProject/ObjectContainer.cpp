@@ -13,8 +13,8 @@ void ObjectContainer::load(const sf::VideoMode &res)
 }
 
 
-void ObjectContainer::update(sf::Vector2f item_position, float item_radius, 
-	float camera_speed, bool *collision)
+void ObjectContainer::update(const sf::Vector2f item_position, const float item_radius, 
+	const float camera_speed, bool *collision)
 {
 	for (auto object = v.begin(); object != v.end();)
 	{
@@ -38,7 +38,7 @@ void ObjectContainer::update(sf::Vector2f item_position, float item_radius,
 	}
 }
 
-void ObjectContainer::updateSettings(sf::Color newColor)
+void ObjectContainer::updateSettings(const sf::Color newColor)
 {
 	if (newColor != color)
 	{

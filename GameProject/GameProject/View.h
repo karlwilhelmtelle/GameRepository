@@ -22,17 +22,17 @@ class View : public sf::RenderWindow
 
 		void updateGame(bool *collision);
 
-		void keyAction(sf::Keyboard::Key key);
+		void keyAction(const sf::Keyboard::Key key);
 
 		void gameOver();
 
-		void setGameState(GameState state);
+		void setGameState(const GameState state);
 
-		void setLevelIndex(int selected_level_index);
+		void setLevelIndex(const int selectedLevelIndex);
 
-		void playSound(SoundName sound_name);
+		void playSound(const SoundName sound_name);
 
-		void updateSettings(std::vector < size_t > settings);
+		void updateSettings(const std::vector < size_t > settings);
 	private:
 		void initSettings();
 

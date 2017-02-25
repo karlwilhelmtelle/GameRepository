@@ -39,7 +39,7 @@ HighscoreMenu::HighscoreMenu(const sf::VideoMode &resolution) :
 	updateTimeValues(highscoreMilli, lastScoreMilli);
 }
 
-void HighscoreMenu::draw(View & window)
+void HighscoreMenu::draw(View & window) const
 {
 	for (auto &row : items)
 	{
@@ -50,7 +50,7 @@ void HighscoreMenu::draw(View & window)
 	}
 }
 
-void HighscoreMenu::keyEvent(sf::Keyboard::Key key, View & window)
+void HighscoreMenu::keyEvent(const sf::Keyboard::Key key, View & window) const
 {
 	switch (key)
 	{
@@ -61,7 +61,7 @@ void HighscoreMenu::keyEvent(sf::Keyboard::Key key, View & window)
 	}
 }
 
-void HighscoreMenu::updateTimeValues(sf::Int32 highscore, sf::Int32 last_score)
+void HighscoreMenu::updateTimeValues(const sf::Int32 highscore, const sf::Int32 last_score)
 {
 	highscoreMilli = highscore;
 	lastScoreMilli = last_score;

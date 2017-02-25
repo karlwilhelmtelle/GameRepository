@@ -7,19 +7,20 @@ public:
 	/*	initializes sf::CircleShape
 		sets position, radius, fillColor
 	*/
-	Object(const sf::VideoMode &resolution, float radius, float x_offset, sf::Color color);
+	Object(const sf::VideoMode &resolution, const float radius, 
+		const float x_offset, const sf::Color color);
 
 	/*  random y-coordinate */
 	void refresh();
 
 	/*  changes x-coordinate */
-	void move(float dx);
+	void move(const float dx);
 
 	/*  checks if the x-coordinate is smaller than the diameter */
-	bool notDrawable();
+	bool notDrawable() const;
 
 	/*  checks if the distance between two circle centers is less than the sum of both radii */
-	bool collision(sf::Vector2f item_position, float item_radius);
+	bool collision(const sf::Vector2f item_position, const float item_radius);
 private:
 	/*  x and y coordinates */
 	sf::Vector2f position;

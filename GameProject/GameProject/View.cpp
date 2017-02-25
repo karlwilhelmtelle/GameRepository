@@ -23,10 +23,10 @@ void View::initSettings()
 	sound.updateSettings(settings.audioEnabled());
 }
 
-void View::setLevelIndex(int selected_level_index)
+void View::setLevelIndex(const int selectedLevelIndex)
 {
 	setGameState(GameState::PLAY);
-	levels.setLevelIndex(selected_level_index);
+	levels.setLevelIndex(selectedLevelIndex);
 }
 
 
@@ -81,7 +81,7 @@ void View::updateGame(bool *game_over)
 }
 
 
-void View::keyAction(sf::Keyboard::Key key)
+void View::keyAction(const sf::Keyboard::Key key)
 {
 	if (key == sf::Keyboard::Escape)
 	{
@@ -125,7 +125,7 @@ void View::keyAction(sf::Keyboard::Key key)
 	}
 }
 
-void View::setGameState(GameState state)
+void View::setGameState(const GameState state)
 {
 	gameState = state;
 }
@@ -140,12 +140,12 @@ void View::gameOver()
 }
 
 
-void View::playSound(SoundName sound_name)
+void View::playSound(const SoundName sound_name)
 {
 	sound.playSound(sound_name);
 }
 
-void View::updateSettings(std::vector<size_t> newSettings)
+void View::updateSettings(const std::vector<size_t> newSettings)
 {
 	settings.update(newSettings);
 	initSettings();

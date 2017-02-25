@@ -14,7 +14,7 @@ Sound::Sound() :
 }
 
 
-void Sound::playSound(SoundName sound_name)
+void Sound::playSound(const SoundName sound_name)
 {
 	if (isEnabled)
 	{
@@ -32,7 +32,7 @@ void Sound::playSound(SoundName sound_name)
 	}
 }
 
-void Sound::updateSettings(bool isAudioEnabled)
+void Sound::updateSettings(const bool isAudioEnabled)
 {
 	if (isAudioEnabled && !isEnabled)
 	{

@@ -13,7 +13,7 @@ MainItem_Level2::MainItem_Level2(const sf::VideoMode &resolution) :
 	setFillColor(sf::Color::Green);
 }
 
-void MainItem_Level2::keyEvent(sf::Keyboard::Key key, float camera_speed)
+void MainItem_Level2::keyEvent(const sf::Keyboard::Key key, const float camera_speed)
 {
 	//wenn keine Taste gedrückt wird fällt das Objekt
 	//wird 'Up' gedrückt geht das Objekt kurz nach oben

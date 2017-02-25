@@ -9,7 +9,7 @@ LevelController::LevelController(const sf::VideoMode &res) :
 	level1.init();
 }
 
-void LevelController::setLevelIndex(int index)
+void LevelController::setLevelIndex(const int index)
 {
 	if (levelIndex != index)
 	{
@@ -26,7 +26,7 @@ void LevelController::setLevelIndex(int index)
 	currentLevel->init();
 }
 
-Level * LevelController::getCurrentLevel()
+Level * LevelController::getCurrentLevel() const
 {
 	return currentLevel;
 }

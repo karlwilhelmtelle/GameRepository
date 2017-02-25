@@ -13,7 +13,7 @@ MainItem::MainItem(const sf::VideoMode &resolution) :
 }
 
 
-void MainItem::keyEvent(sf::Keyboard::Key key, float camera_speed)
+void MainItem::keyEvent(const sf::Keyboard::Key key, float camera_speed)
 {
 	if (key == sf::Keyboard::Up || key == sf::Keyboard::Down)
 	{
@@ -42,7 +42,7 @@ void MainItem::init()
 	setPosition(position);
 }
 
-void MainItem::updateSettings(sf::Color color)
+void MainItem::updateSettings(const sf::Color color)
 {
 	setFillColor(color);
 }

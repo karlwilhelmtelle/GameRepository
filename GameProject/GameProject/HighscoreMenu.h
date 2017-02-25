@@ -12,11 +12,11 @@ class HighscoreMenu
 public:
 	HighscoreMenu(const sf::VideoMode &resolution);
 
-	void draw(View &window);
+	void draw(View &window) const;
 
-	void keyEvent(sf::Keyboard::Key key, View &window);
+	void keyEvent(const sf::Keyboard::Key key, View &window) const;
 
-	void updateTimeValues(sf::Int32 highscore, sf::Int32 last_score);
+	void updateTimeValues(const sf::Int32 highscore, const sf::Int32 last_score);
 	
 private:
 	std::vector < std::vector < Text > > items;

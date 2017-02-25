@@ -9,9 +9,9 @@ class LevelController
 public:
 	LevelController(const sf::VideoMode &resolution);
 
-	Level* getCurrentLevel();
+	Level* getCurrentLevel() const;
 
-	void setLevelIndex(int index);
+	void setLevelIndex(const int index);
 private:	
 	const sf::VideoMode &resolution;
 

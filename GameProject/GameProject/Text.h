@@ -7,13 +7,13 @@ class Text : public sf::Text
 public:
 	Text();
 
-	void setStringToTime(sf::Int32 milliseconds);
+	void setStringToTime(const sf::Int32 milliseconds);
 	
-	void setStringToMilliseconds(sf::Int32 milliseconds);
+	void setStringToMilliseconds(const sf::Int32 milliseconds);
 
 	void enable();
 	void disable();
-	bool enabled();
+	bool enabled() const;
 
 	void select();
 	void deselect();

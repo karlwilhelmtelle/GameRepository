@@ -8,7 +8,7 @@ class Level
 public:
 	Level(const sf::VideoMode &resolution);
 
-	void draw(View &window);
+	void draw(View &window) const;
 
 	void init();
 
@@ -18,15 +18,15 @@ public:
 
 	void updateHighscore();
 
-	void updateSettings(sf::Color mainItemColor, sf::Color objectsColor);
+	void updateSettings(const sf::Color mainItemColor, const sf::Color objectsColor);
 
-	void keyEvent(sf::Keyboard::Key key);
+	void keyEvent(const sf::Keyboard::Key key);
 
 	void restartClock();
 
-	sf::Int32 getLastScore();
+	sf::Int32 getLastScore() const;
 	
-	sf::Int32 getHighscore();
+	sf::Int32 getHighscore() const;
 private:
 	const size_t levelIndex;
 

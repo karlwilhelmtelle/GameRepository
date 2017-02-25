@@ -9,7 +9,7 @@ public:
 	/*	sets radius, position, fillColor */
 	MainItem_Level2(const sf::VideoMode &resolution);
 
-	void keyEvent(sf::Keyboard::Key key, float camera_speed);
+	void keyEvent(const sf::Keyboard::Key key, const float camera_speed);
 private:
 	const sf::VideoMode &resolution;
 

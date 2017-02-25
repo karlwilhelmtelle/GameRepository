@@ -36,7 +36,7 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution, const std::vector<size
 }
 
 
-void OptionsMenu::draw(View & window)
+void OptionsMenu::draw(View & window) const
 {
 	for (auto& row : items)
 	{
@@ -47,7 +47,7 @@ void OptionsMenu::draw(View & window)
 	}
 }
 
-void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
+void OptionsMenu::keyEvent(const sf::Keyboard::Key key, View & window)
 {
 	bool change = false;
 	size_t temp_line = selectedLineIndex;

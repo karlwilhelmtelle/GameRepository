@@ -43,7 +43,7 @@ void Level::update(bool * game_over)
 	cameraSpeed *= 1.00001f;
 }
 
-void Level::draw(View & window)
+void Level::draw(View & window) const
 {
 	for (auto &e : map.v)
 	{
@@ -74,13 +74,13 @@ void Level::updateHighscore()
 	}
 }
 
-void Level::updateSettings(sf::Color mainItemColor, sf::Color objectsColor)
+void Level::updateSettings(const sf::Color mainItemColor, const sf::Color objectsColor)
 {
 	item.updateSettings(mainItemColor);
 	map.updateSettings(objectsColor);
 }
 
-void Level::keyEvent(sf::Keyboard::Key key)
+void Level::keyEvent(const sf::Keyboard::Key key)
 {
 	item.keyEvent(key, cameraSpeed);
 }
@@ -90,12 +90,12 @@ void Level::restartClock()
 	clock.restart();
 }
 
-sf::Int32 Level::getLastScore()
+sf::Int32 Level::getLastScore() const
 {
 	return timeMilli;
 }
 
-sf::Int32 Level::getHighscore()
+sf::Int32 Level::getHighscore() const
 {
 	return highscoreMilli;
 }
