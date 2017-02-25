@@ -6,19 +6,19 @@ MainItem::MainItem(const sf::VideoMode &resolution) :
 	resolution(resolution),
 	radius(40.0f)
 {
-	resetAcceleration();
+	updatePhysics();
 	setRadius(radius);
 	init();
-	setPosition(position);
 	setFillColor(sf::Color::Cyan);
+	clock.restart();
 }
 
 
-void MainItem::keyEvent(const sf::Keyboard::Key key, float camera_speed)
+void MainItem::keyEvent(const sf::Keyboard::Key key, float cameraSpeed)
 {
 	if (key == sf::Keyboard::Up || key == sf::Keyboard::Down)
 	{
-		yVelocity = yAcceleration * camera_speed;
+		yVelocity = yAcceleration * cameraSpeed;
 		// go up
 		if (key == sf::Keyboard::Up)
 		{
@@ -31,16 +31,18 @@ void MainItem::keyEvent(const sf::Keyboard::Key key, float camera_speed)
 		}
 		setPosition(position);
 
-		/*if (yAcceleration > 200)
+		if (yAcceleration > 200)
 		{
-			yAcceleration -= 5;
-		}*/
+			yAcceleration -= 50;
+		}
+
+		clock.restart();
 	}
 }
 
 void MainItem::init()
 {
-	position = sf::Vector2f(resolution.width / 2 - radius,
+	position = sf::Vector2f(resolution.width / 4 - radius,
 		resolution.height / 2 - radius);
 	setPosition(position);
 }
@@ -50,7 +52,10 @@ void MainItem::updateSettings(const sf::Color color)
 	setFillColor(color);
 }
 
-void MainItem::resetAcceleration()
+void MainItem::updatePhysics()
 {
-	yAcceleration = 300.0f;
+	if (clock.getElapsedTime().asMilliseconds() >= 100) //if time difference is over 100 ms
+	{
+		yAcceleration = 400.0f;
+	}
 }

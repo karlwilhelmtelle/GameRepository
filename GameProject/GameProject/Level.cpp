@@ -40,7 +40,8 @@ void Level::update(bool * game_over)
 	map.update(item.getPosition(), item.getRadius(), cameraSpeed, game_over);
 	updateElapsedTime();
 	updateHighscore();
-	cameraSpeed *= 1.00001f;
+	cameraSpeed += 0.000001f;
+	item.updatePhysics();
 }
 
 void Level::draw(View & window) const

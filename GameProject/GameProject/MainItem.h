@@ -13,12 +13,13 @@ class MainItem : public sf::CircleShape
 
 		void init();
 		void updateSettings(const sf::Color color);
-		void resetAcceleration();
+		void updatePhysics();
 	private:
 		const sf::VideoMode &resolution;
 
 		/*  radius */
 		float radius;
+		sf::Clock clock;
 		
 		/*  x and y coordinates */
 		sf::Vector2f position;
