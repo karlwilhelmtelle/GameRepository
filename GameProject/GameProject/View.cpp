@@ -45,11 +45,11 @@ void View::renderGraphics()
 }
 
 
-void View::updateGame(bool *game_over)
+void View::updateGame(bool *gameOver)
 {
 	if (gameState == GameState::PLAY)
 	{
-		levels.getCurrentLevel()->update(game_over);
+		levels.getCurrentLevel()->update(gameOver);
 	}
 	else
 	{

@@ -13,6 +13,7 @@ class MainItem : public sf::CircleShape
 
 		void init();
 		void updateSettings(const sf::Color color);
+		void resetAcceleration();
 	private:
 		const sf::VideoMode &resolution;
 
@@ -21,4 +22,6 @@ class MainItem : public sf::CircleShape
 		
 		/*  x and y coordinates */
 		sf::Vector2f position;
+		float yVelocity;
+		float yAcceleration;
 };
