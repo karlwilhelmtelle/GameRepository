@@ -70,7 +70,7 @@ void Level::updateHighscore()
 	if (timeMilli > highscoreMilli)
 	{
 		highscoreMilli = timeMilli;
-		textItems[1].setStringToMilli(highscoreMilli);
+		textItems[1].setStringToTime(highscoreMilli);
 	}
 }
 

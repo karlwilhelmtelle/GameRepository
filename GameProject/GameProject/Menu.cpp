@@ -70,7 +70,7 @@ Menu::Menu(const sf::VideoMode & res, const std::vector<size_t> settings) :
 	}
 
 	items[HighscoreMenu][0][1].setStringToTime(0);
-	items[HighscoreMenu][1][1].setStringToMilli(0);
+	items[HighscoreMenu][1][1].setStringToTime(0);
 }
 
 void Menu::draw(View & window) const
@@ -87,7 +87,7 @@ void Menu::draw(View & window) const
 void Menu::updateHighscore(const sf::Int32 highscore, const sf::Int32 lastScore)
 {
 	items[HighscoreMenu][0][1].setStringToTime(lastScore);
-	items[HighscoreMenu][1][1].setStringToMilli(highscore);
+	items[HighscoreMenu][1][1].setStringToTime(highscore);
 }
 
 void Menu::setMenu(const MenuState type)

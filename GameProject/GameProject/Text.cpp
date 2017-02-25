@@ -20,11 +20,11 @@ Text::Text() :
 void Text::setStringToTime(const sf::Int32 milliseconds)
 {
 	std::stringstream os;
-	os << std::setfill('0') << std::setw(2) << milliseconds / (1000 * 60);
-	os << ":";
-	os << std::setfill('0') << std::setw(2) << (milliseconds % (1000 * 60)) / 1000;
-	os << ":";
+
+	os << (milliseconds) / 1000;
+	os << ",";
 	os << std::setfill('0') << std::setw(3) << milliseconds % 1000;
+	os << " s";
 
 	setString(os.str());
 }
