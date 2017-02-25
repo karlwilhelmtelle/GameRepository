@@ -66,7 +66,7 @@ void Text::select()
 	if (!isSelected)
 	{
 		isSelected = true;
-		setFillColor(sf::Color::Yellow);
+		setFillColor(sf::Color::Red);
 	}
 }
 

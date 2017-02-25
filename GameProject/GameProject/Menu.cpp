@@ -14,7 +14,7 @@ Menu::Menu(const sf::VideoMode & res, const std::vector<size_t> settings) :
 		{
 			{ "Character:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" },
 			{ "Enemies:", "Blue", "Cyan", "Green", "Yellow" , "White" ,"Red", "Magenta" },
-			{ "Sound:", "On" , "Off" }
+			{ "Sound:", "On" , "Off" },
 		},
 		{
 			{ "Last Score: ", "" },
@@ -27,7 +27,7 @@ Menu::Menu(const sf::VideoMode & res, const std::vector<size_t> settings) :
 	selectedCol = {
 		{ 0, 0, 0, 0 },
 		{ 0, 0, 0, 0 },
-		settings,
+		{ settings[0], settings[1], settings[2], 0 },
 		{ 0, 0, 0 }
 	};
 
