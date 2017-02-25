@@ -25,7 +25,7 @@ private:
 	Text highscore_value;
 	Text text[MAX_QUANTITY_HIGHSCORE];
 	
-	int selected_index;
+	int selectedIndex;
 
 	sf::Int32 highscore_milliseconds;
 

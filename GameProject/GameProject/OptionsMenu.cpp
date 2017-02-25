@@ -21,19 +21,21 @@ OptionsMenu::OptionsMenu(const sf::VideoMode &resolution) :
 		int j = 0;
 		for (auto& col : row)
 		{
-			Text text;
-			text.setFillColor(sf::Color::White);
-			text.setString(col);
-			text.setPosition(sf::Vector2f((float) resolution.width * (j + 1) / 10,
+			Text *text = new Text();
+			text->setFillColor(sf::Color::White);
+			text->setString(col);
+			text->setPosition(sf::Vector2f((float) resolution.width * (j + 1) / 10,
 				(float)resolution.height * (i + 1) / 5));
-			line_items.push_back(text);
+			
+			line_items.push_back(*text);
 			j++;
 		}
 		items.push_back(line_items);
 		i++;
 	}
-	items[line][settings[line]].setFillColor(sf::Color::Yellow);
+	items[line][settings[line]].select();
 }
+
 
 void OptionsMenu::draw(View & window)
 {
@@ -41,46 +43,60 @@ void OptionsMenu::draw(View & window)
 	{
 		for (auto& col : row)
 		{
-			Text text;
-			text.setString(col.getString());
-			text.setPosition(col.getPosition());
-			text.setFillColor(col.getFillColor());
-			window.draw(text);
+			window.draw(col);
 		}
 	}
 }
 
 void OptionsMenu::keyEvent(sf::Keyboard::Key key, View & window)
 {
-	items[line][settings[line]].setFillColor(sf::Color::White);
+	bool change = false;
+	size_t temp_line = line;
+	std::vector < size_t > temp_settings = settings;
+
 	switch (key)
 	{
 		case sf::Keyboard::Right:
-			settings[line]++;
-			window.playSound(SoundName::MENU);
+			change = true;
+			if (temp_settings[line] < items[line].size() - 1)
+			{
+				++temp_settings[line];
+			}
 			break;
 		case sf::Keyboard::Left:
-			settings[line]--;
-			window.playSound(SoundName::MENU);
-			break;
-		case sf::Keyboard::Up:
-			line--;
-			window.playSound(SoundName::MENU);
+			change = true;
+			if (temp_settings[line] > size_t(1))
+			{
+				--temp_settings[line];
+			}
 			break;
 		case sf::Keyboard::Down:
-			line++;
-			window.playSound(SoundName::MENU);
+			change = true;
+			if (temp_line < items.size() - 1)
+			{
+				++temp_line;
+			}
+			break;
+		case sf::Keyboard::Up:
+			change = true;
+			if (temp_line > size_t(0))
+			{
+				--temp_line;
+			}
 			break;
 		case sf::Keyboard::Return:
-			window.updateSettings(settings);
-			window.setGameState(GameState::MAIN_MENU);
-			break;
 		case sf::Keyboard::Escape:
 			window.updateSettings(settings);
 			window.setGameState(GameState::MAIN_MENU);
 			break;
 	}
-	line = std::min(std::max(line, size_t(0)), items.size() - 1);
-	settings[line] = std::min(std::max(settings[line], size_t(1)), items[line].size() - 1);
-	items[line][settings[line]].setFillColor(sf::Color::Yellow);
+
+	if (change)
+	{
+		window.playSound(SoundName::MENU);
+		items[line][settings[line]].deselect();
+		line = temp_line;
+		settings[line] = temp_settings[line];
+		items[line][settings[line]].select();
+	}
 }

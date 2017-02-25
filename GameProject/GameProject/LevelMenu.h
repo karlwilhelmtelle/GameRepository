@@ -20,7 +20,7 @@ public:
 	void disableIndex(int index);
 	void enableIndex(int index);
 private:
-	int selected_index;
+	int selectedIndex;
 	Text text[MAX_LEVEL_MENU_POINTS];
 };
 

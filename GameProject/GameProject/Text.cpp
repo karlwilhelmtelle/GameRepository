@@ -4,7 +4,8 @@
 #include <iomanip>
 
 Text::Text() :
-	is_disabled(false)
+	enabled(true),
+	selected(false)
 {
 	if (!font.loadFromFile("Fonts/OpenSans-Bold.ttf"))
 	{
@@ -36,17 +37,42 @@ void Text::setStringToMilliseconds(sf::Int32 milliseconds)
 
 void Text::enable()
 {
-	is_disabled = false;
-	setFillColor(sf::Color::White);
+	if (!enabled)
+	{
+		enabled = true;
+		setFillColor(sf::Color::White);
+	}
 }
 
 void Text::disable()
 {
-	is_disabled = true;
-	setFillColor(sf::Color::Red);
+	if (enabled)
+	{
+		enabled = false;
+		deselect();
+		setFillColor(sf::Color::Red);
+	}
 }
 
-bool Text::isDisabled()
+bool Text::isEnabled()
 {
-	return is_disabled;
+	return enabled;
+}
+
+void Text::select()
+{
+	if (!selected)
+	{
+		selected = true;
+		setFillColor(sf::Color::Yellow);
+	}
+}
+
+void Text::deselect()
+{
+	if (selected)
+	{
+		selected = false;
+		setFillColor(sf::Color::White);
+	}
 }

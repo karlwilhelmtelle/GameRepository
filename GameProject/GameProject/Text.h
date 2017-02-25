@@ -13,8 +13,12 @@ public:
 
 	void enable();
 	void disable();
-	bool isDisabled();
+	bool isEnabled();
+
+	void select();
+	void deselect();
 private:
 	sf::Font font;
-	bool is_disabled;
+	bool enabled;
+	bool selected;
 };

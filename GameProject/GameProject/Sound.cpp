@@ -34,10 +34,16 @@ void Sound::playSound(SoundName sound_name)
 
 void Sound::disable()
 {
-	isEnabled = false;
+	if (isEnabled)
+	{
+		isEnabled = false;
+	}
 }
 
 void Sound::enable()
 {
-	isEnabled = true;
+	if (!isEnabled)
+	{
+		isEnabled = true;
+	}
 }

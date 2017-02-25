@@ -45,20 +45,16 @@ void Level::update(bool * game_over)
 
 void Level::draw(View & window)
 {
+	for (auto e = map.v.begin(); e != map.v.end(); ++e)
+	{
+		window.draw(*e);
+	}
+
 	window.draw(item);
 	window.draw(time_value);
 	window.draw(highscore_value);
 	window.draw(highscore_text);
 	window.draw(time_text);
-
-	for (auto e = map.v.begin(); e != map.v.end(); ++e)
-	{
-		window.draw(*e);
-	}
-	/*
-	// TODO: Ausgabe der Zeit im Spiel und Ausgabe der Gesamtzeit fehlt
-	float game_time = clock.getElapsedTime().asMilliseconds() / 1000.f;
-	int score = (int) game_time / 1000;*/
 }
 
 void Level::updateElapsedTime()

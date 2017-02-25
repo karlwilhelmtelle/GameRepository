@@ -2,7 +2,7 @@
 #include "View.h"
 
 LevelMenu::LevelMenu(const sf::VideoMode &resolution):
-	selected_index(0)
+	selectedIndex(0)
 {
 	const sf::String strings[] = { "Level 1", "Level 2", "Level 3", "Back" };
 
@@ -28,43 +28,45 @@ void LevelMenu::draw(View & window)
 void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 {
 	// move up
-	if (key == sf::Keyboard::Up && selected_index - 1 >= 0)
+	if (key == sf::Keyboard::Up && selectedIndex - 1 >= 0)
 	{
 		window.playSound(SoundName::MENU);
-		text[selected_index].setFillColor(sf::Color::White);
-		while (true)
+		text[selectedIndex].setFillColor(sf::Color::White);
+		/*while (true)
 		{
 			selected_index--;
 			if (!text[selected_index].isDisabled())
 			{
 				break;
 			}
-		}
-		text[selected_index].setFillColor(sf::Color::Yellow);
+		}*/
+		selectedIndex--;
+		text[selectedIndex].setFillColor(sf::Color::Yellow);
 	}
 	// move down
-	else if (key == sf::Keyboard::Down && selected_index + 1 < MAX_LEVEL_MENU_POINTS)
+	else if (key == sf::Keyboard::Down && selectedIndex + 1 < MAX_LEVEL_MENU_POINTS)
 	{
 		window.playSound(SoundName::MENU);
-		text[selected_index].setFillColor(sf::Color::White);
-		while (true)
+		text[selectedIndex].setFillColor(sf::Color::White);
+		/*while (true)
 		{
 			selected_index++;
 			if (!text[selected_index].isDisabled())
 			{
 				break;
 			}
-		}
-		text[selected_index].setFillColor(sf::Color::Yellow);
+		}*/
+		selectedIndex++;
+		text[selectedIndex].setFillColor(sf::Color::Yellow);
 	}
 
 	//enter
 	if (key == sf::Keyboard::Return)
 	{
 		window.playSound(SoundName::MENU);
-		if (selected_index != MAX_LEVEL_MENU_POINTS - 1)
+		if (selectedIndex != MAX_LEVEL_MENU_POINTS - 1)
 		{
-			window.setLevelIndex(selected_index);
+			window.setLevelIndex(selectedIndex);
 		}
 		else
 		{
@@ -80,7 +82,7 @@ void LevelMenu::keyEvent(sf::Keyboard::Key key, View & window)
 
 int LevelMenu::getSelectedIndex()
 {
-	return selected_index;
+	return selectedIndex;
 }
 
 void LevelMenu::disableIndex(int index)
