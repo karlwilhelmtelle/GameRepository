@@ -130,9 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="LevelController.cpp" />
     <ClCompile Include="Level.cpp" />
-    <ClCompile Include="MainItem_Level2.cpp" />
     <ClCompile Include="MainItem.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -143,9 +141,7 @@
     <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LevelController.h" />
     <ClInclude Include="Level.h" />
-    <ClInclude Include="MainItem_Level2.h" />
     <ClInclude Include="MainItem.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Menu.h" />

@@ -5,7 +5,7 @@ View::View(const sf::VideoMode &res) :
 	sf::RenderWindow(res,
 		"Game", sf::Style::Fullscreen),
 	resolution(res),
-	levels(res),
+	level(res),
 	gameState(GameState::MENU),
 	menu(res, settings.getSettings())
 {
@@ -15,7 +15,7 @@ View::View(const sf::VideoMode &res) :
 
 void View::initSettings()
 {
-	levels.getCurrentLevel()->updateSettings(settings.getMainItemColor(),
+	level.updateSettings(settings.getMainItemColor(),
 		settings.getObjectsColor());
 	sound.updateSettings(settings.audioEnabled());
 }
@@ -23,7 +23,7 @@ void View::initSettings()
 void View::setLevelIndex(const int selectedLevelIndex)
 {
 	setGameState(GameState::PLAY);
-	levels.setLevelIndex(selectedLevelIndex);
+	level.setLevelIndex(selectedLevelIndex);
 }
 
 
@@ -34,7 +34,7 @@ void View::renderGraphics()
 	
 	if (gameState == GameState::PLAY)
 	{
-		levels.getCurrentLevel()->draw(*this);
+		level.draw(*this);
 	}
 	else
 	{
@@ -49,7 +49,7 @@ void View::updateGame(bool *gameOver)
 {
 	if (gameState == GameState::PLAY)
 	{
-		levels.getCurrentLevel()->update(gameOver);
+		level.update(gameOver);
 	}
 }
 
@@ -60,7 +60,7 @@ void View::keyAction(const sf::Keyboard::Key key)
 	{
 		if (key != sf::Keyboard::Escape)
 		{
-			levels.getCurrentLevel()->keyEvent(key);
+			level.keyEvent(key);
 		}
 		else
 		{
@@ -83,9 +83,8 @@ void View::setGameState(const GameState state)
 
 void View::gameOver()
 {
-	Level* level = levels.getCurrentLevel();
-	menu.updateHighscore(level->getHighscore(), level->getLastScore());
-	level->init();
+	menu.updateHighscore(level.getHighscore(), level.getLastScore());
+	level.init();
 	playSound(SoundName::GAME_OVER);
 	setGameState(GameState::MENU);
 	menu.setMenu(MenuState::HighscoreMenu);

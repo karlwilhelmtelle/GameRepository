@@ -20,6 +20,8 @@ class Level
 
 		void updateSettings(const sf::Color mainItemColor, const sf::Color objectsColor);
 
+		void setLevelIndex(const size_t levelIndex);
+
 		void keyEvent(const sf::Keyboard::Key key);
 
 		void restartClock();
@@ -28,7 +30,7 @@ class Level
 	
 		sf::Int32 getHighscore() const;
 	private:
-		const size_t levelIndex;
+		size_t levelIndex;
 
 		const sf::VideoMode &resolution;
 

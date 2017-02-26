@@ -4,8 +4,7 @@
 #include "MainItem.h"
 #include "ObjectContainer.h"
 #include "Sound.h"
-#include "MainItem_Level2.h"
-#include "LevelController.h"
+#include "Level.h"
 #include "Settings.h"
 
 enum class GameState { PLAY, MENU };
@@ -37,7 +36,7 @@ class View : public sf::RenderWindow
 
 		GameState gameState;
 
-		LevelController levels;
+		Level level;
 
 		Settings settings;
 		Sound sound;

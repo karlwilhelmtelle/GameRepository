@@ -3,9 +3,9 @@
 
 Level::Level(const sf::VideoMode &res) :
 	resolution(res),
-	item(res),
-	levelIndex(0)
+	item(res)
 {
+	
 	const std::vector<std::string> strings = { "Time:", "", "Highscore:", ""};
 	const std::vector<float> xPosition = {
 		res.width / 50.0f,
@@ -24,14 +24,27 @@ Level::Level(const sf::VideoMode &res) :
 		++i;
 	}
 
+	setLevelIndex(0);
 	init();
 }
 
 void Level::init()
 {
+	switch (levelIndex)
+	{
+		case 0:
+			cameraSpeed = 0.2f;
+			break;
+		case 1:
+			cameraSpeed = 0.3f;
+			break;
+		case 2:
+			cameraSpeed = 0.4f;
+			break;
+	}
+
 	restartClock();
 	item.init();
-	cameraSpeed = 0.2f;
 	map.load(resolution);
 }
 
@@ -79,6 +92,15 @@ void Level::updateSettings(const sf::Color mainItemColor, const sf::Color object
 {
 	item.updateSettings(mainItemColor);
 	map.updateSettings(objectsColor);
+}
+
+void Level::setLevelIndex(const size_t newLevelIndex)
+{
+	if (levelIndex != newLevelIndex)
+	{
+		levelIndex = newLevelIndex;
+		init();
+	}
 }
 
 void Level::keyEvent(const sf::Keyboard::Key key)
