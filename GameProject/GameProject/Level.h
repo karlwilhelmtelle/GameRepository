@@ -8,7 +8,7 @@ class Level
 	public:
 		Level(const sf::VideoMode &resolution);
 
-		void draw(View &window) const;
+		void draw(View &window);
 
 		void init();
 

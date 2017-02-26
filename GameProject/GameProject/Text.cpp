@@ -19,22 +19,14 @@ Text::Text() :
 
 void Text::setStringToTime(const sf::Int32 milliseconds)
 {
-	std::stringstream os;
-
-	os << (milliseconds) / 1000;
-	os << ",";
-	os << std::setfill('0') << std::setw(3) << milliseconds % 1000;
-	os << " s";
-
-	setString(os.str());
+	setString(std::to_string(milliseconds / 1000) + "," + 
+		std::to_string(milliseconds % 1000) + " s");
 }
 
 void Text::setStringToMilli(const sf::Int32 milliseconds)
 {
-	std::stringstream os;
-	os << milliseconds;
-
-	setString(os.str());
+	std::string s = std::to_string(milliseconds);
+	setString(s);
 }
 
 void Text::enable()

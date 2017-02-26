@@ -44,7 +44,7 @@ void Level::update(bool * game_over)
 	item.updatePhysics();
 }
 
-void Level::draw(View & window) const
+void Level::draw(View & window)
 {
 	for (auto &e : map.v)
 	{
