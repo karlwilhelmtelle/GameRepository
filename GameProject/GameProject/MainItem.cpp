@@ -16,16 +16,19 @@ MainItem::MainItem(const sf::VideoMode &resolution) :
 
 void MainItem::keyEvent(const sf::Keyboard::Key key, float cameraSpeed)
 {
-	if (key == sf::Keyboard::Up || key == sf::Keyboard::Down)
+	bool up		= (key == sf::Keyboard::Up || key == sf::Keyboard::W);
+	bool down	= (key == sf::Keyboard::Down || key == sf::Keyboard::S);
+
+	if (up || down)
 	{
 		yVelocity = yAcceleration * cameraSpeed;
 		// go up
-		if (key == sf::Keyboard::Up)
+		if (up)
 		{
 			position.y = std::max(0.0f, position.y - yVelocity);
 		}
 		// go down
-		else if (key == sf::Keyboard::Down)
+		else if (down)
 		{
 			position.y = std::min(position.y + yVelocity, resolution.height - 2*radius);
 		}

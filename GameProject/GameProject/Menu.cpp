@@ -151,6 +151,7 @@ void Menu::keyEvent(const sf::Keyboard::Key key, View & window)
 		switch (key)
 		{
 			case sf::Keyboard::Up:
+			case sf::Keyboard::W:
 			{
 				if (newSelectedRow > 0)
 				{
@@ -160,6 +161,7 @@ void Menu::keyEvent(const sf::Keyboard::Key key, View & window)
 				break;
 			}
 			case sf::Keyboard::Down:
+			case sf::Keyboard::S:
 			{
 				if (newSelectedRow < items[currentMenu].size() - 1)
 				{
@@ -169,6 +171,7 @@ void Menu::keyEvent(const sf::Keyboard::Key key, View & window)
 				break;
 			}
 			case sf::Keyboard::Right:
+			case sf::Keyboard::D:
 			{
 				if (newSelectedCol < items[currentMenu][newSelectedRow].size() - 1)
 				{
@@ -178,6 +181,7 @@ void Menu::keyEvent(const sf::Keyboard::Key key, View & window)
 				break;
 			}
 			case sf::Keyboard::Left:
+			case sf::Keyboard::A:
 			{
 				if (newSelectedCol > 1)
 				{
