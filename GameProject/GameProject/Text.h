@@ -5,7 +5,7 @@
 class Text : public sf::Text
 {
 	public:
-		Text();
+		Text(const unsigned int resHeight);
 
 		void setStringToTime(const sf::Int32 milliseconds);
 	

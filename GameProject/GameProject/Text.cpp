@@ -3,7 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
-Text::Text() :
+Text::Text(const unsigned int resHeight) :
 	isEnabled(true),
 	isSelected(false)
 {
@@ -12,7 +12,7 @@ Text::Text() :
 		//Fehler beheben
 	}
 	setFont(font);
-
+	setCharacterSize((int)(30.0f * resHeight / 1080.0f));
 	setFillColor(sf::Color::White);
 }
 

@@ -9,15 +9,15 @@ Level::Level(const sf::VideoMode &res) :
 	const std::vector<std::string> strings = { "Time:", "", "Highscore:", ""};
 	const std::vector<float> xPosition = {
 		res.width / 50.0f,
-		9.0f * res.width / 10.0f,
-		8.0f * res.width / 10.0f,
-		4.0f * res.width / 50.0f
+		5.0f * res.width / 50.0f,
+		37.0f * res.width / 50.0f,
+		45.0f * res.width / 50.0f,
 	};
 
 	int i = 0;
 	for (auto &string : strings)
 	{
-		Text *text = new Text();
+		Text *text = new Text(res.height);
 		text->setString(string);
 		text->setPosition(sf::Vector2f(xPosition[i], res.height / 50.0f));
 		textItems.push_back(*text);
@@ -76,7 +76,7 @@ void Level::updateElapsedTime()
 {
 	timeMilli = clock.getElapsedTime().asMilliseconds();
 
-	textItems[3].setStringToTime(timeMilli);
+	textItems[1].setStringToTime(timeMilli);
 }
 
 void Level::updateHighscore()
@@ -84,7 +84,7 @@ void Level::updateHighscore()
 	if (timeMilli > highscoreMilli)
 	{
 		highscoreMilli = timeMilli;
-		textItems[1].setStringToTime(highscoreMilli);
+		textItems[3].setStringToTime(highscoreMilli);
 	}
 }
 

@@ -43,7 +43,7 @@ Menu::Menu(const sf::VideoMode & res, const std::vector<size_t> settings) :
 
 			for (auto &col : row)
 			{
-				Text *text = new Text();
+				Text *text = new Text(res.height);
 				text->setString(col);
 				text->setPosition(getPosition(
 					(MenuState)i, res, 

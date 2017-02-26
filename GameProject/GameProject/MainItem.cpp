@@ -4,7 +4,7 @@
 MainItem::MainItem(const sf::VideoMode &resolution) : 
 	sf::CircleShape(),
 	resolution(resolution),
-	radius(40.0f)
+	radius(40.0f * 1080.0f / resolution.height)
 {
 	updatePhysics();
 	setRadius(radius);

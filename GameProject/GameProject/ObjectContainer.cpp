@@ -6,9 +6,12 @@ void ObjectContainer::load(const sf::VideoMode &res)
 	v.clear();
 
 	const int max_objects = 4;
+	const float radius = 60.0f * 1080.0f / res.height;
+	const float xPosition = (float)(res.width) / (float)max_objects;
+
 	for (int i = 0; i < max_objects; ++i)
 	{
-		v.push_back(Object(res, 60, i * (float)(res.width) / (float)max_objects, color));
+		v.push_back(Object(res, radius, i * xPosition, color));
 	}
 }
 
