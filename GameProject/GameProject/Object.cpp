@@ -40,14 +40,13 @@ bool Object::notDrawable() const
 // TODO: fix collision bugs
 bool Object::collision(const sf::Vector2f item_position, const float item_radius)
 {
-	if (abs(position.x - item_position.x) < radius + item_radius &&
-		abs(position.y - item_position.y) < radius + item_radius)
+	if (abs(position.x - item_position.x) <= radius + item_radius &&
+		abs(position.y - item_position.y) <= radius + item_radius)
 	{
-		if (sqrt(
-			pow((position.x + radius) - (item_position.x + item_radius), 2) +
-			pow((position.y + radius) - (item_position.y + item_radius), 2))
+		if (pow((position.x + radius) - (item_position.x + item_radius), 2) +
+			pow((position.y + radius) - (item_position.y + item_radius), 2)
 			// Abstand zweier Mittelpunkte kleiner als (radius1 + radius2)
-			< radius + item_radius)
+			<= pow(radius + item_radius, 2))
 		{
 			return true;
 		}
