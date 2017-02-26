@@ -5,11 +5,11 @@ Sound::Sound() :
 {
 	if (!menu.loadFromFile("Sounds/menu_sound.wav"))
 	{
-		throw std::exception("Sounds/menu_sound.wav");
+		throw std::runtime_error("Missing file: Sounds/menu_sound.wav");
 	}
 	if (!gameOver.loadFromFile("Sounds/game_over_sound.wav"))
 	{
-		throw std::exception("Sounds/game_over_sound.wav");
+		throw std::runtime_error("Missing file: Sounds/game_over_sound.wav");
 	}
 }
 

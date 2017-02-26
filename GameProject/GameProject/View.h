@@ -43,6 +43,9 @@ class View : public sf::RenderWindow
 		
 		Menu menu;
 
+		std::vector<sf::Texture> backgroundTextures;
+		std::vector<sf::Sprite> backgroundSprites;
+
 		/*MainMenu mainMenu;
 		LevelMenu levelMenu;
 		HighscoreMenu highscoreMenu;

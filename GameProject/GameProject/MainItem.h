@@ -13,7 +13,6 @@ class MainItem : public sf::CircleShape
 
 		void init();
 		void updateSettings(const sf::Color color);
-		void updatePhysics();
 	private:
 		const sf::VideoMode &resolution;
 

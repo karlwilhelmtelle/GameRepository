@@ -9,6 +9,20 @@ View::View(const sf::VideoMode &res) :
 	gameState(GameState::MENU),
 	menu(res, settings.getSettings())
 {
+	sf::Texture texture;
+	std::string filename("Images/background1.png");
+	if (!texture.loadFromFile(filename))
+	{
+		throw std::runtime_error("Missing file: " + filename);
+	}
+
+	backgroundTextures.push_back(texture);
+	backgroundTextures.push_back(texture);
+	backgroundTextures.push_back(texture);
+	backgroundSprites.push_back(sf::Sprite(backgroundTextures[0]));
+	backgroundSprites.push_back(sf::Sprite(backgroundTextures[1]));
+	backgroundSprites.push_back(sf::Sprite(backgroundTextures[2]));
+
 	setMouseCursorVisible(false);
 	initSettings();
 }
@@ -31,9 +45,10 @@ void View::setLevelIndex(const int selectedLevelIndex)
 void View::renderGraphics()
 {
 	clear(sf::Color::Black);
-	
+
 	if (gameState == GameState::PLAY)
 	{
+		draw(backgroundSprites[level.getLevelIndex()]);
 		level.draw(*this);
 	}
 	else
@@ -83,9 +98,11 @@ void View::setGameState(const GameState state)
 
 void View::gameOver()
 {
-	menu.updateHighscore(level.getHighscore(), level.getLastScore());
-	level.init();
 	playSound(SoundName::GAME_OVER);
+	menu.updateHighscore(level.getHighscore(), level.getLastScore());
+	sf::sleep(sf::seconds(2));
+
+	level.init();	
 	setGameState(GameState::MENU);
 	menu.setMenu(MenuState::HighscoreMenu);
 }

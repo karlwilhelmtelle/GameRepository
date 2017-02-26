@@ -9,7 +9,7 @@ Text::Text(const unsigned int resHeight) :
 {
 	if (!font.loadFromFile("Fonts/OpenSans-Bold.ttf"))
 	{
-		//Fehler beheben
+		throw std::runtime_error("Missing file: Fonts/OpenSans-Bold.ttf");
 	}
 	setFont(font);
 	setCharacterSize((int)(30.0f * resHeight / 1080.0f));

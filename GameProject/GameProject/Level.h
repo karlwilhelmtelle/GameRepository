@@ -22,6 +22,8 @@ class Level
 
 		void setLevelIndex(const size_t levelIndex);
 
+		size_t getLevelIndex() const;
+
 		void keyEvent(const sf::Keyboard::Key key);
 
 		void restartClock();

@@ -6,7 +6,6 @@ MainItem::MainItem(const sf::VideoMode &resolution) :
 	resolution(resolution),
 	radius(40.0f * 1080.0f / resolution.height)
 {
-	updatePhysics();
 	setRadius(radius);
 	init();
 	setFillColor(sf::Color::Cyan);
@@ -21,7 +20,7 @@ void MainItem::keyEvent(const sf::Keyboard::Key key, float cameraSpeed)
 
 	if (up || down)
 	{
-		yVelocity = yAcceleration * cameraSpeed;
+		yVelocity = 400.0f * cameraSpeed;
 		// go up
 		if (up)
 		{
@@ -33,11 +32,6 @@ void MainItem::keyEvent(const sf::Keyboard::Key key, float cameraSpeed)
 			position.y = std::min(position.y + yVelocity, resolution.height - 2*radius);
 		}
 		setPosition(position);
-
-		if (yAcceleration > 200)
-		{
-			yAcceleration -= 50;
-		}
 
 		clock.restart();
 	}
@@ -53,12 +47,4 @@ void MainItem::init()
 void MainItem::updateSettings(const sf::Color color)
 {
 	setFillColor(color);
-}
-
-void MainItem::updatePhysics()
-{
-	if (clock.getElapsedTime().asMilliseconds() >= 100) //if time difference is over 100 ms
-	{
-		yAcceleration = 400.0f;
-	}
 }

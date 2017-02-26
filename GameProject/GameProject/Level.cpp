@@ -54,7 +54,6 @@ void Level::update(bool * game_over)
 	updateElapsedTime();
 	updateHighscore();
 	cameraSpeed += 0.000001f;
-	item.updatePhysics();
 }
 
 void Level::draw(View & window)
@@ -101,6 +100,11 @@ void Level::setLevelIndex(const size_t newLevelIndex)
 		levelIndex = newLevelIndex;
 		init();
 	}
+}
+
+size_t Level::getLevelIndex() const
+{
+	return levelIndex;
 }
 
 void Level::keyEvent(const sf::Keyboard::Key key)
