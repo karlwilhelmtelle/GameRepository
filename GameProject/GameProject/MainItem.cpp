@@ -20,7 +20,7 @@ void MainItem::keyEvent(const sf::Keyboard::Key key, float cameraSpeed)
 
 	if (up || down)
 	{
-		yVelocity = 100.0f;
+		yVelocity = 150.0f;
 		// go up
 		if (up)
 		{

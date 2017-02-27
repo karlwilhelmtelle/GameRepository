@@ -98,8 +98,8 @@ void Level::setLevelIndex(const size_t newLevelIndex)
 	if (levelIndex != newLevelIndex)
 	{
 		levelIndex = newLevelIndex;
-		init();
 	}
+	init();
 }
 
 size_t Level::getLevelIndex() const
