@@ -39,7 +39,7 @@ void Level::init()
 			cameraSpeed = 0.4f;
 			break;
 		case 2:
-			cameraSpeed = 0.6f;
+			cameraSpeed = 0.9f;
 			break;
 	}
 
@@ -53,7 +53,7 @@ void Level::update(bool * game_over)
 	map.update(item.getPosition(), item.getRadius(), cameraSpeed, game_over);
 	updateElapsedTime();
 	updateHighscore();
-	cameraSpeed += 0.000005f;
+	cameraSpeed += 0.00001f;
 }
 
 void Level::draw(View & window)
