@@ -3,8 +3,6 @@
 Game::Game() :
 	window(sf::VideoMode::getDesktopMode())
 {
-	//d.h. man startet im Menü
-	level = 1;
 	bool game_over = false;
 	
 	//window.hideMenu();

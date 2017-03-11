@@ -9,8 +9,5 @@ class Game
 	private:
 		/*	window of the game */
 		View window;
-		
-		/*	current level */
-		int level;
 };
 
