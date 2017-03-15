@@ -4,7 +4,8 @@
 MainItem::MainItem(const sf::VideoMode &resolution) : 
 	sf::CircleShape(),
 	resolution(resolution),
-	radius(40.0f * resolution.height / 1080.0f)
+	radius(40.0f * resolution.height / 1080.0f),
+	yVelocity(180.0f * resolution.height / 1080.0f)
 {
 	setRadius(radius);
 	init();
@@ -20,7 +21,6 @@ void MainItem::keyEvent(const sf::Keyboard::Key key, float cameraSpeed)
 
 	if (up || down)
 	{
-		yVelocity = 150.0f;
 		// go up
 		if (up)
 		{

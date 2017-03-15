@@ -23,5 +23,4 @@ class MainItem : public sf::CircleShape
 		/*  x and y coordinates */
 		sf::Vector2f position;
 		float yVelocity;
-		float yAcceleration;
 };
